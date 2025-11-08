@@ -57,3 +57,19 @@ func handle_attacks() -> void:
 func animate() -> void:
 	if direction.x != 0:
 		animated_sprite_2d.flip_h = direction.x < 0
+	
+	if direction == Vector2.ZERO:
+		if animated_sprite_2d.animation != "walk_back" and animated_sprite_2d.animation != "idle_back":
+			animated_sprite_2d.play("idle")
+			return
+		animated_sprite_2d.play("idle_back")
+		return
+		
+	if abs(direction.y) < abs(direction.x):
+		animated_sprite_2d.play("walk")
+		return
+		
+	if direction.y > 0:
+		animated_sprite_2d.play("walk")
+		return
+	animated_sprite_2d.play("walk_back")
