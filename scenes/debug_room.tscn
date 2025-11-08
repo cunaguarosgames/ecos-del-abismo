@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6hj3p8lsfgl1"]
+[gd_scene load_steps=5 format=3 uid="uid://c6hj3p8lsfgl1"]
 
 [ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player.tscn" id="1_kxprw"]
+[ext_resource type="PackedScene" uid="uid://bm86u4uuihr8j" path="res://scenes/enemies/rippler.tscn" id="2_aifrh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxprw"]
 size = Vector2(20, 50)
@@ -29,3 +30,6 @@ shape = SubResource("RectangleShape2D_kxprw")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Enemy"]
 mesh = SubResource("QuadMesh_aifrh")
+
+[node name="Rippler" parent="." instance=ExtResource("2_aifrh")]
+position = Vector2(-47, 10)
