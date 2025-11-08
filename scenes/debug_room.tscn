@@ -1,7 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6hj3p8lsfgl1"]
+[gd_scene load_steps=4 format=3 uid="uid://c6hj3p8lsfgl1"]
 
 [ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player.tscn" id="1_kxprw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxprw"]
+size = Vector2(20, 50)
+
+[sub_resource type="QuadMesh" id="QuadMesh_aifrh"]
+size = Vector2(20, 50)
 
 [node name="DebugRoom" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_kxprw")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["map"]]
+position = Vector2(270, 47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_kxprw")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+mesh = SubResource("QuadMesh_aifrh")
+
+[node name="Enemy" type="CharacterBody2D" parent="." groups=["enemies"]]
+position = Vector2(269, 106)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("RectangleShape2D_kxprw")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Enemy"]
+mesh = SubResource("QuadMesh_aifrh")
