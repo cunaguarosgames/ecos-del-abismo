@@ -14,7 +14,7 @@ var player_chase: bool = false
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 @onready var attack_area: Area2D = $AttackArea 
-
+@onready var attack_sprite: AnimatedSprite2D = $AttackSprite
 
 
 func _ready() -> void:
@@ -52,6 +52,8 @@ func check_for_attack() -> void:
 					
 				
 					body.take_damage(damage_melee)
+					attack_sprite.show()
+					attack_sprite.play("run")
 					
 					
 					can_attack = false
