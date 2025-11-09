@@ -13,18 +13,20 @@ var last_direction := Vector2.RIGHT
 var can_attack: bool = true
 var max_health: float = 100
 var current_health: float = 100
+var dead = false
 
+func _ready() -> void:
+	progress_bar.max_value = max_health
+	progress_bar.value = current_health
+	
 func _physics_process(delta: float) -> void:
+	if dead : return
 	handle_input()
 	handle_attacks()
 	velocity = direction * speed
 	move_and_slide()
 	animate()
 	
-func _ready() -> void:
-	progress_bar.max_value = max_health
-	progress_bar.value = current_health
-
 func handle_input() -> void:
 	direction = Vector2.ZERO
 	
@@ -87,3 +89,7 @@ func take_damage(amount: float):
 	progress_bar.value = current_health
 	if progress_bar.value < max_health:
 		progress_bar.show()
+	if current_health <= 0:
+		var tween = get_tree().create_tween()
+		tween.tween_property(animated_sprite_2d, "modulate:a", 0, 0.5)
+		dead = true
