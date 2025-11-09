@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bm86u4uuihr8j"]
+[gd_scene load_steps=26 format=3 uid="uid://bm86u4uuihr8j"]
 
 [ext_resource type="Texture2D" uid="uid://bjawcgfc2a4xs" path="res://assets/Rippler_(Deslizador)_fase1-Sheet.png" id="1_6ss21"]
 [ext_resource type="Script" uid="uid://d16oo5gaxlng6" path="res://scripts/enemies/rippler.gd" id="1_ejfr3"]
@@ -162,6 +162,9 @@ bg_color = Color(0.7019608, 0.05490196, 0.1882353, 0.44705883)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8eec"]
 bg_color = Color(0.7668713, 0, 0.14998737, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0frua"]
+radius = 15.033297
+
 [node name="Rippler" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_ejfr3")
 
@@ -171,19 +174,20 @@ animation = &"afraid"
 autoplay = "walk"
 offset = Vector2(0, -6)
 
-[node name="detection_area" type="Area2D" parent="."]
+[node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_fuovj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_6ss21")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-visible = false
 offset_left = -27.0
 offset_top = -58.0
 offset_right = 24.0
@@ -194,5 +198,16 @@ max_value = 1.0
 value = 1.0
 show_percentage = false
 
-[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_0frua")
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_attack_cooldown_timer_timeout"]
