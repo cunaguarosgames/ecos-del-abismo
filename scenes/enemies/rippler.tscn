@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bm86u4uuihr8j"]
+[gd_scene load_steps=25 format=3 uid="uid://bm86u4uuihr8j"]
 
 [ext_resource type="Texture2D" uid="uid://bjawcgfc2a4xs" path="res://assets/Rippler_(Deslizador)_fase1-Sheet.png" id="1_6ss21"]
 [ext_resource type="Script" uid="uid://d16oo5gaxlng6" path="res://scripts/enemies/rippler.gd" id="1_ejfr3"]
@@ -85,7 +85,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"afraid",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -100,9 +100,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3nh5a")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -116,7 +116,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"furious",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -130,7 +130,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -156,12 +156,18 @@ radius = 84.8646
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ss21"]
 radius = 14.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejfr3"]
+bg_color = Color(0.70122063, 0.0535487, 0.18708459, 0.3254902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8eec"]
+bg_color = Color(0.7668713, 0, 0.14998737, 1)
+
 [node name="Rippler" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_ejfr3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xm2mp")
-animation = &"walk"
+animation = &"afraid"
 autoplay = "walk"
 offset = Vector2(0, -6)
 
@@ -175,6 +181,16 @@ shape = SubResource("CircleShape2D_fuovj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_6ss21")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -27.0
+offset_top = -58.0
+offset_right = 24.0
+offset_bottom = -31.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ejfr3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i8eec")
+max_value = 1.0
+value = 1.0
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
