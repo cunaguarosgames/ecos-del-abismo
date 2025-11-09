@@ -157,7 +157,7 @@ radius = 84.8646
 radius = 14.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejfr3"]
-bg_color = Color(0.70122063, 0.0535487, 0.18708459, 0.3254902)
+bg_color = Color(0.7019608, 0.05490196, 0.1882353, 0.44705883)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8eec"]
 bg_color = Color(0.7668713, 0, 0.14998737, 1)
@@ -183,6 +183,7 @@ position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_6ss21")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -27.0
 offset_top = -58.0
 offset_right = 24.0
@@ -191,6 +192,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_ejfr3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_i8eec")
 max_value = 1.0
 value = 1.0
+show_percentage = false
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
