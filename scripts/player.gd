@@ -5,10 +5,14 @@ extends CharacterBody2D
 @export var speed: float = 120.0
 @export var attack_cooldown: float = 0.4
 
+@onready var progress_bar: ProgressBar = $ProgressBar
+
 var direction := Vector2.ZERO
 var deadzone = 0.2
 var last_direction := Vector2.RIGHT
 var can_attack: bool = true
+var max_health: float = 100
+var current_health: float = 100
 
 func _physics_process(delta: float) -> void:
 	handle_input()
@@ -16,6 +20,10 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * speed
 	move_and_slide()
 	animate()
+	
+func _ready() -> void:
+	progress_bar.max_value = max_health
+	progress_bar.value = current_health
 
 func handle_input() -> void:
 	direction = Vector2.ZERO
@@ -73,3 +81,9 @@ func animate() -> void:
 		animated_sprite_2d.play("walk")
 		return
 	animated_sprite_2d.play("walk_back")
+
+func take_damage(amount: float):
+	current_health -= amount
+	progress_bar.value = current_health
+	if progress_bar.value < max_health:
+		progress_bar.show()
