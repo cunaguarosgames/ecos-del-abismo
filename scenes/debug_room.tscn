@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6hj3p8lsfgl1"]
+[gd_scene load_steps=6 format=3 uid="uid://c6hj3p8lsfgl1"]
 
+[ext_resource type="Script" uid="uid://bo1420jdx0xk2" path="res://scripts/debug_room.gd" id="1_b6wyt"]
 [ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player.tscn" id="1_kxprw"]
 [ext_resource type="PackedScene" uid="uid://bm86u4uuihr8j" path="res://scenes/enemies/rippler.tscn" id="2_aifrh"]
 
@@ -10,6 +11,7 @@ size = Vector2(20, 50)
 size = Vector2(20, 50)
 
 [node name="DebugRoom" type="Node2D"]
+script = ExtResource("1_b6wyt")
 
 [node name="Player" parent="." instance=ExtResource("1_kxprw")]
 
@@ -33,3 +35,15 @@ mesh = SubResource("QuadMesh_aifrh")
 
 [node name="Rippler" parent="." instance=ExtResource("2_aifrh")]
 position = Vector2(-47, 10)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.9198446
+anchor_right = 0.9995321
+anchor_bottom = 0.08611111
+text = "Reset"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

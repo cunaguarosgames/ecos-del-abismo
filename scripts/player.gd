@@ -11,8 +11,8 @@ var direction := Vector2.ZERO
 var deadzone = 0.2
 var last_direction := Vector2.RIGHT
 var can_attack: bool = true
-var max_health: float = 100
-var current_health: float = 100
+var max_health: float = 25
+var current_health: float = max_health
 var dead = false
 
 func _ready() -> void:
@@ -85,11 +85,13 @@ func animate() -> void:
 	animated_sprite_2d.play("walk_back")
 
 func take_damage(amount: float):
+	if dead : return
 	current_health -= amount
 	progress_bar.value = current_health
 	if progress_bar.value < max_health:
 		progress_bar.show()
 	if current_health <= 0:
+		animated_sprite_2d.play("dead")
 		var tween = get_tree().create_tween()
-		tween.tween_property(animated_sprite_2d, "modulate:a", 0, 0.5)
+		tween.tween_property(animated_sprite_2d, "modulate:a", 0, 1.25)
 		dead = true

@@ -1,108 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://bm86u4uuihr8j"]
+[gd_scene load_steps=26 format=3 uid="uid://c7uyqqf34e5bv"]
 
 [ext_resource type="Texture2D" uid="uid://bjawcgfc2a4xs" path="res://assets/Rippler_(Deslizador)_fase1-Sheet.png" id="1_6ss21"]
 [ext_resource type="Script" uid="uid://d16oo5gaxlng6" path="res://scripts/enemies/rippler.gd" id="1_ejfr3"]
-[ext_resource type="Texture2D" uid="uid://c0mc0sk3cdd3b" path="res://assets/attack_rippler-Sheet.png" id="3_i8eec"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r1iqm"]
-atlas = ExtResource("3_i8eec")
-region = Rect2(0, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sa188"]
-atlas = ExtResource("3_i8eec")
-region = Rect2(64, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3sqap"]
-atlas = ExtResource("3_i8eec")
-region = Rect2(128, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cgyo3"]
-atlas = ExtResource("3_i8eec")
-region = Rect2(192, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ujwi"]
-atlas = ExtResource("3_i8eec")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2lm4u"]
-atlas = ExtResource("3_i8eec")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xk8ur"]
-atlas = ExtResource("3_i8eec")
-region = Rect2(128, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_foew2"]
-atlas = ExtResource("3_i8eec")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3k1p0"]
-atlas = ExtResource("3_i8eec")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uf0gf"]
-atlas = ExtResource("3_i8eec")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8eec"]
-atlas = ExtResource("3_i8eec")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_unwmb"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r1iqm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sa188")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3sqap")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cgyo3")
-}],
-"loop": true,
-"name": &"afraid",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ujwi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2lm4u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xk8ur")
-}],
-"loop": true,
-"name": &"furious",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_foew2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3k1p0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uf0gf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i8eec")
-}],
-"loop": false,
-"name": &"run",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"void",
-"speed": 5.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ccigt"]
 atlas = ExtResource("1_6ss21")
@@ -269,17 +168,9 @@ radius = 15.033297
 [node name="Rippler" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_ejfr3")
 
-[node name="AttackSprite" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(-3, 2)
-sprite_frames = SubResource("SpriteFrames_unwmb")
-animation = &"run"
-autoplay = "void"
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, 6)
 sprite_frames = SubResource("SpriteFrames_xm2mp")
-animation = &"walk"
+animation = &"afraid"
 autoplay = "walk"
 offset = Vector2(0, -6)
 
