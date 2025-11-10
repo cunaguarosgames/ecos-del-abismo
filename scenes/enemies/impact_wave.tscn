@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://7gldo6tb3f7i"]
+[gd_scene load_steps=41 format=3 uid="uid://bm86u4uuihr8j"]
 
 [ext_resource type="Texture2D" uid="uid://bjawcgfc2a4xs" path="res://assets/Rippler_(Deslizador)_fase1-Sheet.png" id="1_6ss21"]
 [ext_resource type="Script" uid="uid://d16oo5gaxlng6" path="res://scripts/enemies/rippler.gd" id="1_ejfr3"]
@@ -200,7 +200,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"afraid",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -217,7 +217,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -231,7 +231,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"furious",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -292,7 +292,7 @@ autoplay = "run"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 6)
 sprite_frames = SubResource("SpriteFrames_xm2mp")
-animation = &"run"
+animation = &"walk"
 autoplay = "run"
 offset = Vector2(0, -6)
 
@@ -328,6 +328,6 @@ shape = SubResource("CircleShape2D_0frua")
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_main_sprite_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

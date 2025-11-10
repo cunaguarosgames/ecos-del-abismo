@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bo1420jdx0xk2" path="res://scripts/debug_room.gd" id="1_b6wyt"]
 [ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player.tscn" id="1_kxprw"]
-[ext_resource type="PackedScene" uid="uid://bm86u4uuihr8j" path="res://scenes/enemies/rippler.tscn" id="2_aifrh"]
+[ext_resource type="PackedScene" uid="uid://7gldo6tb3f7i" path="res://scenes/enemies/rippler.tscn" id="2_aifrh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxprw"]
 size = Vector2(20, 50)

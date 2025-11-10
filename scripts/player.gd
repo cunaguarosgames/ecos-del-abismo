@@ -19,7 +19,7 @@ func _ready() -> void:
 	progress_bar.max_value = max_health
 	progress_bar.value = current_health
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if dead : return
 	handle_input()
 	handle_attacks()
