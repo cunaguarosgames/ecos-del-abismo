@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 
@@ -72,6 +71,7 @@ x={
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemies"
 2d_physics/layer_3="map"
+2d_physics/layer_4="trampas"
 
 [rendering]
 
