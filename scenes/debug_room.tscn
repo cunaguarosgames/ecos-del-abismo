@@ -34,7 +34,7 @@ shape = SubResource("RectangleShape2D_kxprw")
 mesh = SubResource("QuadMesh_aifrh")
 
 [node name="Rippler" parent="." instance=ExtResource("2_aifrh")]
-position = Vector2(-47, 10)
+position = Vector2(-250, -6)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

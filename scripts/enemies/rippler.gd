@@ -103,7 +103,7 @@ func check_for_attack() -> void:
 				
 				# Animación de ataque/onda
 				attack_animation_sprite.show()
-				attack_animation_sprite.play("impact_wave")
+				attack_animation_sprite.play(current_state)
 				
 				can_attack = false
 				attack_cooldown_timer.start()
@@ -111,7 +111,7 @@ func check_for_attack() -> void:
 				return
 
 func play_main_animation(anim_name: String) -> void:
-	if not attack_animation_sprite.is_playing() and main_sprite.animation != anim_name:
+	if main_sprite.animation != anim_name:
 		main_sprite.play(anim_name)
 
 func _on_attack_animation_finished() -> void:
