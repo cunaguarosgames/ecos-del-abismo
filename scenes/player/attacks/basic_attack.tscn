@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cf6jjm20i0q8j"]
 
-[ext_resource type="Script" uid="uid://bo1jh466ifqp2" path="res://scripts/attacks/basic_attack.gd" id="1_ukoa1"]
-[ext_resource type="Shader" path="res://shaders/color_swap.gdshader" id="2_0hnul"]
+[ext_resource type="Script" uid="uid://bo1jh466ifqp2" path="res://scripts/player/attacks/basic_attack.gd" id="1_ukoa1"]
+[ext_resource type="Shader" uid="uid://c1gtu2qljlqey" path="res://shaders/color_shaders/color_swap.gdshader" id="2_0hnul"]
 [ext_resource type="Texture2D" uid="uid://cu4wwww6govka" path="res://assets/attacks/basic_attack-Sheet.png" id="2_6j51h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_isfcc"]

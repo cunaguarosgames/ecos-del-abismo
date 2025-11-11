@@ -1,7 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://dexk5be64pk3w"]
+[gd_scene load_steps=30 format=3 uid="uid://dexk5be64pk3w"]
 
-[ext_resource type="Script" uid="uid://ofjw13r3fnd3" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://ofjw13r3fnd3" path="res://scripts/player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://2588j0h1n22g" path="res://assets/player_bat-Sheet.png" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://bby62dq4wl7n7" path="res://utils/state_machine/state_machine.tscn" id="3_gmlin"]
+[ext_resource type="Script" uid="uid://carspt3pnnexi" path="res://scripts/player/states/player_state_idle.gd" id="4_p47bc"]
+[ext_resource type="Script" uid="uid://clb3mpruagjwo" path="res://scripts/player/states/player_state_walk.gd" id="5_75vfm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
 atlas = ExtResource("2_g2els")
@@ -213,3 +216,12 @@ theme_override_styles/background = SubResource("StyleBoxFlat_g2els")
 theme_override_styles/fill = SubResource("StyleBoxFlat_qhqgy")
 show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("3_gmlin")]
+default_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_p47bc")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("5_75vfm")
