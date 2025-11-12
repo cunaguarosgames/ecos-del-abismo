@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="ecos-del-abismo"
+run/main_scene="uid://c6hj3p8lsfgl1"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -20,6 +21,16 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "blue",
+"res://scenes/": "yellow",
+"res://scripts/": "red",
+"res://shaders/": "green",
+"res://utils/": "purple"
+}
 
 [global_group]
 
