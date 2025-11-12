@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_timer: Timer = $AttackTimer
 
 @export var speed: float = 120.0
 @export var attack_cooldown: float = 0.4
@@ -21,63 +22,24 @@ func _ready() -> void:
 	progress_bar.max_value = max_health
 	progress_bar.value = current_health
 	
-	
-func handle_input() -> void:
-	direction = Vector2.ZERO
-	
-	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-	
-	if direction.length() < deadzone:
-		direction = Vector2.ZERO
-	else:
-		direction = direction.normalized() * min(direction.length(), 1.0)
-		
-	direction = direction.normalized()
-	
-func handle_attacks() -> void:
-	if direction != Vector2.ZERO:
-		last_direction = direction.normalized()
-		
-	if Input.is_action_just_pressed("attack") and can_attack:
-		can_attack = false
-		var attack = preload("res://scenes/player/attacks/basic_attack.tscn").instantiate()
-		attack.global_position = global_position
-		attack.direction = last_direction
-		get_parent().add_child(attack)
-		
-		await get_tree().create_timer(attack_cooldown).timeout
-		can_attack = true
-	
-	if Input.is_action_just_pressed("x") and can_attack:
-		can_attack = false
-		var attack = preload("res://scenes/player/attacks/area_attack.tscn").instantiate()
-		attack.global_position = global_position
-		attack.direction = last_direction
-		get_parent().add_child(attack)
-		
-		await get_tree().create_timer(attack_cooldown).timeout
-		can_attack = true
 
-func animate() -> void:
+func play_directional_animation(base_name: String) -> void:
 	if direction.x != 0:
 		animated_sprite_2d.flip_h = direction.x < 0
-	
-	if direction == Vector2.ZERO:
-		if animated_sprite_2d.animation != "walk_back" and animated_sprite_2d.animation != "idle_back":
+
+	if direction == Vector2.ZERO and base_name:
+		if animated_sprite_2d.animation.ends_with("_back"):
+			animated_sprite_2d.play("idle_back")
+		else:
 			animated_sprite_2d.play("idle")
-			return
-		animated_sprite_2d.play("idle_back")
 		return
-		
+
 	if abs(direction.y) < abs(direction.x):
-		animated_sprite_2d.play("walk")
-		return
-		
-	if direction.y > 0:
-		animated_sprite_2d.play("walk")
-		return
-	animated_sprite_2d.play("walk_back")
+		animated_sprite_2d.play("%s" % base_name)
+	elif direction.y > 0:
+		animated_sprite_2d.play("%s" % base_name)
+	else:
+		animated_sprite_2d.play("%s_back" % base_name)
 
 func take_damage(amount: float):
 	if dead : return
