@@ -3,7 +3,7 @@ class_name Rippler extends CharacterBody2D
 # --------------------------
 # PROPIEDADES DEL ENEMIGO
 # --------------------------
-var speed: float = 80.0
+var speed: float = 75.0
 var current_health: float = 30.0
 var max_health: float = 30.0
 
@@ -45,42 +45,17 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	# La FSM se encarga de llamar al on_physics_process del estado actual.
-	# Simplemente movemos el cuerpo con la velocidad establecida por el estado.
-	move_and_slide() 
-	
-
-# ====================================================================
-# LÓGICA DE DAÑO Y TRANSICIÓN DE ESTADO (CONTROLADOR DE LA FSM)
-# ====================================================================
+	pass
 
 func take_damage(amount: float) -> void:
 	current_health -= amount
-	
-		
-func update_health_and_change_state() -> void:
+	update_health()
+
+func update_health() -> void:
 	if progress_bar:
 		progress_bar.value = current_health
 		if progress_bar.value < max_health:
 			progress_bar.show()
-			
-	var health_percentage = current_health / max_health
-	
-	# Si ya estamos en la animación de Muerte, no cambiamos de estado
-	if state_machine.current_state.name == "Death":
-		return
-
-	var target_state_name: String = "Walk" # Estado base para Walk/Idle
-
-	if health_percentage <= afraid_health_threshold:
-		target_state_name = "Afraid"
-	elif health_percentage <= furious_health_threshold:
-		target_state_name = "Furious"
-	
-	# Cambiamos de estado solo si es diferente al actual
-	if state_machine.current_state.name != target_state_name:
-		state_machine.change_to(target_state_name)
-
 
 # ====================================================================
 # FUNCIONES DE UTILIDAD (Deben ser llamadas por los Nodos de Estado)
@@ -88,8 +63,7 @@ func update_health_and_change_state() -> void:
 
 # Función auxiliar llamada por los estados para reproducir la animación
 func play_main_animation(anim_name: String) -> void:
-	if not attack_animation_sprite.is_playing() and main_sprite.animation != anim_name:
-		main_sprite.play(anim_name)
+	main_sprite.play(anim_name)
 
 # Función auxiliar llamada por los estados para verificar el ataque
 func check_for_attack() -> void:
@@ -138,14 +112,8 @@ func _on_main_sprite_animation_finished() -> void:
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = body
-		# Al detectar, inmediatamente evaluamos si debe estar Furious o Walk
-		update_health_and_change_state() 
-		
-		if can_attack:
-			check_for_attack()
+		update_health() 
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = null
-		# Si se va, volvemos al estado base de Walk
-		state_machine.change_to("Walk")

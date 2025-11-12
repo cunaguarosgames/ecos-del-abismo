@@ -1,7 +1,7 @@
 extends RipplerStateBase
 
 func start() -> void:
-	rippler.play_main_animation("afraid") 
+	rippler.play_main_animation("furious") 
 	rippler.velocity = Vector2.ZERO
 
 func on_physics_process(_delta: float) -> void:
@@ -10,7 +10,7 @@ func on_physics_process(_delta: float) -> void:
 		return
 	
 	var direction = (rippler.player.position - rippler.position).normalized()
-	rippler.velocity = direction * (rippler.speed / 2)
+	rippler.velocity = direction * (rippler.speed * 1.25)
 	
 	if rippler.can_attack:
 		rippler.check_for_attack()
@@ -20,8 +20,8 @@ func on_physics_process(_delta: float) -> void:
 	if rippler.current_health <=0: 
 		state_machine.change_to("Death")
 	
-	if rippler.current_health <= rippler.max_health / 2 and rippler.current_health > rippler.max_health / 4 : 
-		state_machine.change_to("Furious")
+	if rippler.current_health <= rippler.max_health / 4 : 
+		state_machine.change_to("Afraid")
 	
 	if rippler.current_health > rippler.max_health / 2:
 		state_machine.change_to("Run")
