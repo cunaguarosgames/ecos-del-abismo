@@ -1,8 +1,14 @@
-[gd_scene load_steps=41 format=3 uid="uid://7gldo6tb3f7i"]
+[gd_scene load_steps=47 format=3 uid="uid://7gldo6tb3f7i"]
 
 [ext_resource type="Texture2D" uid="uid://bjawcgfc2a4xs" path="res://assets/Rippler_(Deslizador)_fase1-Sheet.png" id="1_6ss21"]
 [ext_resource type="Script" uid="uid://d16oo5gaxlng6" path="res://scripts/enemies/rippler.gd" id="1_ejfr3"]
 [ext_resource type="Texture2D" uid="uid://c0mc0sk3cdd3b" path="res://assets/attack_rippler-Sheet.png" id="3_i8eec"]
+[ext_resource type="PackedScene" uid="uid://bby62dq4wl7n7" path="res://utils/state_machine/state_machine.tscn" id="4_r1iqm"]
+[ext_resource type="Script" uid="uid://bj2yp208u520o" path="res://scenes/enemies/walk.gd" id="6_3sqap"]
+[ext_resource type="Script" uid="uid://60u3c37ra6wk" path="res://scenes/enemies/attack.gd" id="6_cgyo3"]
+[ext_resource type="Script" uid="uid://27fvenbrrgst" path="res://scenes/enemies/death.gd" id="8_0ujwi"]
+[ext_resource type="Script" uid="uid://jm0xfhcsxytw" path="res://scenes/enemies/run.gd" id="8_f2abk"]
+[ext_resource type="Script" uid="uid://yfyeb6aaer4m" path="res://scenes/enemies/afraid.gd" id="8_r26pi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1iqm"]
 atlas = ExtResource("3_i8eec")
@@ -329,6 +335,23 @@ shape = SubResource("CircleShape2D_0frua")
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_main_sprite_animation_finished"]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("4_r1iqm")]
+default_state = NodePath("Walk")
+
+[node name="Furious" type="Node" parent="StateMachine"]
+script = ExtResource("6_cgyo3")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("6_3sqap")
+
+[node name="Afraid" type="Node" parent="StateMachine"]
+script = ExtResource("8_r26pi")
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("8_0ujwi")
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource("8_f2abk")
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
