@@ -14,7 +14,7 @@ var direction := Vector2.ZERO
 var deadzone = 0.2
 var last_direction := Vector2.RIGHT
 var can_attack: bool = true
-var max_health: float = 25
+var max_health: float = 100
 var current_health: float = max_health
 var dead = false
 
@@ -26,18 +26,15 @@ func _ready() -> void:
 func play_directional_animation(base_name: String) -> void:
 	if direction.x != 0:
 		animated_sprite_2d.flip_h = direction.x < 0
-
-	if direction == Vector2.ZERO and base_name:
-		if animated_sprite_2d.animation.ends_with("_back"):
-			animated_sprite_2d.play("idle_back")
+	
+	if direction == Vector2.ZERO:
+		if last_direction.y >= 0:
+			animated_sprite_2d.play(base_name)
 		else:
-			animated_sprite_2d.play("idle")
-		return
-
-	if abs(direction.y) < abs(direction.x):
-		animated_sprite_2d.play("%s" % base_name)
-	elif direction.y > 0:
-		animated_sprite_2d.play("%s" % base_name)
+			animated_sprite_2d.play("%s_back" % base_name)
+	
+	if direction.y >= 0:
+		animated_sprite_2d.play(base_name)
 	else:
 		animated_sprite_2d.play("%s_back" % base_name)
 
