@@ -9,9 +9,10 @@ func on_physics_process(delta: float) -> void:
 	
 	player.direction = player.direction.normalized()
 	player.velocity = player.direction * player.speed
-	player.move_and_slide()
 	
 	player.play_directional_animation("walk")
+	
+	player.move_and_slide()
 
 func on_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("attack") and player.can_attack:

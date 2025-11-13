@@ -1,10 +1,11 @@
 extends PlayerStateBase
 
+func start() -> void:
+	player.play_directional_animation("idle")
+
 func on_physics_process(delta: float) -> void:
 	if player.direction != Vector2.ZERO:
 		player.last_direction = player.direction.normalized()
-	
-	player.play_directional_animation("idle")
 
 func on_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("attack") and player.can_attack:

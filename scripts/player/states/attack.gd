@@ -8,8 +8,8 @@ func start():
 	attack.direction = player.last_direction
 	get_parent().add_child(attack)
 
-	player.attack_timer.start() 
-
+	player.attack_timer.start()
+	player.play_directional_animation("attack")
 
 func on_physics_process(delta: float) -> void:
 	player.direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -18,8 +18,6 @@ func on_physics_process(delta: float) -> void:
 
 	player.velocity = player.direction * (player.speed / 2.0)
 	player.move_and_slide()
-
-	player.play_directional_animation("attack")
 
 func _on_attack_timer_timeout() -> void:
 	if not (Input.is_action_pressed("up")
