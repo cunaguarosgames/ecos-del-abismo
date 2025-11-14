@@ -1,8 +1,14 @@
-[gd_scene load_steps=41 format=3 uid="uid://bm86u4uuihr8j"]
+[gd_scene load_steps=47 format=3 uid="uid://7gldo6tb3f7i"]
 
 [ext_resource type="Texture2D" uid="uid://bjawcgfc2a4xs" path="res://assets/Rippler_(Deslizador)_fase1-Sheet.png" id="1_6ss21"]
-[ext_resource type="Script" uid="uid://d16oo5gaxlng6" path="res://scripts/enemies/rippler.gd" id="1_ejfr3"]
+[ext_resource type="Script" uid="uid://d16oo5gaxlng6" path="res://scripts/enemies/rippler/rippler.gd" id="1_ejfr3"]
 [ext_resource type="Texture2D" uid="uid://c0mc0sk3cdd3b" path="res://assets/attack_rippler-Sheet.png" id="3_i8eec"]
+[ext_resource type="PackedScene" uid="uid://bby62dq4wl7n7" path="res://utils/state_machine/state_machine.tscn" id="4_r1iqm"]
+[ext_resource type="Script" uid="uid://2mi5r0sgo5km" path="res://scenes/enemies/rippler/furious.gd" id="5_jj7wd"]
+[ext_resource type="Script" uid="uid://bj2yp208u520o" path="res://scenes/enemies/rippler/walk.gd" id="6_3sqap"]
+[ext_resource type="Script" uid="uid://27fvenbrrgst" path="res://scenes/enemies/rippler/death.gd" id="8_0ujwi"]
+[ext_resource type="Script" uid="uid://jm0xfhcsxytw" path="res://scenes/enemies/rippler/run.gd" id="8_f2abk"]
+[ext_resource type="Script" uid="uid://yfyeb6aaer4m" path="res://scenes/enemies/rippler/afraid.gd" id="8_r26pi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1iqm"]
 atlas = ExtResource("3_i8eec")
@@ -95,6 +101,11 @@ animations = [{
 "name": &"furious",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"void",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0ujwi")
@@ -109,12 +120,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_foew2")
 }],
 "loop": true,
-"name": &"run",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"void",
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -200,7 +206,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"afraid",
-"speed": 4.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -217,7 +223,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 4.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -231,7 +237,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"furious",
-"speed": 4.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -284,15 +290,16 @@ radius = 18.110771
 script = ExtResource("1_ejfr3")
 
 [node name="AttackAnimationSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 18)
+position = Vector2(-2.4999995, 18)
+scale = Vector2(1.1666666, 1)
 sprite_frames = SubResource("SpriteFrames_unwmb")
-animation = &"run"
-autoplay = "run"
+animation = &"furious"
+autoplay = "walk"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 6)
 sprite_frames = SubResource("SpriteFrames_xm2mp")
-animation = &"walk"
+animation = &"run"
 autoplay = "run"
 offset = Vector2(0, -6)
 
@@ -310,10 +317,10 @@ position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_6ss21")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -25.0
-offset_top = -30.0
-offset_right = 26.0
-offset_bottom = -22.0
+offset_left = -18.0
+offset_top = -25.0
+offset_right = 14.0
+offset_bottom = -21.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ejfr3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_i8eec")
 max_value = 1.0
@@ -328,6 +335,23 @@ shape = SubResource("CircleShape2D_0frua")
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("4_r1iqm")]
+default_state = NodePath("Walk")
+
+[node name="Furious" type="Node" parent="StateMachine"]
+script = ExtResource("5_jj7wd")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("6_3sqap")
+
+[node name="Afraid" type="Node" parent="StateMachine"]
+script = ExtResource("8_r26pi")
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("8_0ujwi")
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource("8_f2abk")
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

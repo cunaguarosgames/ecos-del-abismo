@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0mc0sk3cdd3b"
-path="res://.godot/imported/attack_rippler-Sheet.png-373632d1bb764cd2325823e5be8bfb87.ctex"
+uid="uid://bjawcgfc2a4xs"
+path="res://.godot/imported/Rippler_(Deslizador)_fase1-Sheet.png-00718580735d04129c726727527c9c9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/attack_rippler-Sheet.png"
-dest_files=["res://.godot/imported/attack_rippler-Sheet.png-373632d1bb764cd2325823e5be8bfb87.ctex"]
+source_file="res://assets/enemies/rippler/Rippler_(Deslizador)_fase1-Sheet.png"
+dest_files=["res://.godot/imported/Rippler_(Deslizador)_fase1-Sheet.png-00718580735d04129c726727527c9c9e.ctex"]
 
 [params]
 
