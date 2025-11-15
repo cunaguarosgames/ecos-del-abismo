@@ -1,43 +1,36 @@
-[gd_scene load_steps=28 format=3 uid="uid://b8dq7fkgqf8ih"]
+[gd_scene load_steps=27 format=3 uid="uid://b8dq7fkgqf8ih"]
 
 [ext_resource type="Script" uid="uid://cob1f524e7ucl" path="res://scenes/enemies/stalker/stalker.gd" id="1_x83tr"]
-[ext_resource type="Texture2D" uid="uid://cu4wwww6govka" path="res://assets/attacks/basic_attack-Sheet.png" id="2_5y7k3"]
+[ext_resource type="Texture2D" uid="uid://c0mc0sk3cdd3b" path="res://assets/enemies/rippler/attack_rippler-Sheet.png" id="2_1c5ko"]
 [ext_resource type="Texture2D" uid="uid://bstonrr7ctwli" path="res://assets/enemies/stalker/Stalker-Sheet.png" id="3_g180i"]
 [ext_resource type="PackedScene" uid="uid://bby62dq4wl7n7" path="res://utils/state_machine/state_machine.tscn" id="4_1c5ko"]
 [ext_resource type="Script" uid="uid://bto31g26ivf7r" path="res://scenes/enemies/stalker/death.gd" id="5_0pdh7"]
 [ext_resource type="Script" uid="uid://cser3csf4pyte" path="res://scenes/enemies/stalker/idle.gd" id="6_1c5ko"]
 [ext_resource type="Script" uid="uid://ccufnvrthbkab" path="res://scenes/enemies/stalker/attack.gd" id="7_ot7wr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0pdh7"]
-atlas = ExtResource("2_5y7k3")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1c5ko"]
-atlas = ExtResource("2_5y7k3")
-region = Rect2(16, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ot7wr"]
-atlas = ExtResource("2_5y7k3")
-region = Rect2(32, 0, 16, 16)
+atlas = ExtResource("2_1c5ko")
+region = Rect2(0, 24, 54, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uudvc"]
-atlas = ExtResource("2_5y7k3")
-region = Rect2(48, 0, 16, 16)
+atlas = ExtResource("2_1c5ko")
+region = Rect2(54, 24, 54, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uurlr"]
+atlas = ExtResource("2_1c5ko")
+region = Rect2(108, 24, 54, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uurlr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0pdh7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1c5ko")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ot7wr")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uudvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uurlr")
 }],
 "loop": false,
 "name": &"attack",
