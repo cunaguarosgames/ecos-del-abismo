@@ -21,8 +21,8 @@ func _on_attack_cooldown_timer_timeout() -> void:
 		if distance <= attack_range:
 			state_machine.change_to("Attack")
 			return
-			state_machine.change_to("Chasing")
-			state_machine.change_to("Idle")
+		state_machine.change_to("Chasing")
+	state_machine.change_to("Idle")
 
 func end():
 	stalker.can_attack = true
