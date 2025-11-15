@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bto31g26ivf7r" path="res://scenes/enemies/stalker/death.gd" id="5_0pdh7"]
 [ext_resource type="Script" uid="uid://cser3csf4pyte" path="res://scenes/enemies/stalker/idle.gd" id="6_1c5ko"]
 [ext_resource type="Script" uid="uid://ccufnvrthbkab" path="res://scenes/enemies/stalker/attack.gd" id="7_ot7wr"]
-[ext_resource type="Script" uid="uid://cd4crdkux48i2" path="res://scenes/enemies/stalker/chasing.gd" id="8_ot7wr"]
+[ext_resource type="Script" path="res://scenes/enemies/stalker/chasing.gd" id="8_ot7wr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ot7wr"]
 atlas = ExtResource("2_1c5ko")
