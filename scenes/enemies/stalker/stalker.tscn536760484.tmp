@@ -1,37 +1,43 @@
-[gd_scene load_steps=28 format=3 uid="uid://b8dq7fkgqf8ih"]
+[gd_scene load_steps=26 format=3 uid="uid://b8dq7fkgqf8ih"]
 
 [ext_resource type="Script" uid="uid://cob1f524e7ucl" path="res://scenes/enemies/stalker/stalker.gd" id="1_x83tr"]
-[ext_resource type="Texture2D" uid="uid://c0mc0sk3cdd3b" path="res://assets/enemies/rippler/attack_rippler-Sheet.png" id="2_1c5ko"]
+[ext_resource type="Texture2D" uid="uid://cu4wwww6govka" path="res://assets/attacks/basic_attack-Sheet.png" id="2_5y7k3"]
 [ext_resource type="Texture2D" uid="uid://bstonrr7ctwli" path="res://assets/enemies/stalker/Stalker-Sheet.png" id="3_g180i"]
 [ext_resource type="PackedScene" uid="uid://bby62dq4wl7n7" path="res://utils/state_machine/state_machine.tscn" id="4_1c5ko"]
 [ext_resource type="Script" uid="uid://bto31g26ivf7r" path="res://scenes/enemies/stalker/death.gd" id="5_0pdh7"]
 [ext_resource type="Script" uid="uid://cser3csf4pyte" path="res://scenes/enemies/stalker/idle.gd" id="6_1c5ko"]
 [ext_resource type="Script" uid="uid://ccufnvrthbkab" path="res://scenes/enemies/stalker/attack.gd" id="7_ot7wr"]
-[ext_resource type="Script" path="res://scenes/enemies/stalker/chasing.gd" id="8_ot7wr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pdh7"]
+atlas = ExtResource("2_5y7k3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c5ko"]
+atlas = ExtResource("2_5y7k3")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ot7wr"]
-atlas = ExtResource("2_1c5ko")
-region = Rect2(0, 24, 54, 24)
+atlas = ExtResource("2_5y7k3")
+region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uudvc"]
-atlas = ExtResource("2_1c5ko")
-region = Rect2(54, 24, 54, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uurlr"]
-atlas = ExtResource("2_1c5ko")
-region = Rect2(108, 24, 54, 24)
+atlas = ExtResource("2_5y7k3")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uurlr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_0pdh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c5ko")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ot7wr")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uudvc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uurlr")
 }],
 "loop": false,
 "name": &"attack",
@@ -120,21 +126,12 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1c5ko"]
-radius = 137.00365
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ot7wr"]
-radius = 8.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1c5ko"]
-bg_color = Color(0.9620535, 0.36349913, 0.4785576, 0.5803922)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ot7wr"]
-bg_color = Color(1, 0.28627452, 0.21960784, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uudvc"]
-radius = 24.04163
 
-[node name="Stalker" type="CharacterBody2D" groups=["enemies"]]
+[node name="Stalker" type="CharacterBody2D"]
 script = ExtResource("1_x83tr")
 
 [node name="AttackAnimationSprite" type="AnimatedSprite2D" parent="."]
@@ -143,37 +140,31 @@ animation = &"attack"
 autoplay = "attack"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_fqiqv")
-animation = &"attack"
+animation = &"idle"
 autoplay = "idle"
 
-[node name="DetectionArea" type="Area2D" parent="."]
+[node name="DetectionArea2D" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
 shape = SubResource("CircleShape2D_1c5ko")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ot7wr")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -14.0
-offset_top = -38.0
-offset_right = 17.0
-offset_bottom = -33.0
-theme_override_styles/background = SubResource("StyleBoxFlat_1c5ko")
-theme_override_styles/fill = SubResource("StyleBoxFlat_ot7wr")
+offset_right = 4.0
+offset_bottom = 27.0
 show_percentage = false
 
-[node name="AttackArea" type="Area2D" parent="."]
+[node name="AttackArea2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D"]
 shape = SubResource("CircleShape2D_uudvc")
 
 [node name="AttackCooldownTimer" type="Timer" parent="."]
-ignore_time_scale = true
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("4_1c5ko")]
 default_state = NodePath("Idle")
@@ -186,10 +177,3 @@ script = ExtResource("6_1c5ko")
 
 [node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("5_0pdh7")
-
-[node name="Chasing" type="Node" parent="StateMachine"]
-script = ExtResource("8_ot7wr")
-
-[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
-[connection signal="timeout" from="AttackCooldownTimer" to="StateMachine/Attack" method="_on_attack_cooldown_timer_timeout"]

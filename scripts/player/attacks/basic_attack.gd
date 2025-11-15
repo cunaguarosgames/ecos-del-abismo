@@ -3,6 +3,7 @@ extends Area2D
 @export var speed: float = 200.0
 @export var lifetime: float = 2.0
 @export var damage: int = 5
+@export var target: String = "enemies"
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -33,7 +34,7 @@ func _set_color(idx: int, new_color: Color) -> void:
 			mat.set_shader_parameter("to_palette", colors)
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("map") or body.is_in_group("enemies"):
+	if body.is_in_group("map") or body.is_in_group(target):
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
 		queue_free()
