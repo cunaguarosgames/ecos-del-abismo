@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b8dq7fkgqf8ih"]
+[gd_scene load_steps=28 format=3 uid="uid://b8dq7fkgqf8ih"]
 
 [ext_resource type="Script" uid="uid://cob1f524e7ucl" path="res://scenes/enemies/stalker/stalker.gd" id="1_x83tr"]
 [ext_resource type="Texture2D" uid="uid://c0mc0sk3cdd3b" path="res://assets/enemies/rippler/attack_rippler-Sheet.png" id="2_1c5ko"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bto31g26ivf7r" path="res://scenes/enemies/stalker/death.gd" id="5_0pdh7"]
 [ext_resource type="Script" uid="uid://cser3csf4pyte" path="res://scenes/enemies/stalker/idle.gd" id="6_1c5ko"]
 [ext_resource type="Script" uid="uid://ccufnvrthbkab" path="res://scenes/enemies/stalker/attack.gd" id="7_ot7wr"]
+[ext_resource type="Script" uid="uid://cd4crdkux48i2" path="res://scenes/enemies/stalker/chasing.gd" id="8_ot7wr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ot7wr"]
 atlas = ExtResource("2_1c5ko")
@@ -119,7 +120,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1c5ko"]
-radius = 74.41102
+radius = 137.00365
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ot7wr"]
 radius = 8.0
@@ -186,5 +187,9 @@ script = ExtResource("6_1c5ko")
 [node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("5_0pdh7")
 
+[node name="Chasing" type="Node" parent="StateMachine"]
+script = ExtResource("8_ot7wr")
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="AttackCooldownTimer" to="StateMachine/Attack" method="_on_attack_cooldown_timer_timeout"]

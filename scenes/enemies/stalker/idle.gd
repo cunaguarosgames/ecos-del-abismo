@@ -9,5 +9,5 @@ func on_physics_process(_delta: float) -> void:
 		state_machine.change_to("Death")
 	
 	if stalker.player:
-			state_machine.change_to("Attack")
+			state_machine.change_to("Chasing")
 				

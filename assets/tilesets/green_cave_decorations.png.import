@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8gn4f5yjwfki"
-path="res://.godot/imported/player_bat.png-976621da40ecbae88da189513c32b294.ctex"
+uid="uid://c6sximy5pa287"
+path="res://.godot/imported/green_cave_decorations.png-d6d024ce1f25081268860b9ea894d8bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player_bat.png"
-dest_files=["res://.godot/imported/player_bat.png-976621da40ecbae88da189513c32b294.ctex"]
+source_file="res://assets/tilesets/green_cave_decorations.png"
+dest_files=["res://.godot/imported/green_cave_decorations.png-d6d024ce1f25081268860b9ea894d8bb.ctex"]
 
 [params]
 
