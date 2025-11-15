@@ -433,6 +433,17 @@ texture_region_size = Vector2i(32, 32)
 10:4/0/terrains_peering_bit/bottom_side = 4
 10:4/0/terrains_peering_bit/bottom_left_corner = 4
 10:4/0/terrains_peering_bit/top_right_corner = 4
+11:3/0 = 0
+11:3/0/terrain_set = 0
+11:3/0/terrain = 4
+11:3/0/terrains_peering_bit/right_side = 4
+11:3/0/terrains_peering_bit/bottom_right_corner = 4
+11:3/0/terrains_peering_bit/bottom_side = 4
+11:3/0/terrains_peering_bit/bottom_left_corner = 4
+11:3/0/terrains_peering_bit/left_side = 4
+11:3/0/terrains_peering_bit/top_left_corner = 4
+11:3/0/terrains_peering_bit/top_side = 4
+11:3/0/terrains_peering_bit/top_right_corner = 4
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_maubk"]
 texture = ExtResource("2_w3511")
