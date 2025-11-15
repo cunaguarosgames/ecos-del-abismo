@@ -11,10 +11,9 @@ func on_physics_process(_delta: float) -> void:
 		
 	var direction_vector = (stalker.player.position - stalker.position)
 	var distance = direction_vector.length()
-	var attack_range = 60
 	var stop_range = 30 
 	
-	if distance <= attack_range:
+	if distance <= stalker.attack_range:
 		state_machine.change_to("Attack")
 	
 	if distance > stop_range:

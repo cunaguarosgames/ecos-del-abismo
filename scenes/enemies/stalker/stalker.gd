@@ -7,6 +7,7 @@ var max_health: float = 30.0
 @export var damage_melee: float = 5.0
 var can_attack: bool = true 
 var player: Node2D = null
+var attack_range = 100
 
 
 @onready var state_machine: StateMachine = $StateMachine # <--- Referencia al nodo FSM

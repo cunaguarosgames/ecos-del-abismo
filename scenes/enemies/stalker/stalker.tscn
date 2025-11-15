@@ -1,39 +1,60 @@
-[gd_scene load_steps=28 format=3 uid="uid://b8dq7fkgqf8ih"]
+[gd_scene load_steps=31 format=3 uid="uid://b8dq7fkgqf8ih"]
 
 [ext_resource type="Script" uid="uid://cob1f524e7ucl" path="res://scenes/enemies/stalker/stalker.gd" id="1_x83tr"]
-[ext_resource type="Texture2D" uid="uid://c0mc0sk3cdd3b" path="res://assets/enemies/rippler/attack_rippler-Sheet.png" id="2_1c5ko"]
+[ext_resource type="Texture2D" uid="uid://c22vre0pecn55" path="res://assets/attacks/enemies/Stalker/attack_stalker-Sheet.png" id="2_ot7wr"]
 [ext_resource type="Texture2D" uid="uid://bstonrr7ctwli" path="res://assets/enemies/stalker/Stalker-Sheet.png" id="3_g180i"]
 [ext_resource type="PackedScene" uid="uid://bby62dq4wl7n7" path="res://utils/state_machine/state_machine.tscn" id="4_1c5ko"]
 [ext_resource type="Script" uid="uid://bto31g26ivf7r" path="res://scenes/enemies/stalker/death.gd" id="5_0pdh7"]
 [ext_resource type="Script" uid="uid://cser3csf4pyte" path="res://scenes/enemies/stalker/idle.gd" id="6_1c5ko"]
 [ext_resource type="Script" uid="uid://ccufnvrthbkab" path="res://scenes/enemies/stalker/attack.gd" id="7_ot7wr"]
-[ext_resource type="Script" path="res://scenes/enemies/stalker/chasing.gd" id="8_ot7wr"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ot7wr"]
-atlas = ExtResource("2_1c5ko")
-region = Rect2(0, 24, 54, 24)
+[ext_resource type="Script" uid="uid://cd4crdkux48i2" path="res://scenes/enemies/stalker/chasing.gd" id="8_ot7wr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uudvc"]
-atlas = ExtResource("2_1c5ko")
-region = Rect2(54, 24, 54, 24)
+atlas = ExtResource("2_ot7wr")
+region = Rect2(0, 0, 35, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uurlr"]
-atlas = ExtResource("2_1c5ko")
-region = Rect2(108, 24, 54, 24)
+atlas = ExtResource("2_ot7wr")
+region = Rect2(35, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqiqv"]
+atlas = ExtResource("2_ot7wr")
+region = Rect2(70, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1ioa"]
+atlas = ExtResource("2_ot7wr")
+region = Rect2(105, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0ujd"]
+atlas = ExtResource("2_ot7wr")
+region = Rect2(140, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd1fh"]
+atlas = ExtResource("2_ot7wr")
+region = Rect2(175, 0, 35, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uurlr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ot7wr")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_uudvc")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uurlr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqiqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1ioa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0ujd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd1fh")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack",
 "speed": 5.0
 }]

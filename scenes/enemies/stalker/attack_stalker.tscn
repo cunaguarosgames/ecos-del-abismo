@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://cgp6px8tcsvwg"]
+
+[ext_resource type="Script" uid="uid://dtiwwniouve0w" path="res://attack_stalker.gd" id="1_37vtc"]
+[ext_resource type="Texture2D" uid="uid://c22vre0pecn55" path="res://assets/attacks/enemies/Stalker/attack_stalker-Sheet.png" id="2_im6cu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ykv6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwsmf"]
+atlas = ExtResource("2_im6cu")
+region = Rect2(0, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2y83"]
+atlas = ExtResource("2_im6cu")
+region = Rect2(35, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gigs2"]
+atlas = ExtResource("2_im6cu")
+region = Rect2(70, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erwy0"]
+atlas = ExtResource("2_im6cu")
+region = Rect2(105, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0rwf"]
+atlas = ExtResource("2_im6cu")
+region = Rect2(140, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdnxd"]
+atlas = ExtResource("2_im6cu")
+region = Rect2(175, 0, 35, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kie2r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwsmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2y83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gigs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erwy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0rwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdnxd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="AttackStalker" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_37vtc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3ykv6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kie2r")
+autoplay = "default"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
