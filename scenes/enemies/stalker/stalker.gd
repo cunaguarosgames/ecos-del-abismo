@@ -1,8 +1,5 @@
 class_name Stalker extends CharacterBody2D
 
-# --------------------------
-# PROPIEDADES DEL ENEMIGO
-# --------------------------
 var speed: float = 75.0
 var current_health: float = 30.0
 var max_health: float = 30.0

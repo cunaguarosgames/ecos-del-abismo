@@ -1,7 +1,7 @@
 extends StalkerStateBase 
 
 func start() -> void:
-	stalker.play_main_animation("Attack") 
+	stalker.play_main_animation("attack") 
 	stalker.velocity = Vector2.ZERO
 
 func on_physics_process(_delta: float) -> void:

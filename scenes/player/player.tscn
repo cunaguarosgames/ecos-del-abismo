@@ -199,7 +199,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75vfm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2els"]
 bg_color = Color(0, 1, 0, 0.15686275)
@@ -219,7 +219,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_dqkch")
+shape = SubResource("RectangleShape2D_75vfm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true

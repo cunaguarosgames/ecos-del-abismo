@@ -82,7 +82,7 @@ func check_for_attack() -> void:
 				
 				attack_animation_sprite.show()
 				# Asegúrate de que este nombre de animación sea correcto
-				attack_animation_sprite.play("impact_wave") 
+				attack_animation_sprite.play("walk") 
 				
 				can_attack = false
 				attack_cooldown_timer.start()

@@ -293,7 +293,7 @@ script = ExtResource("1_ejfr3")
 position = Vector2(-2.4999995, 18)
 scale = Vector2(1.1666666, 1)
 sprite_frames = SubResource("SpriteFrames_unwmb")
-animation = &"furious"
+animation = &"walk"
 autoplay = "walk"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
