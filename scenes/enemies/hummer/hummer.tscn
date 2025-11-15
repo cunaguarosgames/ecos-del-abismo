@@ -226,10 +226,10 @@ bg_color = Color(0.7019608, 0.05490196, 0.1882353, 0.44705883)
 bg_color = Color(0.7668713, 0, 0.14998737, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hkoyg"]
-radius = 98.0
+radius = 133.00375
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e0emr"]
-radius = 85.0
+radius = 101.0198
 
 [node name="hummer" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_e0emr")
