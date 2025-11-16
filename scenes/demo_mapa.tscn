@@ -267,6 +267,7 @@ navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_kwx0b")
 
 [node name="demo-mapa" type="Node2D"]
+position = Vector2(0, -3)
 
 [node name="suelo" type="TileMapLayer" parent="."]
 rotation = -0.0027371338
@@ -294,6 +295,10 @@ position = Vector2(105, 360)
 position = Vector2(698, -451)
 waypoints = [NodePath("../weaponits/Marker2D"), NodePath("../weaponits/Marker2D2"), NodePath("../weaponits/Marker2D3"), NodePath("../weaponits/Marker2D4")]
 
+[node name="hummer2" parent="." node_paths=PackedStringArray("waypoints") instance=ExtResource("5_0l55r")]
+position = Vector2(1357, 299)
+waypoints = [NodePath("../weaponits/Marker2D5"), NodePath("../weaponits/Marker2D6"), NodePath("../weaponits/Marker2D7")]
+
 [node name="weaponits" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="weaponits"]
@@ -307,3 +312,12 @@ position = Vector2(739, -207)
 
 [node name="Marker2D4" type="Marker2D" parent="weaponits"]
 position = Vector2(463, -203)
+
+[node name="Marker2D5" type="Marker2D" parent="weaponits"]
+position = Vector2(1327, 295)
+
+[node name="Marker2D6" type="Marker2D" parent="weaponits"]
+position = Vector2(1310, 78)
+
+[node name="Marker2D7" type="Marker2D" parent="weaponits"]
+position = Vector2(1097, 177)
