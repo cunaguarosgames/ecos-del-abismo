@@ -1,7 +1,5 @@
 extends hummerStateBase
 
-
-
 func on_physics_process(delta: float) -> void:
 	if hummer.wait:
 		hummer.velocity = Vector2.ZERO

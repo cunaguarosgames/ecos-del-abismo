@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c4oj0jvyi3q2e"]
+[gd_scene load_steps=42 format=3 uid="uid://c4oj0jvyi3q2e"]
 
 [ext_resource type="Script" uid="uid://b2ll0oqjbhvj4" path="res://scripts/enemies/hummer/hummer.gd" id="1_e0emr"]
 [ext_resource type="Texture2D" uid="uid://d3ld1uc2p7s2t" path="res://assets/enemies/hummer/hummer.png" id="1_qny5p"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://b6tgqcxcepmpd" path="res://scenes/enemies/hummer/follow.gd" id="5_wmy18"]
 [ext_resource type="Script" uid="uid://dxf7c0t1oqbuk" path="res://scenes/enemies/hummer/dead.gd" id="6_rs64p"]
 [ext_resource type="Script" uid="uid://bl38mcjpwm010" path="res://scripts/enemies/hummer/patrol.gd" id="7_e71pg"]
+[ext_resource type="Script" uid="uid://bihnmnuf8mbys" path="res://scripts/enemies/hummer/take_damage.gd" id="8_eblet"]
+[ext_resource type="Script" uid="uid://b2o88ndl8ljij" path="res://scripts/enemies/hummer/attack.gd" id="9_bxf3j"]
+[ext_resource type="PackedScene" uid="uid://gfef6tpbxmsv" path="res://scenes/enemies/hummer/attack_hummer.tscn" id="10_tohwt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e0emr"]
 atlas = ExtResource("1_qny5p")
@@ -174,9 +177,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fr04n")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -232,12 +235,15 @@ radius = 133.00375
 radius = 101.0198
 
 [node name="hummer" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 5
 script = ExtResource("1_e0emr")
+attack_scene = ExtResource("10_tohwt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jrv2g")
-animation = &"idle"
-frame_progress = 0.93098956
+animation = &"hit"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
@@ -266,6 +272,8 @@ debug_color = Color(0.23097464, 0.6179581, 0.45761847, 0.41960785)
 shape = SubResource("CircleShape2D_e0emr")
 
 [node name="attackColdown" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
 
 [node name="timerFollow" type="Timer" parent="."]
 wait_time = 3.0
@@ -291,3 +299,12 @@ script = ExtResource("6_rs64p")
 
 [node name="patrol" type="Node" parent="StateMachine"]
 script = ExtResource("7_e71pg")
+
+[node name="takeDamage" type="Node" parent="StateMachine"]
+script = ExtResource("8_eblet")
+
+[node name="attack" type="Node" parent="StateMachine"]
+script = ExtResource("9_bxf3j")
+
+[node name="Attack hummer" parent="." instance=ExtResource("10_tohwt")]
+position = Vector2(-2, -11)

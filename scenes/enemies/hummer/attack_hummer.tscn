@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://gfef6tpbxmsv"]
+[gd_scene load_steps=4 format=3 uid="uid://gfef6tpbxmsv"]
+
+[ext_resource type="Script" uid="uid://bt80un5j552cj" path="res://scripts/enemies/hummer/attack_hummer.gd" id="1_6aq7s"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_0wx4f"]
 
@@ -6,6 +8,7 @@
 radius = 12.0
 
 [node name="Attack hummer" type="Area2D"]
+script = ExtResource("1_6aq7s")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 position = Vector2(11.999999, 11)
@@ -15,3 +18,9 @@ mesh = SubResource("SphereMesh_0wx4f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(12, 11)
 shape = SubResource("CircleShape2D_6aq7s")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

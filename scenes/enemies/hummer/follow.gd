@@ -18,10 +18,14 @@ func on_process(delta: float) -> void:
 		return
 
 	var direction = (next_path_point - hummer.global_position).normalized()
-	
 	hummer.velocity = direction * hummer.speed
 
 	if direction.x != 0:
 		hummer.animSprite.flip_h = direction.x < 0
+
+	if hummer.target != null \
+	   and hummer.target.is_in_group("player") \
+	   and hummer.can_attack:
+		state_machine.change_to("attack")
 
 	hummer.animSprite.play("run")

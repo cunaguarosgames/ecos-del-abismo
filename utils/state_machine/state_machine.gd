@@ -47,4 +47,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if current_state and current_state.has_method("on_unhandled_key_input"):
 		current_state.on_unhandled_key_input(event)
 
+func is_current(state_name: String) -> bool:
+	if current_state: 
+		return current_state.name.to_lower() == state_name.to_lower()
+	return false
+
 #endregion

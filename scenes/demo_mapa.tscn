@@ -291,7 +291,7 @@ position = Vector2(735, 52)
 position = Vector2(105, 360)
 
 [node name="hummer" parent="." node_paths=PackedStringArray("waypoints") instance=ExtResource("5_0l55r")]
-position = Vector2(696, -449)
+position = Vector2(698, -451)
 waypoints = [NodePath("../weaponits/Marker2D"), NodePath("../weaponits/Marker2D2"), NodePath("../weaponits/Marker2D3"), NodePath("../weaponits/Marker2D4")]
 
 [node name="weaponits" type="Node2D" parent="."]
