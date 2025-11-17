@@ -62,7 +62,10 @@ animations = [{
 radius = 12.0
 
 [node name="Attack hummer" type="Area2D"]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_6aq7s")
+speed = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(7, 11)

@@ -27,5 +27,5 @@ func _do_attack() -> void:
 
 
 func on_process(delta: float) -> void:
-	if hummer.can_attack:
+	if !hummer.can_attack:
 		state_machine.change_to("follow")

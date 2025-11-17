@@ -33,11 +33,10 @@ func _on_body_entered(body):
 	if body.is_in_group("player"):
 		# Aplicar daño
 		if body.has_method("take_damage"):
+			print("timer init")
 			body.take_damage(damage)
-
-		# Aplicar knockback
-		if body is CharacterBody2D:
-			var dir = (body.global_position - global_position).normalized()
-			body.velocity += dir * knockback_force
-
+			queue_free()
+		
+	
+	if body is TileMapLayer:
 		queue_free()

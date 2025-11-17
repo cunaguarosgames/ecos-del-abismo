@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dda2t67u583yv"]
+
+[ext_resource type="Texture2D" uid="uid://b7wslv7qa3cdm" path="res://assets/enemies/babosa/babosa.png" id="1_rmaiy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olelh"]
+atlas = ExtResource("1_rmaiy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f5iq2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olelh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6807i"]
+
+[node name="babosa_item" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f5iq2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_6807i")

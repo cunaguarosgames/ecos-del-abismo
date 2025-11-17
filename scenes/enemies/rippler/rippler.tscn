@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bjawcgfc2a4xs" path="res://assets/enemies/rippler/Rippler_(Deslizador)_fase1-Sheet.png" id="1_6ss21"]
 [ext_resource type="Script" uid="uid://d16oo5gaxlng6" path="res://scripts/enemies/rippler/rippler.gd" id="1_ejfr3"]
-[ext_resource type="Texture2D" uid="uid://c0mc0sk3cdd3b" path="res://assets/enemies/rippler/attack_rippler-Sheet.png" id="3_i8eec"]
+[ext_resource type="Texture2D" uid="uid://c0mc0sk3cdd3b" path="res://assets/attacks/enemies/Rippler/attack_rippler-Sheet.png" id="3_i8eec"]
 [ext_resource type="PackedScene" uid="uid://bby62dq4wl7n7" path="res://utils/state_machine/state_machine.tscn" id="4_r1iqm"]
 [ext_resource type="Script" uid="uid://2mi5r0sgo5km" path="res://scenes/enemies/rippler/furious.gd" id="5_jj7wd"]
 [ext_resource type="Script" uid="uid://bj2yp208u520o" path="res://scenes/enemies/rippler/walk.gd" id="6_3sqap"]

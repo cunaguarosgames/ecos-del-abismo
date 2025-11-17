@@ -76,6 +76,7 @@ func _on_detection_area_attack_exited(body: Node2D):
 
 
 func _on_attack_cooldown_timeout():
+	print("attack")
 	can_attack = true
 
 

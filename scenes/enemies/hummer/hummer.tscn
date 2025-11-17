@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://b2ll0oqjbhvj4" path="res://scripts/enemies/hummer/hummer.gd" id="1_e0emr"]
 [ext_resource type="Texture2D" uid="uid://d3ld1uc2p7s2t" path="res://assets/enemies/hummer/hummer.png" id="1_qny5p"]
 [ext_resource type="PackedScene" uid="uid://bby62dq4wl7n7" path="res://utils/state_machine/state_machine.tscn" id="3_qpy5f"]
-[ext_resource type="Script" uid="uid://bmowpuij5u31f" path="res://scenes/enemies/hummer/idle.gd" id="4_qpy5f"]
-[ext_resource type="Script" uid="uid://b6tgqcxcepmpd" path="res://scenes/enemies/hummer/follow.gd" id="5_wmy18"]
-[ext_resource type="Script" uid="uid://dxf7c0t1oqbuk" path="res://scenes/enemies/hummer/dead.gd" id="6_rs64p"]
+[ext_resource type="Script" uid="uid://bmowpuij5u31f" path="res://scripts/enemies/hummer/idle.gd" id="4_qpy5f"]
+[ext_resource type="Script" uid="uid://b6tgqcxcepmpd" path="res://scripts/enemies/hummer/follow.gd" id="5_wmy18"]
+[ext_resource type="Script" uid="uid://dxf7c0t1oqbuk" path="res://scripts/enemies/hummer/dead.gd" id="6_rs64p"]
 [ext_resource type="Script" uid="uid://bl38mcjpwm010" path="res://scripts/enemies/hummer/patrol.gd" id="7_e71pg"]
 [ext_resource type="Script" uid="uid://bihnmnuf8mbys" path="res://scripts/enemies/hummer/take_damage.gd" id="8_eblet"]
 [ext_resource type="Script" uid="uid://b2o88ndl8ljij" path="res://scripts/enemies/hummer/attack.gd" id="9_bxf3j"]
@@ -219,8 +219,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_atrtk"]
-size = Vector2(25, 27)
+[sub_resource type="CircleShape2D" id="CircleShape2D_tohwt"]
+radius = 17.564169
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmy18"]
 bg_color = Color(0.7019608, 0.05490196, 0.1882353, 0.44705883)
@@ -236,8 +236,12 @@ radius = 101.0198
 
 [node name="hummer" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 5
+collision_mask = 5
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_e0emr")
 attack_scene = ExtResource("10_tohwt")
+attack = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jrv2g")
@@ -246,8 +250,8 @@ frame = 3
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -0.5)
-shape = SubResource("RectangleShape2D_atrtk")
+position = Vector2(1, -2)
+shape = SubResource("CircleShape2D_tohwt")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -16.0
@@ -283,6 +287,7 @@ autostart = true
 wait_time = 0.5
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 40.0
 debug_enabled = true
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("3_qpy5f")]
@@ -308,3 +313,4 @@ script = ExtResource("9_bxf3j")
 
 [node name="Attack hummer" parent="." instance=ExtResource("10_tohwt")]
 position = Vector2(-2, -11)
+speed = 200
