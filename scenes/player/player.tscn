@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=3 uid="uid://dexk5be64pk3w"]
 
 [ext_resource type="Script" uid="uid://ofjw13r3fnd3" path="res://scripts/player/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://2588j0h1n22g" path="res://assets/player_bat-Sheet.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://2588j0h1n22g" path="res://assets/player/player_bat-Sheet.png" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://bby62dq4wl7n7" path="res://utils/state_machine/state_machine.tscn" id="3_gmlin"]
 [ext_resource type="Script" uid="uid://carspt3pnnexi" path="res://scripts/player/states/idle.gd" id="4_p47bc"]
 [ext_resource type="Script" uid="uid://clb3mpruagjwo" path="res://scripts/player/states/walk.gd" id="5_75vfm"]
@@ -208,8 +208,7 @@ bg_color = Color(0, 1, 0, 0.15686275)
 bg_color = Color(0, 1, 0, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_layer = 3
-collision_mask = 5
+collision_mask = 7
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

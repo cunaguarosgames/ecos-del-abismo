@@ -10,6 +10,7 @@ var max_health: float = 30.0
 @export var damage_melee: float = 5.0
 var can_attack: bool = true 
 var player: Node2D = null
+var can_attack_player: Node2D = null
 
 # --------------------------
 # LÓGICA DE ESTADO
@@ -34,12 +35,9 @@ func _ready() -> void:
 	progress_bar.max_value = max_health
 	progress_bar.value = max_health
 	progress_bar.hide()
-
-	# Conexiones de señales
-	attack_cooldown_timer.timeout.connect(_on_attack_cooldown_timer_timeout)
-	attack_animation_sprite.animation_finished.connect(_on_attack_animation_finished)
-	main_sprite.animation_finished.connect(_on_main_sprite_animation_finished)
 	
+	main_sprite.animation_finished.connect(_on_main_sprite_animation_finished)
+
 	attack_animation_sprite.hide()
 	# play_main_animation("walk") ya no se llama aquí, lo hace el estado inicial.
 
@@ -93,20 +91,10 @@ func check_for_attack() -> void:
 # SEÑALES (Permanecen como funciones de Rippler)
 # ====================================================================
 
-func _on_attack_cooldown_timer_timeout() -> void:
-	can_attack = true
-
-func _on_attack_animation_finished() -> void:
-	attack_animation_sprite.hide()
-	# Vuelve a reproducir la animación del estado actual después del ataque
-	play_main_animation(state_machine.current_state.name.to_lower()) 
-	
 func _on_main_sprite_animation_finished() -> void:
-	# Solo el estado de Muerte debe manejar esto
 	if main_sprite.animation == "death":
 		if current_health <= 0:
-			# Aquí podríamos querer notificar a la FSM o al estado Death
-			# Por ahora, mantendremos el queue_free aquí por simplicidad.
+
 			queue_free()
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
@@ -117,3 +105,12 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = null
+
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		can_attack_player = body
+
+func _on_attack_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		can_attack_player = null

@@ -15,6 +15,13 @@ func on_physics_process(_delta: float) -> void:
 		state_machine.change_to("Death")
 		return
 	
+	if rippler.current_health > rippler.max_health / 2:
+		rippler.play_main_animation("walk") 
+	if rippler.current_health <= rippler.max_health / 2 and rippler.current_health > rippler.max_health / 4 : 
+		rippler.play_main_animation("furious") 
+	if rippler.current_health <= rippler.max_health / 4: 
+		rippler.play_main_animation("afraid") 
+	
 	if rippler.player:
 		if rippler.current_health > rippler.max_health / 2:
 			state_machine.change_to("Run")
