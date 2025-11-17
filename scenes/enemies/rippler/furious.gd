@@ -10,16 +10,11 @@ func on_physics_process(_delta: float) -> void:
 		return
 	
 	var direction_vector = (rippler.player.position - rippler.position)
-	var distance = direction_vector.length()
-	var stop_range = 30
 	
-	if distance > stop_range:
-		rippler.velocity = direction_vector.normalized() * (rippler.speed * 1.25)
-	else:
-		rippler.velocity = Vector2.ZERO
+	rippler.velocity = direction_vector.normalized() * (rippler.speed * 1.25)
 	
-	if rippler.can_attack:
-		rippler.check_for_attack()
+	if rippler.can_attack_player:
+		state_machine.change_to("Attack")
 	
 	rippler.move_and_slide()
 	
