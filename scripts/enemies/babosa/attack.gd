@@ -22,13 +22,6 @@ func _do_attack() -> void:
 	print("intentando atacar")
 	babosa.velocity = Vector2.ZERO
 	
-	if babosa.target and babosa.target.is_in_group("player"):
-		print("atacando (Daño infligido)")
+	if babosa.target and babosa.target.is_in_group("player") and babosa.attackArea:
 		if babosa.target.has_method("take_damage"):
-			# Aplicar el daño
 			babosa.target.take_damage(babosa.attack)
-
-
-func on_process(delta: float) -> void:
-	# Esta función ya no es necesaria
-	pass
