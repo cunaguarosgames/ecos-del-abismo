@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b8dq7fkgqf8ih"]
+[gd_scene load_steps=32 format=3 uid="uid://b8dq7fkgqf8ih"]
 
 [ext_resource type="Script" uid="uid://cob1f524e7ucl" path="res://scenes/enemies/stalker/stalker.gd" id="1_x83tr"]
 [ext_resource type="Texture2D" uid="uid://c22vre0pecn55" path="res://assets/attacks/enemies/Stalker/attack_stalker-Sheet.png" id="2_ot7wr"]
@@ -59,9 +59,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vbbxd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot7wr"]
 atlas = ExtResource("3_g180i")
 region = Rect2(0, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbbxd"]
+atlas = ExtResource("3_g180i")
+region = Rect2(32, 48, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_suibm"]
 atlas = ExtResource("3_g180i")
@@ -99,9 +103,12 @@ region = Rect2(96, 0, 32, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ot7wr")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vbbxd")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -167,8 +174,10 @@ autoplay = "attack"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_fqiqv")
-animation = &"attack"
+animation = &"death"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -194,9 +203,6 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_uudvc")
 
-[node name="AttackCooldownTimer" type="Timer" parent="."]
-ignore_time_scale = true
-
 [node name="StateMachine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("4_1c5ko")]
 default_state = NodePath("Idle")
 
@@ -211,6 +217,11 @@ script = ExtResource("5_0pdh7")
 
 [node name="Chasing" type="Node" parent="StateMachine"]
 script = ExtResource("8_ot7wr")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+ignore_time_scale = true
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
