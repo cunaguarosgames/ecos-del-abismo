@@ -1,8 +1,6 @@
 class_name Rippler extends CharacterBody2D
 
-# --------------------------
-# PROPIEDADES DEL ENEMIGO
-# --------------------------
+
 var speed: float = 75.0
 var current_health: float = 30.0
 var max_health: float = 30.0
@@ -12,16 +10,12 @@ var can_attack: bool = true
 var player: Node2D = null
 var can_attack_player: Node2D = null
 
-# --------------------------
-# LÓGICA DE ESTADO
-# --------------------------
+
 @export var furious_health_threshold: float = 0.5
 @export var afraid_health_threshold: float = 0.25
 
-# --------------------------
-# REFERENCIAS DE NODOS
-# --------------------------
-@onready var state_machine: StateMachine = $StateMachine # <--- Referencia al nodo FSM
+
+@onready var state_machine: StateMachine = $StateMachine 
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 @onready var attack_area: Area2D = $AttackArea
@@ -31,7 +25,7 @@ var can_attack_player: Node2D = null
 
 
 func _ready() -> void:
-	# ... inicializaciones ...
+
 	progress_bar.max_value = max_health
 	progress_bar.value = max_health
 	progress_bar.hide()
@@ -39,7 +33,7 @@ func _ready() -> void:
 	main_sprite.animation_finished.connect(_on_main_sprite_animation_finished)
 
 	attack_animation_sprite.hide()
-	# play_main_animation("walk") ya no se llama aquí, lo hace el estado inicial.
+
 
 
 func _physics_process(_delta: float) -> void:
@@ -55,18 +49,11 @@ func update_health() -> void:
 		if progress_bar.value < max_health:
 			progress_bar.show()
 
-# ====================================================================
-# FUNCIONES DE UTILIDAD (Deben ser llamadas por los Nodos de Estado)
-# ====================================================================
 
-# Función auxiliar llamada por los estados para reproducir la animación
 func play_main_animation(anim_name: String) -> void:
 	main_sprite.play(anim_name)
 
-# Función auxiliar llamada por los estados para verificar el ataque
 func check_for_attack() -> void:
-	# Si la FSM está funcionando correctamente, este chequeo ya no es necesario
-	# if state_machine.current_state.name == "Death": return 
 	
 	if not can_attack: return
 	
@@ -87,9 +74,6 @@ func check_for_attack() -> void:
 				
 				return
 
-# ====================================================================
-# SEÑALES (Permanecen como funciones de Rippler)
-# ====================================================================
 
 func _on_main_sprite_animation_finished() -> void:
 	if main_sprite.animation == "death":
