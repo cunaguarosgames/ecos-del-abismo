@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqf660p1g2gom"]
+
+[ext_resource type="Script" uid="uid://baixfa7hv3u7w" path="res://scripts/room.gd" id="1_g4ydk"]
+[ext_resource type="PackedScene" uid="uid://b13m41wgajs2q" path="res://scenes/scene_changer.tscn" id="2_rtml3"]
+[ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player/player.tscn" id="3_rtml3"]
+
+[node name="Room03" type="Node2D"]
+script = ExtResource("1_g4ydk")
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Door004" type="Marker2D" parent="SpawnPoints"]
+
+[node name="Door003" parent="SpawnPoints" instance=ExtResource("2_rtml3")]
+position = Vector2(45, -4)
+scene = "uid://c372fhqtpfave"
+
+[node name="Player" parent="." instance=ExtResource("3_rtml3")]
+position = Vector2(233, 148)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://baixfa7hv3u7w" path="res://scripts/room.gd" id="1_3ixtf"]
 [ext_resource type="TileSet" uid="uid://bs0kfd54mp5gc" path="res://assets/tilesets/green_cave.tres" id="2_g34pv"]
-[ext_resource type="PackedScene" path="res://scenes/scene_changer.tscn" id="3_g77wn"]
+[ext_resource type="PackedScene" uid="uid://b13m41wgajs2q" path="res://scenes/scene_changer.tscn" id="3_g77wn"]
 [ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player/player.tscn" id="4_g34pv"]
 
 [node name="Room02" type="Node2D"]
@@ -24,6 +24,13 @@ position = Vector2(15, 12)
 [node name="Door002" parent="SpawnPoints" instance=ExtResource("3_g77wn")]
 position = Vector2(-7, 12)
 scene = "uid://rp5d3d4beoqu"
+
+[node name="Door003" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(466, 21)
+
+[node name="Door004" parent="SpawnPoints" instance=ExtResource("3_g77wn")]
+position = Vector2(486, 19)
+scene = "uid://cqf660p1g2gom"
 
 [node name="Player" parent="." instance=ExtResource("4_g34pv")]
 position = Vector2(193, 102)
