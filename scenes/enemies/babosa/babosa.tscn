@@ -281,7 +281,6 @@ radius = 43.011627
 
 [node name="babosa" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 7
-collision_mask = 7
 script = ExtResource("1_38x5j")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -313,12 +312,14 @@ collision_mask = 5
 shape = SubResource("CircleShape2D_v4ros")
 
 [node name="attack_area" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
 shape = SubResource("CircleShape2D_8w6ue")
 debug_color = Color(0.977272, 0, 0.4090808, 0.41960785)
 
 [node name="explotion_area" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="explotion_area"]
 shape = SubResource("CircleShape2D_23qx1")

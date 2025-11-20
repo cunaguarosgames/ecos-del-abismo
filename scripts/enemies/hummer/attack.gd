@@ -1,7 +1,7 @@
 extends hummerStateBase
 
 func start() -> void:
-	if hummer.target and hummer.can_attack:
+	if hummer.target and hummer.can_attack and hummer.attack_area:
 		hummer.can_attack = false
 		_do_attack()
 	else:

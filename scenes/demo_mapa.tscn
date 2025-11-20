@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bt5073s63h72d"]
+[gd_scene load_steps=19 format=4 uid="uid://bt5073s63h72d"]
 
 [ext_resource type="Texture2D" uid="uid://cjy64q5162xhx" path="res://assets/tilesets/tilesets-1.png" id="1_jufps"]
 [ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player/player.tscn" id="2_kwx0b"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c4oj0jvyi3q2e" path="res://scenes/enemies/hummer/hummer.tscn" id="5_0l55r"]
 [ext_resource type="PackedScene" uid="uid://dda2t67u583yv" path="res://scenes/items/babosa_item.tscn" id="6_0aebp"]
 [ext_resource type="PackedScene" uid="uid://do5l4v7cc41sj" path="res://scenes/enemies/babosa/babosa.tscn" id="7_5ce8i"]
+[ext_resource type="Script" uid="uid://ba4841qxidxit" path="res://scripts/change_level.gd" id="7_t0gq7"]
+[ext_resource type="PackedScene" uid="uid://bn147xyphjvhs" path="res://scenes/demo_mapa_2.tscn" id="8_t0gq7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0l55r"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -267,6 +269,9 @@ physics_layer_1/collision_mask = 8
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_kwx0b")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2i4j"]
+size = Vector2(69, 64)
+
 [node name="demo-mapa" type="Node2D"]
 
 [node name="suelo" type="TileMapLayer" parent="."]
@@ -285,7 +290,7 @@ tile_map_data = PackedByteArray("AAALAP//AAAEAAkAAAAEAAwAAAABAAkAAAAYAAcAAAADAAg
 tile_set = SubResource("TileSet_hc7kf")
 
 [node name="Player" parent="." instance=ExtResource("2_kwx0b")]
-position = Vector2(225, 308)
+position = Vector2(1415, 166)
 
 [node name="Rippler" parent="." instance=ExtResource("3_hc7kf")]
 position = Vector2(735, 52)
@@ -313,12 +318,23 @@ position = Vector2(1310, 78)
 [node name="Marker2D7" type="Marker2D" parent="weaponits"]
 position = Vector2(1097, 177)
 
-[node name="babosa_item" parent="weaponits" instance=ExtResource("6_0aebp")]
-position = Vector2(932, 41)
-
 [node name="hummer" parent="." node_paths=PackedStringArray("waypoints") instance=ExtResource("5_0l55r")]
 position = Vector2(781, -395)
 waypoints = [NodePath("../weaponits/Marker2D"), NodePath("../weaponits/Marker2D2"), NodePath("../weaponits/Marker2D3"), NodePath("../weaponits/Marker2D4")]
 
 [node name="babosa" parent="." instance=ExtResource("7_5ce8i")]
-position = Vector2(319, 234)
+position = Vector2(801, -143)
+
+[node name="babosa_item" parent="." instance=ExtResource("6_0aebp")]
+position = Vector2(304, 300)
+
+[node name="changeLevel" type="Area2D" parent="."]
+script = ExtResource("7_t0gq7")
+new_level = ExtResource("8_t0gq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="changeLevel"]
+position = Vector2(1468.5, 160)
+shape = SubResource("RectangleShape2D_h2i4j")
+
+[connection signal="area_entered" from="changeLevel" to="changeLevel" method="_on_area_entered"]
+[connection signal="body_entered" from="changeLevel" to="changeLevel" method="_on_body_entered"]

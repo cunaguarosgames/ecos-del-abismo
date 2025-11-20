@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dda2t67u583yv"]
+[gd_scene load_steps=6 format=3 uid="uid://dda2t67u583yv"]
 
+[ext_resource type="Script" uid="uid://cv3eagag1iba" path="res://scripts/items/babosa_item.gd" id="1_olelh"]
 [ext_resource type="Texture2D" uid="uid://b7wslv7qa3cdm" path="res://assets/enemies/babosa/babosa.png" id="1_rmaiy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olelh"]
@@ -18,8 +19,11 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6807i"]
+radius = 11.0
 
 [node name="babosa_item" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_olelh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f5iq2")
@@ -27,3 +31,5 @@ sprite_frames = SubResource("SpriteFrames_f5iq2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_6807i")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

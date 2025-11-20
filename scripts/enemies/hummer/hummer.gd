@@ -24,7 +24,7 @@ var dead = true
 var target: Node2D = null
 var wait = false
 var can_attack: bool = true
-
+var attack_area = false 
 
 func _ready() -> void:
 	TimerFollow.timeout.connect(_on_timerFollow_timeout)
@@ -62,6 +62,7 @@ func _on_detection_area_body_exited(body: Node2D):
 
 func _on_detection_area_attack_entered(body: Node2D):
 	if body.is_in_group("player"):
+		attack_area = true
 		target = body
 
 		if can_attack:
@@ -70,6 +71,7 @@ func _on_detection_area_attack_entered(body: Node2D):
 
 func _on_detection_area_attack_exited(body: Node2D):
 	if body.is_in_group("player"):
+		attack_area = false 
 		if body == target:
 			target = null
 		state_machine.change_to("follow")
