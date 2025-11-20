@@ -4,11 +4,13 @@ var SAVE_PATH = "user://ecos_del_abismo.dat"
 
 var game_data: Dictionary = {
 	last_room = "",
-	last_entry = ""
+	last_entry = "",
+	primary_skill = "basic1",
 }
 
 func _ready() -> void:
 	load_game()
+	save_game()
 
 func save_game():
 	var save_file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)

@@ -3,7 +3,9 @@ class_name Player extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_timer: Timer = $AttackTimer
 @onready var skills_menu: Control = $SkillsMenu
-@onready var first_skill: Label = $SkillsMenu/FirstSkill
+@onready var first_skill_1: Label = $SkillsMenu/FirstSkill1
+@onready var first_skill_0: Label = $SkillsMenu/FirstSkill0
+@onready var first_skill_2: Label = $SkillsMenu/FirstSkill2
 
 @export var speed: float = 120.0
 @export var attack_cooldown: float = 0.4
@@ -11,6 +13,7 @@ class_name Player extends CharacterBody2D
 @onready var progress_bar: ProgressBar = $ProgressBar
 
 var states:PLayerStatesNames = PLayerStatesNames.new()
+var player_attacks:PlayerAttacks = PlayerAttacks.new()
 
 var direction := Vector2.ZERO
 var deadzone = 0.2
@@ -20,23 +23,54 @@ var max_health: float = 100
 var current_health: float = max_health
 var dead = false
 
-var basic_attack_dict = {name = 'Basic', file = "res://scenes/player/attacks/basic_attack.tscn"}
-var second_attack_dict = {name = 'Basic2', file = "res://scenes/player/attacks/area_attack.tscn"}
-var current_first_skill: Dictionary = basic_attack_dict
+var current_first_skill: String = GameState.game_data.primary_skill
+var ordered_primary_skills: Array = ["basic1", "basic2", "basic3", "basic4"]
 
 func _ready() -> void:
 	progress_bar.max_value = max_health
 	progress_bar.value = current_health
+	current_first_skill = GameState.game_data.primary_skill
+
+func update_skill_labels():
+	var index = ordered_primary_skills.find(current_first_skill)
+	if index == -1:
+		index = 0
+
+	var left  = ordered_primary_skills[(index - 1 + ordered_primary_skills.size()) % ordered_primary_skills.size()]
+	var mid   = ordered_primary_skills[index]
+	var right = ordered_primary_skills[(index + 1) % ordered_primary_skills.size()]
+
+	first_skill_0.text = left
+	first_skill_1.text = mid
+	first_skill_2.text = right
 
 func show_skills_menu():
 	if Input.is_action_just_pressed("menu"):
-		first_skill.text = current_first_skill.name
+		update_skill_labels()
 		skills_menu.show()
+
 	if skills_menu.visible and Input.is_action_just_pressed("down"):
-		current_first_skill = second_attack_dict
-		first_skill.text = current_first_skill.name
+		var index = ordered_primary_skills.find(current_first_skill)
+		index = (index + 1) % ordered_primary_skills.size()
+		current_first_skill = ordered_primary_skills[index]
+
+		GameState.game_data.primary_skill = current_first_skill
+		GameState.save_game()
+
+		update_skill_labels()
+	
+	if Input.is_action_just_pressed("up"):
+			var index = ordered_primary_skills.find(current_first_skill)
+			index = (index - 1 + ordered_primary_skills.size()) % ordered_primary_skills.size()
+			current_first_skill = ordered_primary_skills[index]
+
+			GameState.game_data.primary_skill = current_first_skill
+			GameState.save_game()
+			update_skill_labels()
+
 	if Input.is_action_just_released("menu"):
 		skills_menu.hide()
+
 
 func play_directional_animation(base_name: String) -> void:
 	if direction.x != 0:

@@ -2,7 +2,7 @@ extends PlayerStateBase
 
 func start():
 	player.can_attack = false
-	var attack_file: String = player.current_first_skill.file
+	var attack_file: String = player.player_attacks.primary_attacks[player.current_first_skill]["file"]
 
 	var attack = load(attack_file).instantiate()
 	attack.global_position = player.global_position

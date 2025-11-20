@@ -3,8 +3,7 @@ extends Control
 @onready var play: Button = $CenterContainer/Panel/Play
 
 func _ready() -> void:
-	print("last room: ", GameState.game_data.last_room)
-	print("last entry: ", GameState.game_data.last_entry)
+	print("last room: ", GameState.game_data)
 
 func _on_play_pressed():
 	print("last room: ", GameState.game_data.last_room)
