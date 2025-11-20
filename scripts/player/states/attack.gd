@@ -2,8 +2,9 @@ extends PlayerStateBase
 
 func start():
 	player.can_attack = false
+	var attack_file: String = player.current_first_skill.file
 
-	var attack = preload("res://scenes/player/attacks/basic_attack.tscn").instantiate()
+	var attack = load(attack_file).instantiate()
 	attack.global_position = player.global_position
 	attack.direction = player.last_direction
 	get_parent().add_child(attack)

@@ -2,6 +2,8 @@ class_name Player extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_timer: Timer = $AttackTimer
+@onready var skills_menu: Control = $SkillsMenu
+@onready var first_skill: Label = $SkillsMenu/FirstSkill
 
 @export var speed: float = 120.0
 @export var attack_cooldown: float = 0.4
@@ -18,10 +20,23 @@ var max_health: float = 100
 var current_health: float = max_health
 var dead = false
 
+var basic_attack_dict = {name = 'Basic', file = "res://scenes/player/attacks/basic_attack.tscn"}
+var second_attack_dict = {name = 'Basic2', file = "res://scenes/player/attacks/area_attack.tscn"}
+var current_first_skill: Dictionary = basic_attack_dict
+
 func _ready() -> void:
 	progress_bar.max_value = max_health
 	progress_bar.value = current_health
-	
+
+func show_skills_menu():
+	if Input.is_action_just_pressed("menu"):
+		first_skill.text = current_first_skill.name
+		skills_menu.show()
+	if skills_menu.visible and Input.is_action_just_pressed("down"):
+		current_first_skill = second_attack_dict
+		first_skill.text = current_first_skill.name
+	if Input.is_action_just_released("menu"):
+		skills_menu.hide()
 
 func play_directional_animation(base_name: String) -> void:
 	if direction.x != 0:
