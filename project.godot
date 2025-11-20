@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="ecos-del-abismo"
-run/main_scene="uid://c6hj3p8lsfgl1"
+run/main_scene="uid://pvhwmt0i4aoc"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*res://utils/globals/game_state.gd"
 
 [display]
 
