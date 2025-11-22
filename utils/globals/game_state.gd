@@ -5,7 +5,8 @@ var SAVE_PATH = "user://ecos_del_abismo.dat"
 var game_data: Dictionary = {
 	last_room = "",
 	last_entry = "",
-	primary_skill = "basic1",
+	primary_skill = "Normal",
+	primary_skills_list = ["Normal"]
 }
 
 func _ready() -> void:

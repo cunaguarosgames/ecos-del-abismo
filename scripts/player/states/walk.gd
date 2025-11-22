@@ -21,3 +21,6 @@ func on_input(event: InputEvent) -> void:
 	if not Input.is_action_pressed("up") and not Input.is_action_pressed("down") and not Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
 		state_machine.change_to(player.states.Idle)
 	
+	if Input.is_action_just_pressed("menu") and player.can_attack:
+		state_machine.change_to(player.states.Menu)
+	

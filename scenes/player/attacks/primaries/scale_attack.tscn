@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://u8g2n4wdt5gn"]
+
+[ext_resource type="Script" uid="uid://csurkcoe5g46i" path="res://scripts/player/attacks/scale_attack.gd" id="1_8jbuu"]
+[ext_resource type="Shader" uid="uid://c1gtu2qljlqey" path="res://shaders/color_shaders/color_swap.gdshader" id="2_2w1c4"]
+[ext_resource type="Texture2D" uid="uid://cu4wwww6govka" path="res://assets/attacks/player/basic_attack-Sheet.png" id="3_ea0ih"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pywmw"]
+radius = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_447mm"]
+shader = ExtResource("2_2w1c4")
+shader_parameter/from_palette = PackedColorArray(0.95686275, 0.96862745, 0.98039216, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/to_palette = PackedColorArray(0.5176471, 0, 0.63529414, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/palette_size = 8
+shader_parameter/tolerance = 0.01
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8ffg"]
+atlas = ExtResource("3_ea0ih")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwmeu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8ffg")
+}],
+"loop": false,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="ScaleAttack" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_8jbuu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pywmw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_447mm")
+sprite_frames = SubResource("SpriteFrames_dwmeu")
+autoplay = "default"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

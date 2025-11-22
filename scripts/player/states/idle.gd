@@ -14,5 +14,6 @@ func on_input(event: InputEvent) -> void:
 	if Input.is_action_pressed("up") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 		state_machine.change_to(player.states.Walk)
 	
-	player.show_skills_menu()
+	if Input.is_action_just_pressed("menu") and player.can_attack:
+		state_machine.change_to(player.states.Menu)
 	

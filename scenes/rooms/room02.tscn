@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://c372fhqtpfave"]
+[gd_scene load_steps=7 format=4 uid="uid://c372fhqtpfave"]
 
 [ext_resource type="Script" uid="uid://baixfa7hv3u7w" path="res://scripts/room.gd" id="1_3ixtf"]
 [ext_resource type="TileSet" uid="uid://bs0kfd54mp5gc" path="res://assets/tilesets/green_cave.tres" id="2_g34pv"]
 [ext_resource type="PackedScene" uid="uid://b13m41wgajs2q" path="res://scenes/scene_changer.tscn" id="3_g77wn"]
 [ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player/player.tscn" id="4_g34pv"]
 [ext_resource type="PackedScene" uid="uid://b8dq7fkgqf8ih" path="res://scenes/enemies/stalker/stalker.tscn" id="5_g77wn"]
+[ext_resource type="PackedScene" uid="uid://7gldo6tb3f7i" path="res://scenes/enemies/rippler/rippler.tscn" id="6_53yjk"]
 
 [node name="Room02" type="Node2D"]
 script = ExtResource("1_3ixtf")
@@ -20,10 +21,10 @@ tile_set = ExtResource("2_g34pv")
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="Door001" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(15, 12)
+position = Vector2(33, 12)
 
 [node name="Door002" parent="SpawnPoints" instance=ExtResource("3_g77wn")]
-position = Vector2(-7, 12)
+position = Vector2(11, 12)
 scene = "uid://rp5d3d4beoqu"
 
 [node name="Door003" type="Marker2D" parent="SpawnPoints"]
@@ -38,3 +39,6 @@ position = Vector2(193, 102)
 
 [node name="Stalker" parent="." instance=ExtResource("5_g77wn")]
 position = Vector2(529, 361)
+
+[node name="Rippler" parent="." instance=ExtResource("6_53yjk")]
+position = Vector2(107, 338)

@@ -3,9 +3,9 @@ class_name Player extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_timer: Timer = $AttackTimer
 @onready var skills_menu: Control = $SkillsMenu
-@onready var first_skill_1: Label = $SkillsMenu/FirstSkill1
-@onready var first_skill_0: Label = $SkillsMenu/FirstSkill0
-@onready var first_skill_2: Label = $SkillsMenu/FirstSkill2
+@onready var first_skill_0: Label = $SkillsMenu/VBoxContainer/FirstSkill0
+@onready var first_skill_1: Label = $SkillsMenu/VBoxContainer/FirstSkill1
+@onready var first_skill_2: Label = $SkillsMenu/VBoxContainer/FirstSkill2
 
 @export var speed: float = 120.0
 @export var attack_cooldown: float = 0.4
@@ -24,7 +24,7 @@ var current_health: float = max_health
 var dead = false
 
 var current_first_skill: String = GameState.game_data.primary_skill
-var ordered_primary_skills: Array = ["basic1", "basic2", "basic3", "basic4"]
+var primary_skills_list: Array = GameState.game_data.primary_skills_list
 
 func _ready() -> void:
 	progress_bar.max_value = max_health
@@ -32,13 +32,13 @@ func _ready() -> void:
 	current_first_skill = GameState.game_data.primary_skill
 
 func update_skill_labels():
-	var index = ordered_primary_skills.find(current_first_skill)
+	var index = primary_skills_list.find(current_first_skill)
 	if index == -1:
 		index = 0
 
-	var left  = ordered_primary_skills[(index - 1 + ordered_primary_skills.size()) % ordered_primary_skills.size()]
-	var mid   = ordered_primary_skills[index]
-	var right = ordered_primary_skills[(index + 1) % ordered_primary_skills.size()]
+	var left  = primary_skills_list[(index - 1 + primary_skills_list.size()) % primary_skills_list.size()]
+	var mid   = primary_skills_list[index]
+	var right = primary_skills_list[(index + 1) % primary_skills_list.size()]
 
 	first_skill_0.text = left
 	first_skill_1.text = mid
@@ -50,19 +50,19 @@ func show_skills_menu():
 		skills_menu.show()
 
 	if skills_menu.visible and Input.is_action_just_pressed("down"):
-		var index = ordered_primary_skills.find(current_first_skill)
-		index = (index + 1) % ordered_primary_skills.size()
-		current_first_skill = ordered_primary_skills[index]
+		var index = primary_skills_list.find(current_first_skill)
+		index = (index + 1) % primary_skills_list.size()
+		current_first_skill = primary_skills_list[index]
 
 		GameState.game_data.primary_skill = current_first_skill
 		GameState.save_game()
 
 		update_skill_labels()
 	
-	if Input.is_action_just_pressed("up"):
-			var index = ordered_primary_skills.find(current_first_skill)
-			index = (index - 1 + ordered_primary_skills.size()) % ordered_primary_skills.size()
-			current_first_skill = ordered_primary_skills[index]
+	if skills_menu.visible and Input.is_action_just_pressed("up"):
+			var index = primary_skills_list.find(current_first_skill)
+			index = (index - 1 + primary_skills_list.size()) % primary_skills_list.size()
+			current_first_skill = primary_skills_list[index]
 
 			GameState.game_data.primary_skill = current_first_skill
 			GameState.save_game()
@@ -71,6 +71,15 @@ func show_skills_menu():
 	if Input.is_action_just_released("menu"):
 		skills_menu.hide()
 
+func play_bump(direction: int):
+	var vbox = $SkillsMenu/VBoxContainer
+
+	var tween = create_tween()
+	var original_pos = vbox.position
+	var offset = Vector2(0, 60 * direction)
+
+	tween.tween_property(vbox, "position", original_pos + offset, 0.06)
+	tween.tween_property(vbox, "position", original_pos, 0.06)
 
 func play_directional_animation(base_name: String) -> void:
 	if direction.x != 0:
@@ -98,3 +107,12 @@ func take_damage(amount: float):
 		var tween = get_tree().create_tween()
 		tween.tween_property(animated_sprite_2d, "modulate:a", 0, 1.25)
 		dead = true
+
+func add_primary_skill(skill_name: String) -> void:
+	if skill_name in primary_skills_list:
+		return
+	
+	primary_skills_list.append(skill_name)
+	
+	GameState.game_data.primary_skills_list = primary_skills_list
+	GameState.save_game()
