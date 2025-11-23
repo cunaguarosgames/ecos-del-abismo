@@ -10,7 +10,5 @@ func on_process(delta: float) -> void:
 	if hummer.wait == false:
 		state_machine.change_to("patrol")
 	
-	if hummer.current_health <= 0 :
-		state_machine.change_to("dead")
 		
 	

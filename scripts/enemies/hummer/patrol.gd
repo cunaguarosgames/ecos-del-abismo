@@ -17,6 +17,7 @@ func on_physics_process(delta: float) -> void:
 		hummer.TimerFollow.start() 
 		state_machine.change_to("idle")
 		return
+		
 	var next_path_point = hummer.navigation.get_next_path_position()
 	var direction = (next_path_point - hummer.global_position).normalized()
 	hummer.velocity = direction * hummer.speed

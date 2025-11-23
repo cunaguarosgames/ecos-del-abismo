@@ -1,10 +1,6 @@
 extends babosaStateBase
 
 func on_process(delta: float) -> void:
-	if babosa.current_health <= 0:
-		state_machine.change_to("dead")
-		return
-
 	if babosa.target == null:
 		state_machine.change_to("idle")
 		babosa.velocity = Vector2.ZERO
@@ -33,7 +29,5 @@ func on_process(delta: float) -> void:
 	
 	if babosa.current_health <= babosa.max_health/2:
 		babosa.animSprite.play("run W_S")
-		return
 	else:
 		babosa.animSprite.play("run")
-		return

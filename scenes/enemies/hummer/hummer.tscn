@@ -234,13 +234,19 @@ radius = 133.00375
 [sub_resource type="CircleShape2D" id="CircleShape2D_e0emr"]
 radius = 101.0198
 
-[node name="hummer" type="CharacterBody2D" groups=["enemies"]]
+[node name="hummer" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "animSprite", "navigation", "state_machine") groups=["enemies"]]
 collision_layer = 7
 collision_mask = 5
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_e0emr")
 attack_scene = ExtResource("10_tohwt")
+health_bar = NodePath("ProgressBar")
+animSprite = NodePath("AnimatedSprite2D")
+navigation = NodePath("NavigationAgent2D")
+state_machine = NodePath("StateMachine")
+max_health = 20
+speed = 60
 attack = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -277,9 +283,15 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack area"]
 shape = SubResource("CircleShape2D_e0emr")
 
+[node name="Attack hummer" parent="." instance=ExtResource("10_tohwt")]
+position = Vector2(-2, -11)
+collision_layer = 3
+speed = 200
+
 [node name="attackColdown" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
+autostart = true
 
 [node name="timerFollow" type="Timer" parent="."]
 wait_time = 3.0
@@ -312,8 +324,3 @@ script = ExtResource("8_eblet")
 
 [node name="attack" type="Node" parent="StateMachine"]
 script = ExtResource("9_bxf3j")
-
-[node name="Attack hummer" parent="." instance=ExtResource("10_tohwt")]
-position = Vector2(-2, -11)
-collision_layer = 3
-speed = 200

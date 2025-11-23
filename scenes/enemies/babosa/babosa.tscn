@@ -1,10 +1,9 @@
-[gd_scene load_steps=46 format=3 uid="uid://do5l4v7cc41sj"]
+[gd_scene load_steps=45 format=3 uid="uid://do5l4v7cc41sj"]
 
 [ext_resource type="Texture2D" uid="uid://b7wslv7qa3cdm" path="res://assets/enemies/babosa/babosa.png" id="1_016k5"]
 [ext_resource type="Script" uid="uid://botrb0y4ba0ha" path="res://scripts/enemies/babosa/babosa.gd" id="1_38x5j"]
 [ext_resource type="Script" uid="uid://bh76s7m268eun" path="res://utils/state_machine/state_machine.gd" id="2_5yg1y"]
 [ext_resource type="Script" uid="uid://cwbv4ll5lol26" path="res://scripts/enemies/babosa/take_damage.gd" id="4_lguhx"]
-[ext_resource type="Script" uid="uid://cybtrtppghsyj" path="res://scripts/enemies/babosa/default.gd" id="4_v4ros"]
 [ext_resource type="Script" uid="uid://dakhglygnom2k" path="res://scripts/enemies/babosa/follow.gd" id="6_4xmre"]
 [ext_resource type="Script" uid="uid://dpv2ncskfn2wr" path="res://scripts/enemies/babosa/idle.gd" id="7_23qx1"]
 [ext_resource type="Script" uid="uid://cre7ok4jrpsou" path="res://scripts/enemies/babosa/die.gd" id="8_23qx1"]
@@ -279,16 +278,21 @@ radius = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_23qx1"]
 radius = 43.011627
 
-[node name="babosa" type="CharacterBody2D" groups=["enemies"]]
+[node name="babosa" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "animSprite", "navigation", "state_machine") groups=["enemies"]]
 collision_layer = 7
 script = ExtResource("1_38x5j")
+health_bar = NodePath("ProgressBar")
+animSprite = NodePath("AnimatedSprite2D")
+navigation = NodePath("NavigationAgent2D")
+state_machine = NodePath("StateMachine")
+max_health = 20
+speed = 30
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fat7v")
-animation = &"idle"
-frame_progress = 0.28061566
+animation = &"run W_S"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ri63b")
@@ -330,15 +334,13 @@ shape = SubResource("CircleShape2D_23qx1")
 
 [node name="coldown_attack" type="Timer" parent="timers"]
 one_shot = true
+autostart = true
 
 [node name="recalculate_target" type="Timer" parent="timers"]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("default_state")]
 script = ExtResource("2_5yg1y")
 default_state = NodePath("idle")
-
-[node name="default" type="Node" parent="StateMachine"]
-script = ExtResource("4_v4ros")
 
 [node name="takeDamage" type="Node" parent="StateMachine"]
 script = ExtResource("4_lguhx")

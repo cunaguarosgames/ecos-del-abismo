@@ -1,38 +1,23 @@
 class_name hummer
-extends CharacterBody2D
+extends enemieBase
 
-@onready var health_bar = $ProgressBar
-@onready var animSprite = $AnimatedSprite2D
 @onready var detectionArea = $"detection-area"
 @onready var attackArea = $"attack area"
 @onready var attackTimer = $attackColdown
 @onready var TimerFollow = $timerFollow
-@onready var navigation = $NavigationAgent2D
 @onready var recalculateTarget = $recalculateTarget
-@onready var state_machine: StateMachine = $StateMachine
 
-@export var knockback_force = 150
 @export var attack_scene: PackedScene
-@export var speed = 60
-@export var max_health = 50
-@export var attack = 30
 @export var waypoints: Array[Marker2D]
 
 var current_index := 0
-var current_health = max_health
 var dead = true
-var target: Node2D = null
 var wait = false
-var can_attack: bool = true
 var attack_area = false 
 
-func _ready() -> void:
+func on_ready_extra() -> void:
 	TimerFollow.timeout.connect(_on_timerFollow_timeout)
 	recalculateTarget.timeout.connect(_on_recalculateTarget_timeout)
-
-	health_bar.hide()
-	health_bar.max_value = max_health
-	health_bar.value = max_health
 
 	detectionArea.body_entered.connect(_on_detection_area_body_entered)
 	detectionArea.body_exited.connect(_on_detection_area_body_exited)
@@ -78,28 +63,7 @@ func _on_detection_area_attack_exited(body: Node2D):
 
 
 func _on_attack_cooldown_timeout():
-	print("attack")
 	can_attack = true
-
-
-func take_damage(amount: float) -> void:
-	current_health -= amount
-
-	if target !=null and target.is_in_group("player"):
-		var knockback_source = target.global_position 
-		var knockback_direction = (global_position - knockback_source).normalized()
-		velocity = knockback_direction * knockback_force
-	else:
-		velocity = Vector2.ZERO
-
-	update_health()
-
-	if current_health <= 0:
-		velocity = Vector2.ZERO
-		state_machine.change_to("dead")
-	elif not state_machine.is_current("takeDamage"):
-		state_machine.change_to("takeDamage")
-
 
 func update_health() -> void:
 	if health_bar:
@@ -107,11 +71,9 @@ func update_health() -> void:
 		if health_bar.value < max_health:
 			health_bar.show()
 
-
 func _on_timerFollow_timeout():
 	wait = false
 	navigation.target_position = waypoints[current_index].global_position
-
 
 func get_next_waypoint():
 	current_index += 1
@@ -123,7 +85,3 @@ func get_next_waypoint():
 func _on_recalculateTarget_timeout() -> void:
 	if target != null and target.is_in_group("player"):
 		navigation.target_position = target.global_position
-
-
-func _physics_process(delta: float) -> void:
-	move_and_slide()

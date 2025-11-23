@@ -3,7 +3,11 @@ extends babosaStateBase
 @export var friction = 15
 
 func start():
-	babosa.animSprite.play("hit")
+	if babosa.current_health <= babosa.max_health / 2:
+		babosa.animSprite.play("hit W_S") 
+	else: 
+		babosa.animSprite.play("hit")
+		
 	babosa.animSprite.animation_finished.connect(on_hit_animation_finished)
 
 func end():
@@ -18,4 +22,4 @@ func on_hit_animation_finished():
 	if babosa.target and babosa.target.is_in_group("player"):
 		state_machine.change_to("follow")
 	else:
-		state_machine.change_to("follow")
+		state_machine.change_to("idle")

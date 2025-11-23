@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://bt5073s63h72d"]
+[gd_scene load_steps=17 format=4 uid="uid://bt5073s63h72d"]
 
 [ext_resource type="Texture2D" uid="uid://cjy64q5162xhx" path="res://assets/tilesets/tilesets-1.png" id="1_jufps"]
 [ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player/player.tscn" id="2_kwx0b"]
+[ext_resource type="PackedScene" uid="uid://7gldo6tb3f7i" path="res://scenes/enemies/rippler/rippler.tscn" id="3_hc7kf"]
 [ext_resource type="PackedScene" uid="uid://c4oj0jvyi3q2e" path="res://scenes/enemies/hummer/hummer.tscn" id="5_0l55r"]
 [ext_resource type="PackedScene" uid="uid://dda2t67u583yv" path="res://scenes/items/babosa_item.tscn" id="6_0aebp"]
 [ext_resource type="PackedScene" uid="uid://do5l4v7cc41sj" path="res://scenes/enemies/babosa/babosa.tscn" id="7_5ce8i"]
@@ -285,7 +286,10 @@ tile_map_data = PackedByteArray("AAALAP//AAAEAAkAAAAEAAwAAAABAAkAAAAYAAcAAAADAAg
 tile_set = SubResource("TileSet_hc7kf")
 
 [node name="Player" parent="." instance=ExtResource("2_kwx0b")]
-position = Vector2(291, 0)
+position = Vector2(1415, 166)
+
+[node name="Rippler" parent="." instance=ExtResource("3_hc7kf")]
+position = Vector2(695, 77)
 
 [node name="weaponits" type="Node2D" parent="."]
 
@@ -302,13 +306,13 @@ position = Vector2(739, -207)
 position = Vector2(463, -203)
 
 [node name="Marker2D5" type="Marker2D" parent="weaponits"]
-position = Vector2(340, 208)
+position = Vector2(1327, 295)
 
 [node name="Marker2D6" type="Marker2D" parent="weaponits"]
-position = Vector2(92, 403)
+position = Vector2(1310, 78)
 
 [node name="Marker2D7" type="Marker2D" parent="weaponits"]
-position = Vector2(383, 364)
+position = Vector2(1097, 177)
 
 [node name="hummer" parent="." node_paths=PackedStringArray("waypoints") instance=ExtResource("5_0l55r")]
 position = Vector2(781, -395)
@@ -325,6 +329,5 @@ position = Vector2(139, 55)
 
 [node name="entities" type="Node2D" parent="."]
 
-[node name="buho" parent="." node_paths=PackedStringArray("waypoints") instance=ExtResource("7_t0gq7")]
-position = Vector2(223, 241)
-waypoints = [NodePath("../weaponits/Marker2D5"), NodePath("../weaponits/Marker2D6"), NodePath("../weaponits/Marker2D7")]
+[node name="buho" parent="." instance=ExtResource("7_t0gq7")]
+position = Vector2(704, 62)

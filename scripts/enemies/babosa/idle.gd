@@ -1,11 +1,14 @@
 extends babosaStateBase
 
-func on_process(delta: float) -> void:
+func start(): 
 	if babosa.current_health <= babosa.max_health/2 : 
 		babosa.animSprite.play("idle W_S") 
 	else:	
 		babosa.animSprite.play("idle")
 	
+
+func on_process(delta: float) -> void:
+
 	if babosa.current_health <= 0 :
 		state_machine.change_to("dead")
 	

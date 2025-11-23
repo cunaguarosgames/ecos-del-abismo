@@ -1,8 +1,8 @@
 extends hummerStateBase
 
 func start() -> void:
-	if hummer.target and hummer.can_attack and hummer.attack_area:
-		hummer.can_attack = false
+	if hummer.target and hummer.attack_area and hummer.can_attack:
+		hummer.can_attack = false 
 		_do_attack()
 	else:
 		state_machine.change_to("follow")
@@ -23,9 +23,8 @@ func _do_attack() -> void:
 
 	hummer.get_tree().current_scene.add_child(projectile)
 
+	# inicia cooldown
 	hummer.attackTimer.start()
 
-
-func on_process(delta: float) -> void:
-	if !hummer.can_attack:
-		state_machine.change_to("follow")
+	# luego que dispare → volver al follow
+	state_machine.change_to("follow")

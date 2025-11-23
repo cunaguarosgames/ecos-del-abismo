@@ -1,6 +1,7 @@
 extends babosaStateBase
 
 func start() -> void:
+	babosa.velocity = Vector2.ZERO
 	babosa.animSprite.play("explotion")
 	babosa.animSprite.animation_finished.connect(_on_animation_finished, CONNECT_ONE_SHOT)
 

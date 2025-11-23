@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=4 uid="uid://bn147xyphjvhs"]
+[gd_scene load_steps=5 format=4 uid="uid://bn147xyphjvhs"]
 
 [ext_resource type="TileSet" uid="uid://bs0kfd54mp5gc" path="res://assets/tilesets/green_cave.tres" id="1_n64rf"]
+[ext_resource type="Script" uid="uid://ba4841qxidxit" path="res://scripts/change_level.gd" id="2_w4pma"]
+[ext_resource type="PackedScene" uid="uid://c66fwqh3wp2pd" path="res://scenes/demo_map_3.tscn" id="3_nf8rx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwoqp"]
+size = Vector2(69, 64)
 
 [node name="DemoMapa2" type="Node2D"]
 
@@ -28,3 +33,14 @@ tile_set = ExtResource("1_n64rf")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(139, 55)
+
+[node name="changeLevel" type="Area2D" parent="."]
+script = ExtResource("2_w4pma")
+new_level = ExtResource("3_nf8rx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="changeLevel"]
+position = Vector2(-11, 19)
+shape = SubResource("RectangleShape2D_fwoqp")
+
+[connection signal="area_entered" from="changeLevel" to="changeLevel" method="_on_area_entered"]
+[connection signal="body_entered" from="changeLevel" to="changeLevel" method="_on_body_entered"]

@@ -1,10 +1,6 @@
 extends hummerStateBase
 
 func on_process(delta: float) -> void:
-	if hummer.current_health <= 0:
-		state_machine.change_to("dead")
-		return
-
 	if hummer.target == null:
 		state_machine.change_to("idle")
 		hummer.velocity = Vector2.ZERO

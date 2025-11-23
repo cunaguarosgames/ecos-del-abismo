@@ -21,5 +21,8 @@ func _on_body_entered(body: Node2D) -> void:
 			entities.call_deferred("add_child", body)
 		else:
 			level.call_deferred("add_child", body)
+		
+		GameState.game_data.last_entry = name
+		GameState.save_game()
 
 		get_tree().current_scene = level
