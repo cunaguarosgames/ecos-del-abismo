@@ -13,7 +13,8 @@ func start():
 		if player.animated_sprite_2d.material:
 			var mat = player.animated_sprite_2d.material
 			mat.set_shader_parameter("glow_strength", 2.5)
-			mat.set_shader_parameter("outline_color", Color(1, 1, 0.2))
+			var new_color = Color.from_hsv(randf(), randf_range(0.5, 1.0), randf_range(0.9, 1.0))
+			mat.set_shader_parameter("outline_color", new_color)
 			mat.set_shader_parameter("outline_size", 1.0)
 	else:
 		pass

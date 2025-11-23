@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://but8oan0ix5fx"]
+[gd_scene load_steps=5 format=3 uid="uid://but8oan0ix5fx"]
 
 [ext_resource type="Script" uid="uid://mnows7vwvokp" path="res://scripts/ui/user_interface.gd" id="1_hj6hg"]
+[ext_resource type="Shader" uid="uid://c1gtu2qljlqey" path="res://shaders/color_shaders/color_swap.gdshader" id="2_a44fs"]
 [ext_resource type="Texture2D" uid="uid://csv6gq3tcy8g1" path="res://assets/beat_circle.png" id="2_hj6hg"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rcgkl"]
+shader = ExtResource("2_a44fs")
+shader_parameter/from_palette = PackedColorArray(0.9607843, 0.96862745, 0.98039216, 1, 0.6509804, 0.68235296, 0.7294118, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/to_palette = PackedColorArray(0.7349024, 7.9126956e-05, 0.60030836, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/palette_size = 8
+shader_parameter/tolerance = 0.01
+
 [node name="UserInterface" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_hj6hg")
 metadata/_edit_use_anchors_ = true
 
@@ -17,6 +26,7 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="BeatCircle" type="TextureRect" parent="Control"]
+material = SubResource("ShaderMaterial_rcgkl")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.840625
