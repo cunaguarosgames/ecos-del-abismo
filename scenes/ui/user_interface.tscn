@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://but8oan0ix5fx"]
+
+[ext_resource type="Script" uid="uid://mnows7vwvokp" path="res://scripts/ui/user_interface.gd" id="1_hj6hg"]
+[ext_resource type="Texture2D" uid="uid://csv6gq3tcy8g1" path="res://assets/beat_circle.png" id="2_hj6hg"]
+
+[node name="UserInterface" type="CanvasLayer"]
+script = ExtResource("1_hj6hg")
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="BeatCircle" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.840625
+anchor_top = 0.73055553
+anchor_right = 0.94921875
+anchor_bottom = 0.91820985
+pivot_offset = Vector2(34, 33)
+texture = ExtResource("2_hj6hg")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true

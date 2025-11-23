@@ -7,6 +7,17 @@ func start():
 	var attack = load(attack_file).instantiate()
 	attack.global_position = player.global_position
 	attack.direction = player.last_direction
+	
+	if RhythmManager.is_on_beat():
+		attack.damage *= 2
+		if player.animated_sprite_2d.material:
+			var mat = player.animated_sprite_2d.material
+			mat.set_shader_parameter("glow_strength", 2.5)
+			mat.set_shader_parameter("outline_color", Color(1, 1, 0.2))
+			mat.set_shader_parameter("outline_size", 1.0)
+	else:
+		pass
+		
 	get_parent().add_child(attack)
 
 	player.attack_timer.start()
@@ -32,3 +43,5 @@ func _on_attack_timer_timeout() -> void:
 func end():
 	player.can_attack = true
 	player.attack_timer.stop()
+	if player.animated_sprite_2d.material:
+		player.animated_sprite_2d.material.set_shader_parameter("glow_strength", 0.0)
