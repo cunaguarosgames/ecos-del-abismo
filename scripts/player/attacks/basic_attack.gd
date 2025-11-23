@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed: float = 200.0
-@export var lifetime: float = 2.0
+@export var lifetime: float = 1.0
 @export var damage: int = 5
 @export var target: String = "enemies"
 
@@ -16,7 +16,6 @@ func _ready() -> void:
 		animated_sprite_2d.material = animated_sprite_2d.material.duplicate()
 		
 	var new_color = Color.from_hsv(randf(), randf_range(0.5, 1.0), randf_range(0.7, 1.0))
-
 	_set_color(0, new_color)
 	
 	await get_tree().create_timer(lifetime).timeout

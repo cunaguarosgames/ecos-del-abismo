@@ -1,11 +1,27 @@
-[gd_scene load_steps=33 format=3 uid="uid://dexk5be64pk3w"]
+[gd_scene load_steps=43 format=3 uid="uid://dexk5be64pk3w"]
 
 [ext_resource type="Script" uid="uid://ofjw13r3fnd3" path="res://scripts/player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://2588j0h1n22g" path="res://assets/player/player_bat-Sheet.png" id="2_g2els"]
+[ext_resource type="Theme" uid="uid://dqxp5peqg07kf" path="res://utils/themes/dark_theme.tres" id="2_qek5x"]
+[ext_resource type="FontFile" uid="uid://cf1gi1k1b5ktl" path="res://utils/themes/PublicPixel.otf" id="3_5gtgg"]
 [ext_resource type="PackedScene" uid="uid://bby62dq4wl7n7" path="res://utils/state_machine/state_machine.tscn" id="3_gmlin"]
 [ext_resource type="Script" uid="uid://carspt3pnnexi" path="res://scripts/player/states/idle.gd" id="4_p47bc"]
 [ext_resource type="Script" uid="uid://clb3mpruagjwo" path="res://scripts/player/states/walk.gd" id="5_75vfm"]
 [ext_resource type="Script" uid="uid://bfc0ohqw4c4fw" path="res://scripts/player/states/attack.gd" id="6_75vfm"]
+[ext_resource type="Script" uid="uid://8bi5r0lqk8uk" path="res://scripts/player/states/menu.gd" id="7_0owmy"]
+[ext_resource type="Script" uid="uid://1vbxfk1fx0mg" path="res://scripts/player/states/hit.gd" id="10_h17s1"]
+[ext_resource type="Script" uid="uid://dqxyvt6gta4sb" path="res://scripts/player/states/dash.gd" id="11_je7p5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h17s1"]
+
+[sub_resource type="Theme" id="Theme_je7p5"]
+default_font = ExtResource("3_5gtgg")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.5)
+Label/styles/normal = SubResource("StyleBoxEmpty_h17s1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qek5x"]
+content_margin_left = 6.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
 atlas = ExtResource("2_g2els")
@@ -14,6 +30,10 @@ region = Rect2(0, 240, 32, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
 atlas = ExtResource("2_g2els")
 region = Rect2(32, 240, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
+atlas = ExtResource("2_g2els")
+region = Rect2(0, 192, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
 atlas = ExtResource("2_g2els")
@@ -30,6 +50,10 @@ region = Rect2(64, 192, 32, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
 atlas = ExtResource("2_g2els")
 region = Rect2(96, 192, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
+atlas = ExtResource("2_g2els")
+region = Rect2(32, 192, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("2_g2els")
@@ -115,6 +139,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_je7p5")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fulsm")
 }, {
 "duration": 1.0,
@@ -129,6 +161,14 @@ animations = [{
 "loop": false,
 "name": &"dead",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h17s1")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -212,30 +252,45 @@ collision_mask = 7
 script = ExtResource("1_g2els")
 
 [node name="SkillsMenu" type="Control" parent="."]
+process_mode = 3
 visible = false
 layout_mode = 3
-anchor_left = 0.0296875
-anchor_top = -0.175
-anchor_right = 0.0921875
-anchor_bottom = -0.06388889
+anchors_preset = 0
 offset_left = 19.0
 offset_top = -63.0
 offset_right = 19.0
 offset_bottom = -63.0
+theme = ExtResource("2_qek5x")
 metadata/_edit_use_anchors_ = true
 
-[node name="FirstSkill" type="Label" parent="SkillsMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SkillsMenu"]
 layout_mode = 0
-anchor_right = 1.375
-anchor_bottom = 0.575
-offset_right = -15.0
-text = "asdasd"
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_je7p5")
+
+[node name="FirstSkill0" type="Label" parent="SkillsMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.5)
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="FirstSkill1" type="Label" parent="SkillsMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qek5x")
+text = "1"
+metadata/_edit_use_anchors_ = true
+
+[node name="FirstSkill2" type="Label" parent="SkillsMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.5)
+text = "2"
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_qhqgy")
-animation = &"idle"
+animation = &"dash"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -266,6 +321,7 @@ metadata/_edit_use_anchors_ = true
 wait_time = 0.4
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("3_gmlin")]
+process_mode = 3
 default_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
@@ -276,5 +332,14 @@ script = ExtResource("5_75vfm")
 
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("6_75vfm")
+
+[node name="Menu" type="Node" parent="StateMachine"]
+script = ExtResource("7_0owmy")
+
+[node name="Hit" type="Node" parent="StateMachine"]
+script = ExtResource("10_h17s1")
+
+[node name="Dash" type="Node" parent="StateMachine"]
+script = ExtResource("11_je7p5")
 
 [connection signal="timeout" from="AttackTimer" to="StateMachine/Attack" method="_on_attack_timer_timeout"]

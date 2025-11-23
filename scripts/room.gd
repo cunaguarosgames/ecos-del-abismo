@@ -9,5 +9,3 @@ func _ready():
 			player.global_position = sp.global_position
 	GameState.game_data.last_room = get_tree().current_scene.get_scene_file_path()
 	GameState.save_game()
-	print("last room: ", GameState.game_data.last_room)
-	print("last entry: ", GameState.game_data.last_entry)

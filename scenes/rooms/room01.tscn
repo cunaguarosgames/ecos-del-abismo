@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://rp5d3d4beoqu"]
+[gd_scene load_steps=6 format=4 uid="uid://rp5d3d4beoqu"]
 
 [ext_resource type="TileSet" uid="uid://bs0kfd54mp5gc" path="res://assets/tilesets/green_cave.tres" id="1_p0kjd"]
 [ext_resource type="Script" uid="uid://baixfa7hv3u7w" path="res://scripts/room.gd" id="1_v6huw"]
 [ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player/player.tscn" id="3_c3gwq"]
-[ext_resource type="PackedScene" path="res://scenes/scene_changer.tscn" id="4_37akc"]
+[ext_resource type="PackedScene" uid="uid://b13m41wgajs2q" path="res://scenes/scene_changer.tscn" id="4_37akc"]
+[ext_resource type="PackedScene" uid="uid://c12w6cxfg5aym" path="res://scenes/items/ability_item.tscn" id="5_c3gwq"]
 
 [node name="Room01" type="Node2D"]
 script = ExtResource("1_v6huw")
@@ -23,3 +24,15 @@ position = Vector2(378, 10)
 [node name="Door001" parent="SpawnPoints" instance=ExtResource("4_37akc")]
 position = Vector2(398, 10)
 scene = "uid://c372fhqtpfave"
+
+[node name="AbilityItem" parent="." instance=ExtResource("5_c3gwq")]
+position = Vector2(347, 210)
+ability_name = "Long"
+first_color = Color(0.6602137, 0, 0.17498583, 1)
+second_color = Color(1, 0.52979904, 0.47599578, 1)
+
+[node name="AbilityItem2" parent="." instance=ExtResource("5_c3gwq")]
+position = Vector2(283, 210)
+ability_name = "Short"
+first_color = Color(0, 0.42198437, 0.68770355, 1)
+second_color = Color(0.5223308, 0.9267858, 0.99999994, 1)

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cu4wwww6govka"
-path.s3tc="res://.godot/imported/basic_attack-Sheet.png-7c578770007361f210d7acf3db0f6f2d.s3tc.ctex"
+path.s3tc="res://.godot/imported/basic_attack-Sheet.png-09399742529a45b8f92f5ff51948658d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/attacks/basic_attack-Sheet.png"
-dest_files=["res://.godot/imported/basic_attack-Sheet.png-7c578770007361f210d7acf3db0f6f2d.s3tc.ctex"]
+source_file="res://assets/attacks/player/basic_attack-Sheet.png"
+dest_files=["res://.godot/imported/basic_attack-Sheet.png-09399742529a45b8f92f5ff51948658d.s3tc.ctex"]
 
 [params]
 
