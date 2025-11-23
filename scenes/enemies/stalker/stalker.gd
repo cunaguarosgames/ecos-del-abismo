@@ -10,7 +10,7 @@ var player: Node2D = null
 var attack_range = 100
 
 
-@onready var state_machine: StateMachine = $StateMachine # <--- Referencia al nodo FSM
+@onready var state_machine: StateMachine = $StateMachine
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 @onready var attack_area: Area2D = $AttackArea
@@ -29,7 +29,8 @@ func _ready() -> void:
 	main_sprite.animation_finished.connect(_on_main_sprite_animation_finished)
 	
 	attack_animation_sprite.hide()
-
+	
+	RhythmManager.connect("beat_signal", Callable(self, "_on_beat"))
 
 func _physics_process(_delta: float) -> void:
 	pass
@@ -48,33 +49,18 @@ func update_health() -> void:
 func play_main_animation(anim_name: String) -> void:
 	main_sprite.play(anim_name)
 
-func check_for_attack() -> void:
-	
-	if not can_attack: return
-	
-	var overlapping_bodies = attack_area.get_overlapping_bodies()
-	
-	for body in overlapping_bodies:
-		if body.is_in_group("player"):
-			if body.has_method("take_damage"):
-				
-				body.take_damage(damage_melee)
-				
-				attack_animation_sprite.show()
-				attack_animation_sprite.play("attack") 
-				
-				can_attack = false
-				attack_cooldown_timer.start()
-				
-				return
-
-
 func _on_attack_cooldown_timer_timeout() -> void:
 	can_attack = true
 
 func _on_attack_animation_finished() -> void:
 	attack_animation_sprite.hide()
-	play_main_animation(state_machine.current_state.name.to_lower()) 
+	if current_health <= 0:
+		state_machine.change_to("Death")
+	elif player:
+		state_machine.change_to("Chasing")
+	else:
+		state_machine.change_to("Idle")
+
 	
 func _on_main_sprite_animation_finished() -> void:
 	if main_sprite.animation == "death":
@@ -90,3 +76,13 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player = null
+		
+func _on_beat(beat_count):
+	if current_health <= 0:
+		return
+	
+	if state_machine.current_state.name == "Chasing":
+		if player and can_attack:
+			var distance_to_player = global_position.distance_to(player.global_position)
+			if distance_to_player <= attack_range:
+				state_machine.change_to("Attack")

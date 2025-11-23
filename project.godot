@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameState="*res://utils/globals/game_state.gd"
+RhythmManager="*res://scripts/RhythmManager.gd"
 
 [display]
 
