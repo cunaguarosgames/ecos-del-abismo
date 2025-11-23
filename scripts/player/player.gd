@@ -22,6 +22,7 @@ var can_attack: bool = true
 var max_health: float = 100
 var current_health: float = max_health
 var dead = false
+var invulnerable: bool = false
 
 var current_first_skill: String = GameState.game_data.primary_skill
 var primary_skills_list: Array = GameState.game_data.primary_skills_list
@@ -98,6 +99,7 @@ func play_directional_animation(base_name: String) -> void:
 
 func take_damage(amount: float, hit_from: Vector2 = global_position):
 	if dead : return
+	if invulnerable: return
 	current_health -= amount
 	progress_bar.value = current_health
 	if progress_bar.value < max_health:

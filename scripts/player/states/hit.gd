@@ -15,7 +15,6 @@ func on_physics_process(delta: float) -> void:
 	player.move_and_slide()
 
 	velocity = velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
-	print(velocity)
 	if velocity.length() < 10.0:
 		state_machine.change_to(player.states.Idle)
 

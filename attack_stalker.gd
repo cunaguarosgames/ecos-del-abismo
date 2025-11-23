@@ -36,6 +36,8 @@ func _set_color(idx: int, new_color: Color) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	print(body)
 	if body.is_in_group("map") or body.is_in_group(target):
+		if body is Player and body.invulnerable:
+			return
 		if body.has_method("take_damage"):
 			body.take_damage(damage, global_position)
 		queue_free()
