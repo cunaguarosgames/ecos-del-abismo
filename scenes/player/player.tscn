@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dexk5be64pk3w"]
+[gd_scene load_steps=41 format=3 uid="uid://dexk5be64pk3w"]
 
 [ext_resource type="Script" uid="uid://ofjw13r3fnd3" path="res://scripts/player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://2588j0h1n22g" path="res://assets/player/player_bat-Sheet.png" id="2_g2els"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://clb3mpruagjwo" path="res://scripts/player/states/walk.gd" id="5_75vfm"]
 [ext_resource type="Script" uid="uid://bfc0ohqw4c4fw" path="res://scripts/player/states/attack.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://8bi5r0lqk8uk" path="res://scripts/player/states/menu.gd" id="7_0owmy"]
+[ext_resource type="Script" uid="uid://1vbxfk1fx0mg" path="res://scripts/player/states/hit.gd" id="10_h17s1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h17s1"]
 
@@ -44,6 +45,10 @@ region = Rect2(64, 192, 32, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
 atlas = ExtResource("2_g2els")
 region = Rect2(96, 192, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
+atlas = ExtResource("2_g2els")
+region = Rect2(32, 192, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("2_g2els")
@@ -143,6 +148,14 @@ animations = [{
 "loop": false,
 "name": &"dead",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h17s1")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -264,7 +277,7 @@ metadata/_edit_use_anchors_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_qhqgy")
-animation = &"idle"
+animation = &"hurt"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -309,5 +322,8 @@ script = ExtResource("6_75vfm")
 
 [node name="Menu" type="Node" parent="StateMachine"]
 script = ExtResource("7_0owmy")
+
+[node name="Hit" type="Node" parent="StateMachine"]
+script = ExtResource("10_h17s1")
 
 [connection signal="timeout" from="AttackTimer" to="StateMachine/Attack" method="_on_attack_timer_timeout"]

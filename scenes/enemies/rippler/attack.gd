@@ -14,7 +14,7 @@ func start() -> void:
 		if body.is_in_group("player"):
 			if body.has_method("take_damage"):
 				
-				body.take_damage(rippler.damage_melee)
+				body.take_damage(rippler.damage_melee, rippler.global_position)
 				
 				rippler.attack_animation_sprite.show()
 				if rippler.current_health > rippler.max_health / 2:

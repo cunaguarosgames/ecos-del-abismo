@@ -96,12 +96,20 @@ func play_directional_animation(base_name: String) -> void:
 	else:
 		animated_sprite_2d.play("%s_back" % base_name)
 
-func take_damage(amount: float):
+func take_damage(amount: float, hit_from: Vector2 = global_position):
 	if dead : return
 	current_health -= amount
 	progress_bar.value = current_health
 	if progress_bar.value < max_health:
 		progress_bar.show()
+	
+	if hit_from:
+		var dir := (global_position - hit_from).normalized()
+		var force := dir * 250.0
+		
+		$StateMachine.change_to(states.Hit)
+		$StateMachine/Hit.setup_knockback(force)
+	
 	if current_health <= 0:
 		animated_sprite_2d.play("dead")
 		var tween = get_tree().create_tween()
