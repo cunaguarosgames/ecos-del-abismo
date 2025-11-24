@@ -653,13 +653,13 @@ bg_color = Color(0.7019608, 0.05490196, 0.1882353, 0.44705883)
 bg_color = Color(0.7668713, 0, 0.14998737, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u6610"]
-radius = 2.828427
+radius = 52.086468
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lfe8s"]
 radius = 144.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kjckl"]
-radius = 85.00588
+radius = 88.005684
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8amqm"]
 radius = 217.0023
@@ -670,13 +670,11 @@ collision_mask = 5
 script = ExtResource("1_qdy1l")
 attack_scene = ExtResource("9_y7seg")
 areaAttack = 5
-longAttack = 5
+longAttack = 10
 health_bar = NodePath("ProgressBar")
 animSprite = NodePath("AnimatedSprite2D")
 navigation = NodePath("NavigationAgent2D")
 state_machine = NodePath("StateMachine")
-speed = 30
-knockback_force = 90
 
 [node name="Area_attack" type="AnimatedSprite2D" parent="."]
 position = Vector2(4, -4.2500043)
@@ -747,6 +745,7 @@ wait_time = 2.0
 
 [node name="TimerPatrol" type="Timer" parent="timers"]
 wait_time = 2.5
+autostart = true
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("3_u6610")]
 default_state = NodePath("idle")
@@ -782,5 +781,3 @@ position = Vector2(22, -18)
 [connection signal="body_exited" from="areas/areaAttack" to="." method="_on_area_attack_body_exited"]
 [connection signal="body_entered" from="areas/detectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="areas/detectionArea" to="." method="_on_detection_area_body_exited"]
-[connection signal="timeout" from="timers/reacalculate_postion" to="." method="_on_reacalculate_postion_timeout"]
-[connection signal="timeout" from="timers/TimerPatrol" to="." method="_on_timer_patrol_timeout"]

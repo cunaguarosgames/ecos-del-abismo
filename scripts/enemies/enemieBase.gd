@@ -59,8 +59,8 @@ func _physics_process(delta):
 		state_machine.change_to("Death")
 		return  
 	
-	on_phisics_process_extra()
+	on_phisics_process_extra(delta)
 	
 	move_and_slide()
 
-func on_phisics_process_extra(): pass
+func on_phisics_process_extra(delta: float): pass

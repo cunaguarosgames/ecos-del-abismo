@@ -7,7 +7,6 @@ func start() -> void:
 	else:
 		state_machine.change_to("follow")
 
-
 func _do_attack() -> void:
 	hummer.velocity = Vector2.ZERO
 

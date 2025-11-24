@@ -1,5 +1,10 @@
 extends buhoStateBase
 
+func start():
+	if buho.current_health <= 0 :
+		state_machine.change_to("Death")
+		return
+
 func on_physics_process(delta: float) -> void:
 	if buho.target != null:
 		state_machine.change_to("follow")

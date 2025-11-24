@@ -21,6 +21,7 @@ var current_index := 0
 var shield = 0 
 
 var secondFase =  false 
+var on_attack_area = false 
 
 func _set_attack_mode(melee: bool, lng: bool, area: bool):
 	bassic_attack = melee
@@ -46,7 +47,8 @@ func on_ready_extra() -> void:
 	coldown_basic.timeout.connect(_on_coldown_bassic_timeout)
 	coldown_area.timeout.connect(_on_coldown_area_timeout)
 	coldown_long.timeout.connect(_on_coldown_long_timeout)
-	
+	recalculateTarget.timeout.connect(_on_reacalculate_postion_timeout)
+	TimerFollow.timeout.connect(_on_timer_patrol_timeout)
 
 func on_update_health() -> void:
 	if health_bar:
@@ -97,9 +99,6 @@ func _on_mele_atack_body_entered(body: Node2D) -> void:
 
 func _on_mele_atack_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		if body == target:
-			target = null
-		
 		can_attack = false
 		set_area_mode()
 		if state_machine.is_current("attack"):
@@ -115,8 +114,6 @@ func _on_long_attack_body_entered(body: Node2D) -> void:
 
 func _on_long_attack_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		if body == target:
-			target = null
 		can_attack = false
 		clear_attack_mode()
 		if state_machine.is_current("attack"):
@@ -135,8 +132,6 @@ func _on_area_attack_body_entered(body: Node2D) -> void:
 
 func _on_area_attack_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		if body == target:
-			target = null
 		can_attack = false
 		set_long_mode()
 		if state_machine.is_current("attack"):

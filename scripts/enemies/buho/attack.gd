@@ -6,13 +6,13 @@ func change():
 	state_machine.change_to("follow")
 
 func start() -> void:
-	if !buho.target.is_in_group("player"):
+	if buho.current_health <= 0 :
+		state_machine.change_to("Death")
+		
+	if !buho.target and !buho.can_attack:
 		state_machine.change_to("patrol")
 		return
 	
-	if !buho.can_attack:
-		state_machine.change_to("follow")
-		return
 	
 	if buho.long_attack:
 		_do_attack_long()
@@ -63,7 +63,6 @@ func _do_attack_basic() -> void:
 		buho.target.take_damage(buho.attack)
 
 	buho.coldown_basic.start()
-	
 	buho.animSprite.animation_finished.connect(change)
 
 func _do_attack_area() -> void:
@@ -76,6 +75,8 @@ func _do_attack_area() -> void:
 		
 		if buho.target.has_method("take_damage"):
 			buho.target.take_damage(buho.areaAttack)
+		else:
+			state_machine.change_to("follow")
 
 		buho.coldown_area.start()
 		buho.animSprite.animation_finished.connect(change)

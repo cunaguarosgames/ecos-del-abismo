@@ -1,5 +1,10 @@
 extends buhoStateBase
 
+func start():
+	if buho.current_health <= 0 :
+		state_machine.change_to("Death")
+		return
+
 func on_process(delta: float) -> void:
 	if buho.target == null:
 		state_machine.change_to("idle")
@@ -12,22 +17,20 @@ func on_process(delta: float) -> void:
 		buho.velocity = Vector2.ZERO
 		if buho.secondFase:
 			buho.animSprite.play("idle_SF")
-		else: 
+		else:
 			buho.animSprite.play("idle")
 		return
-		
+
 	var direction = (next_path_point - buho.global_position).normalized()
 	buho.velocity = direction * buho.speed
 
 	if direction.x != 0:
 		buho.animSprite.flip_h = direction.x < 0
-	
-	if buho.target != null \
-	   and buho.target.is_in_group("player") \
-	   and buho.can_attack:
+
+	if buho.target and buho.target.is_in_group("player") and buho.can_attack:
 		state_machine.change_to("attack")
-	
-	if buho.secondFase == true :
+
+	if buho.secondFase:
 		buho.animSprite.play("run_SF")
-	else: 
+	else:
 		buho.animSprite.play("run")

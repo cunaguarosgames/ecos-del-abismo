@@ -327,5 +327,5 @@ position = Vector2(139, 55)
 
 [node name="buho" parent="." node_paths=PackedStringArray("waypoints") instance=ExtResource("7_t0gq7")]
 position = Vector2(248, 257)
-longAttack = 2
 waypoints = [NodePath("../weaponits/Marker2D5"), NodePath("../weaponits/Marker2D6"), NodePath("../weaponits/Marker2D7")]
+knockback_force = 150
