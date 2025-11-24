@@ -1,5 +1,5 @@
 class_name hummer
-extends enemieBase
+extends enemyBase
 
 @onready var detectionArea = $"detection-area"
 @onready var attackArea = $"attack area"

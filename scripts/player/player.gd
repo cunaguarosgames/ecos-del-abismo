@@ -30,7 +30,7 @@ var primary_skills_list: Array = GameState.game_data.primary_skills_list
 func _ready() -> void:
 	progress_bar.max_value = max_health
 	progress_bar.value = current_health
-	current_first_skill = GameState.game_data.primary_skill
+	#current_first_skill = GameState.game_data.primary_skill
 
 func update_skill_labels():
 	var index = primary_skills_list.find(current_first_skill)

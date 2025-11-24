@@ -1,4 +1,4 @@
-class_name enemieBase extends CharacterBody2D
+class_name enemyBase extends CharacterBody2D
 
 @export var health_bar: ProgressBar
 @export var animSprite: AnimatedSprite2D
@@ -37,9 +37,9 @@ func take_damage(amount):
 	update_health()
 
 	if current_health <= 0:
-		state_machine.change_to("dead")
+		state_machine.change_to("Death")
 	else:
-		state_machine.change_to("takeDamage")
+		state_machine.change_to("TakeDamage")
 
 func on_take_damage(): pass
 
@@ -54,9 +54,13 @@ func update_health():
 func on_update_health(): pass
 
 func _physics_process(delta):
-	if current_health <= 0:
-		state_machine.change_to("dead")
+	
+	if current_health <= 0 and not state_machine.is_current("Death"):
+		state_machine.change_to("Death")
+		return  
+	
 	on_phisics_process_extra()
+	
 	move_and_slide()
 
 func on_phisics_process_extra(): pass

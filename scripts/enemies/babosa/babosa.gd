@@ -1,4 +1,4 @@
-class_name babosa extends enemieBase
+class_name babosa extends enemyBase
 
 @onready var coldown_attack = $timers/coldown_attack
 @onready var coldown_explotion = $timers/coldown_explotion

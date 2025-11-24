@@ -342,7 +342,7 @@ autostart = true
 script = ExtResource("2_5yg1y")
 default_state = NodePath("idle")
 
-[node name="takeDamage" type="Node" parent="StateMachine"]
+[node name="TakeDamage" type="Node" parent="StateMachine"]
 script = ExtResource("4_lguhx")
 
 [node name="follow" type="Node" parent="StateMachine"]
@@ -351,7 +351,7 @@ script = ExtResource("6_4xmre")
 [node name="idle" type="Node" parent="StateMachine"]
 script = ExtResource("7_23qx1")
 
-[node name="dead" type="Node" parent="StateMachine"]
+[node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("8_23qx1")
 
 [node name="attack" type="Node" parent="StateMachine"]

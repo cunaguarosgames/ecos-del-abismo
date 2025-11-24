@@ -1,5 +1,10 @@
 extends buhoStateBase
 
+var attackDirection = "left"
+
+func change(): 
+	state_machine.change_to("follow")
+
 func start() -> void:
 	if !buho.target.is_in_group("player"):
 		state_machine.change_to("patrol")
@@ -19,7 +24,11 @@ func start() -> void:
 		state_machine.change_to("follow")
 	
 func _do_attack_long() -> void:
-	print("long attack")
+	if buho.secondFase: 
+		buho.animSprite.play("long_SF")
+	else: 
+		buho.animSprite.play("long_attack")
+		
 	buho.velocity = Vector2.ZERO
 	buho.can_attack = false
 
@@ -30,31 +39,45 @@ func _do_attack_long() -> void:
 	buho.get_tree().current_scene.add_child(projectile)
 
 	buho.coldown_long.start()
+	buho.animSprite.animation_finished.connect(change)
 
 func _do_attack_basic() -> void:
-	print("melle attack")
+	if attackDirection == "left": 
+		attackDirection = "right"
+		if buho.secondFase : 
+			buho.animSprite.play("melle_L_SF")
+		else: 
+			buho.animSprite.play("melle_attack_L")
+			
+	else:
+		attackDirection = "left"
+		if buho.secondFase : 
+			buho.animSprite.play("melle_r_SF")
+		else: 
+			buho.animSprite.play("melle_attack_R")
+			
 	buho.velocity = Vector2.ZERO
 	buho.can_attack = false
-
+	
 	if buho.target.has_method("take_damage"):
 		buho.target.take_damage(buho.attack)
 
 	buho.coldown_basic.start()
+	
+	buho.animSprite.animation_finished.connect(change)
 
 func _do_attack_area() -> void:
-	print("area attack")
+	
 	if buho.secondFase == true : 
+		buho.animSprite.play("area_attack")
+		buho.animArea.play("default")
 		buho.velocity = Vector2.ZERO
 		buho.can_attack = false
 		
 		if buho.target.has_method("take_damage"):
 			buho.target.take_damage(buho.areaAttack)
-		
-		buho.coldown_area.start()
-	 
 
-func on_process(delta: float) -> void:
-	if !buho.can_attack:
-		return
-	
-	state_machine.change_to("attack")
+		buho.coldown_area.start()
+		buho.animSprite.animation_finished.connect(change)
+		buho.animArea.animation_finished.connect(change)
+	 

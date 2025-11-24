@@ -23,7 +23,6 @@ func _do_attack() -> void:
 
 	hummer.get_tree().current_scene.add_child(projectile)
 
-	# inicia cooldown
 	hummer.attackTimer.start()
 
 	# luego que dispare → volver al follow

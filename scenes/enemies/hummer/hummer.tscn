@@ -275,13 +275,14 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection-area"]
 shape = SubResource("CircleShape2D_hkoyg")
-debug_color = Color(0.23097464, 0.6179581, 0.45761847, 0.41960785)
+debug_color = Color(0.23209421, 0.6180314, 0.45775273, 0)
 
 [node name="attack area" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack area"]
 shape = SubResource("CircleShape2D_e0emr")
+debug_color = Color(0, 0.60038817, 0.70000815, 0.149)
 
 [node name="Attack hummer" parent="." instance=ExtResource("10_tohwt")]
 position = Vector2(-2, -11)
@@ -313,13 +314,13 @@ script = ExtResource("4_qpy5f")
 [node name="follow" type="Node" parent="StateMachine"]
 script = ExtResource("5_wmy18")
 
-[node name="dead" type="Node" parent="StateMachine"]
+[node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("6_rs64p")
 
 [node name="patrol" type="Node" parent="StateMachine"]
 script = ExtResource("7_e71pg")
 
-[node name="takeDamage" type="Node" parent="StateMachine"]
+[node name="TakeDamage" type="Node" parent="StateMachine"]
 script = ExtResource("8_eblet")
 
 [node name="attack" type="Node" parent="StateMachine"]

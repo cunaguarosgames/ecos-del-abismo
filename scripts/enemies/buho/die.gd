@@ -1,6 +1,15 @@
 extends buhoStateBase
 
 func start() -> void:
-	#hummer.animSprite.play("die")
-	#hummer.animSprite.animation_finished.connect(hummer.queue_free, CONNECT_ONE_SHOT)
+	
+	for t in buho.get_tree().get_nodes_in_group("timers"):
+		t.stop()
+
+	buho.velocity = Vector2.ZERO
+	buho.animSprite.stop()
+
+	# Reproducir anim de muerte
+	buho.animSprite.play("die")
+
+	await buho.animSprite.animation_finished
 	buho.queue_free()
