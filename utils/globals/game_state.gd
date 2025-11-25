@@ -9,6 +9,7 @@ var game_data: Dictionary = {
 	primary_skills_list = ["Normal"],
 	secondary_skill = "Normal",
 	secondary_skills_list = ["Normal"],
+	collectibles ={}
 }
 
 func _ready() -> void:
@@ -16,6 +17,8 @@ func _ready() -> void:
 	save_game()
 
 func save_game():
+	game_data.collectibles = Collectibles.collectibles
+	
 	var save_file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	
 	save_file.store_var(game_data)
@@ -26,3 +29,5 @@ func load_game():
 		var save_file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 		game_data = save_file.get_var()
 		save_file.close()
+		if game_data.has("collectibles"): 
+			Collectibles.collectibles = game_data.collectibles

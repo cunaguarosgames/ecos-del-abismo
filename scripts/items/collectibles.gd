@@ -10,3 +10,8 @@ func add_collectible(name):
 		print("añadido coleccionable: ", collectibles[name])
 	else: 
 		return
+
+func get_collectible_count(name: String) -> int:
+	if collectibles.has(name):
+		return collectibles[name]
+	return 0
