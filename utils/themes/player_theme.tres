@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://nunfxbogs06o"]
+
+[ext_resource type="FontFile" uid="uid://cf1gi1k1b5ktl" path="res://utils/themes/PublicPixel.otf" id="1_as5in"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h17s1"]
+
+[resource]
+default_font = ExtResource("1_as5in")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.5)
+Label/styles/normal = SubResource("StyleBoxEmpty_h17s1")

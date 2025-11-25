@@ -8,8 +8,12 @@ func on_physics_process(delta: float) -> void:
 		player.last_direction = player.direction.normalized()
 
 func on_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("attack") and player.can_attack:
-		state_machine.change_to(player.states.Attack)
+	if Input.is_action_just_pressed("primary_attack") and player.can_attack:
+		state_machine.change_to(player.states.PrimaryAttack)
+		return
+	
+	if Input.is_action_just_pressed("secondary_attack") and player.can_attack:
+		state_machine.change_to(player.states.SecondaryAttack)
 		return
 	
 	if Input.is_action_just_pressed("x"):

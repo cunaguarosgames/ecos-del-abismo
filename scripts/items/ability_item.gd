@@ -25,4 +25,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		if body.has_method("add_primary_skill"):
 			body.add_primary_skill(ability_name)
+		if body.has_method("add_secondary_skill"):
+			body.add_secondary_skill(ability_name)
 		queue_free()

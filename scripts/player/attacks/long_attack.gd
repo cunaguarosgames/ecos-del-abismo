@@ -63,4 +63,4 @@ func explode() -> void:
 func _do_damage() -> void:
 	for body in get_overlapping_bodies():
 		if body.is_in_group(target) and body.has_method("take_damage"):
-			body.take_damage(damage)
+			body.take_damage(damage, global_position, 200)

@@ -6,7 +6,9 @@ var game_data: Dictionary = {
 	last_room = "",
 	last_entry = "",
 	primary_skill = "Normal",
-	primary_skills_list = ["Normal"]
+	primary_skills_list = ["Normal"],
+	secondary_skill = "Normal",
+	secondary_skills_list = ["Normal"],
 }
 
 func _ready() -> void:

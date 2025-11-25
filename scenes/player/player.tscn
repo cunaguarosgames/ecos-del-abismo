@@ -4,27 +4,23 @@
 [ext_resource type="Texture2D" uid="uid://2588j0h1n22g" path="res://assets/player/player_bat-Sheet.png" id="2_g2els"]
 [ext_resource type="Theme" uid="uid://dqxp5peqg07kf" path="res://utils/themes/dark_theme.tres" id="2_qek5x"]
 [ext_resource type="PackedScene" uid="uid://but8oan0ix5fx" path="res://scenes/ui/user_interface.tscn" id="2_ugbui"]
-[ext_resource type="FontFile" uid="uid://cf1gi1k1b5ktl" path="res://utils/themes/PublicPixel.otf" id="3_5gtgg"]
 [ext_resource type="PackedScene" uid="uid://bby62dq4wl7n7" path="res://utils/state_machine/state_machine.tscn" id="3_gmlin"]
 [ext_resource type="Shader" uid="uid://vm8nqmx1mwj3" path="res://shaders/outline_glow.gdshader" id="4_gx1jg"]
 [ext_resource type="Script" uid="uid://carspt3pnnexi" path="res://scripts/player/states/idle.gd" id="4_p47bc"]
+[ext_resource type="Theme" uid="uid://nunfxbogs06o" path="res://utils/themes/player_theme.tres" id="4_ugbui"]
 [ext_resource type="Script" uid="uid://clb3mpruagjwo" path="res://scripts/player/states/walk.gd" id="5_75vfm"]
-[ext_resource type="Script" uid="uid://bfc0ohqw4c4fw" path="res://scripts/player/states/attack.gd" id="6_75vfm"]
+[ext_resource type="Script" uid="uid://bfc0ohqw4c4fw" path="res://scripts/player/states/primary_attack.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://8bi5r0lqk8uk" path="res://scripts/player/states/menu.gd" id="7_0owmy"]
 [ext_resource type="Script" uid="uid://1vbxfk1fx0mg" path="res://scripts/player/states/hit.gd" id="10_h17s1"]
 [ext_resource type="Script" uid="uid://dqxyvt6gta4sb" path="res://scripts/player/states/dash.gd" id="11_je7p5"]
 [ext_resource type="Script" uid="uid://bl42weg0dhlyf" path="res://scripts/player/states/die.gd" id="12_fm80t"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h17s1"]
-
-[sub_resource type="Theme" id="Theme_je7p5"]
-default_font = ExtResource("3_5gtgg")
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0.5)
-Label/styles/normal = SubResource("StyleBoxEmpty_h17s1")
+[ext_resource type="Script" uid="uid://b0thnkawax2iu" path="res://scripts/player/states/secondary_attack.gd" id="15_fcs02"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qek5x"]
-content_margin_left = 6.0
+content_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fcs02"]
+content_margin_bottom = 20.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ugbui"]
 shader = ExtResource("4_gx1jg")
@@ -274,35 +270,57 @@ offset_bottom = -63.0
 theme = ExtResource("2_qek5x")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SkillsMenu"]
+[node name="PrimaryContainer" type="VBoxContainer" parent="SkillsMenu"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme = SubResource("Theme_je7p5")
+theme = ExtResource("4_ugbui")
 
-[node name="FirstSkill0" type="Label" parent="SkillsMenu/VBoxContainer"]
+[node name="PrimarySkill0" type="Label" parent="SkillsMenu/PrimaryContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 0.5019608)
 text = "0"
 metadata/_edit_use_anchors_ = true
 
-[node name="FirstSkill1" type="Label" parent="SkillsMenu/VBoxContainer"]
+[node name="PrimarySkill1" type="Label" parent="SkillsMenu/PrimaryContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_qek5x")
 text = "1"
 metadata/_edit_use_anchors_ = true
 
-[node name="FirstSkill2" type="Label" parent="SkillsMenu/VBoxContainer"]
+[node name="PrimarySkill2" type="Label" parent="SkillsMenu/PrimaryContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.5)
 text = "2"
 metadata/_edit_use_anchors_ = true
 
+[node name="SecondaryContainer" type="HBoxContainer" parent="SkillsMenu"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 40.0
+offset_bottom = 77.0
+theme = ExtResource("4_ugbui")
+
+[node name="SecondarySkill0" type="Label" parent="SkillsMenu/SecondaryContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.5019608)
+text = "0"
+
+[node name="SecondarySkill1" type="Label" parent="SkillsMenu/SecondaryContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fcs02")
+text = "1"
+
+[node name="SecondarySkill2" type="Label" parent="SkillsMenu/SecondaryContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.5019608)
+text = "2"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_ugbui")
 position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_qhqgy")
-animation = &"dash"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -329,7 +347,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_qhqgy")
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="PrimaryAttackTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="SecondaryAttackTimer" type="Timer" parent="."]
 wait_time = 0.3
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("3_gmlin")]
@@ -342,7 +363,7 @@ script = ExtResource("4_p47bc")
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("5_75vfm")
 
-[node name="Attack" type="Node" parent="StateMachine"]
+[node name="PrimaryAttack" type="Node" parent="StateMachine"]
 script = ExtResource("6_75vfm")
 
 [node name="Menu" type="Node" parent="StateMachine"]
@@ -357,4 +378,8 @@ script = ExtResource("11_je7p5")
 [node name="Die" type="Node" parent="StateMachine"]
 script = ExtResource("12_fm80t")
 
-[connection signal="timeout" from="AttackTimer" to="StateMachine/Attack" method="_on_attack_timer_timeout"]
+[node name="SecondaryAttack" type="Node" parent="StateMachine"]
+script = ExtResource("15_fcs02")
+
+[connection signal="timeout" from="PrimaryAttackTimer" to="StateMachine/PrimaryAttack" method="_on_primary_attack_timer_timeout"]
+[connection signal="timeout" from="SecondaryAttackTimer" to="StateMachine/SecondaryAttack" method="_on_secondary_attack_timer_timeout"]

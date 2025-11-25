@@ -1,11 +1,17 @@
 class_name Player extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var attack_timer: Timer = $AttackTimer
+@onready var primary_attack_timer: Timer = $PrimaryAttackTimer
+@onready var secondary_attack_timer: Timer = $SecondaryAttackTimer
+
 @onready var skills_menu: Control = $SkillsMenu
-@onready var first_skill_0: Label = $SkillsMenu/VBoxContainer/FirstSkill0
-@onready var first_skill_1: Label = $SkillsMenu/VBoxContainer/FirstSkill1
-@onready var first_skill_2: Label = $SkillsMenu/VBoxContainer/FirstSkill2
+@onready var primary_skill_0: Label = $SkillsMenu/PrimaryContainer/PrimarySkill0
+@onready var primary_skill_1: Label = $SkillsMenu/PrimaryContainer/PrimarySkill1
+@onready var primary_skill_2: Label = $SkillsMenu/PrimaryContainer/PrimarySkill2
+@onready var secondary_skill_0: Label = $SkillsMenu/SecondaryContainer/SecondarySkill0
+@onready var secondary_skill_1: Label = $SkillsMenu/SecondaryContainer/SecondarySkill1
+@onready var secondary_skill_2: Label = $SkillsMenu/SecondaryContainer/SecondarySkill2
+
 @onready var state_machine: StateMachine = $StateMachine
 
 @export var speed: float = 120.0
@@ -25,16 +31,18 @@ var current_health: float = max_health
 var dead = false
 var invulnerable: bool = false
 
-var current_first_skill: String = GameState.game_data.primary_skill
+var current_primary_skill: String = GameState.game_data.primary_skill
 var primary_skills_list: Array = GameState.game_data.primary_skills_list
+
+var current_secondary_skill: String = GameState.game_data.secondary_skill
+var secondary_skills_list: Array = GameState.game_data.secondary_skills_list
 
 func _ready() -> void:
 	progress_bar.max_value = max_health
 	progress_bar.value = current_health
-	#current_first_skill = GameState.game_data.primary_skill
 
 func update_skill_labels():
-	var index = primary_skills_list.find(current_first_skill)
+	var index = primary_skills_list.find(current_primary_skill)
 	if index == -1:
 		index = 0
 
@@ -42,9 +50,21 @@ func update_skill_labels():
 	var mid   = primary_skills_list[index]
 	var right = primary_skills_list[(index + 1) % primary_skills_list.size()]
 
-	first_skill_0.text = left
-	first_skill_1.text = mid
-	first_skill_2.text = right
+	primary_skill_0.text = left
+	primary_skill_1.text = mid
+	primary_skill_2.text = right
+	
+	index = secondary_skills_list.find(current_secondary_skill)
+	if index == -1:
+		index = 0
+
+	left  = secondary_skills_list[(index - 1 + secondary_skills_list.size()) % secondary_skills_list.size()]
+	mid   = secondary_skills_list[index]
+	right = secondary_skills_list[(index + 1) % secondary_skills_list.size()]
+
+	secondary_skill_0.text = left
+	secondary_skill_1.text = mid
+	secondary_skill_2.text = right
 
 func play_directional_animation(base_name: String) -> void:
 	if direction.x != 0:
@@ -90,4 +110,14 @@ func add_primary_skill(skill_name: String) -> void:
 	primary_skills_list.append(skill_name)
 	
 	GameState.game_data.primary_skills_list = primary_skills_list
+	GameState.save_game()
+
+
+func add_secondary_skill(skill_name: String) -> void:
+	if skill_name in secondary_skills_list:
+		return
+	
+	secondary_skills_list.append(skill_name)
+	
+	GameState.game_data.secondary_skills_list = secondary_skills_list
 	GameState.save_game()

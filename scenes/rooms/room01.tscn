@@ -44,6 +44,12 @@ ability_name = "Short"
 first_color = Color(0, 0.42198437, 0.68770355, 1)
 second_color = Color(0.5223308, 0.9267858, 0.99999994, 1)
 
+[node name="AbilityItem3" parent="." instance=ExtResource("5_c3gwq")]
+position = Vector2(274, 162)
+ability_name = "Melee"
+first_color = Color(0.7101024, 0.5718837, 1.92523e-07, 1)
+second_color = Color(0.9999996, 0.84862196, 0.31252953, 1)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_37akc")
 
