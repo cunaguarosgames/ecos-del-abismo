@@ -28,7 +28,7 @@ func take_damage(amount: float, hit_from: Vector2 = global_position, force: floa
 	
 	if current_health <= 0:
 		dead = true
-		state_machine.change_to("Die")
+		state_machine.change_to("Death")
 
 func update_health() -> void:
 	if progress_bar:

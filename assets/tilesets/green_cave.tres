@@ -377,7 +377,6 @@ texture_region_size = Vector2i(32, 32)
 9:3/0/terrains_peering_bit/top_side = 1
 9:3/0/terrains_peering_bit/top_right_corner = 1
 9:2/0 = 0
-9:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 7.8238544, -16, 7.8238544)
 9:5/0 = 0
 9:5/0/terrain_set = 0
 9:5/0/terrains_peering_bit/right_side = 1
@@ -404,7 +403,6 @@ texture_region_size = Vector2i(32, 32)
 6:5/0/terrains_peering_bit/bottom_right_corner = 1
 6:5/0/terrains_peering_bit/bottom_left_corner = 1
 10:2/0 = 0
-10:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 7.8238544, -16, 7.8238544)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_maubk"]
 texture = ExtResource("2_w3511")

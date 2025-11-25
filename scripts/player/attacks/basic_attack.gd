@@ -23,6 +23,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
+	scale += Vector2(delta, delta)
 
 func _set_color(idx: int, new_color: Color) -> void:
 	var mat: ShaderMaterial = animated_sprite_2d.material
@@ -35,5 +36,5 @@ func _set_color(idx: int, new_color: Color) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("map") or body.is_in_group(target):
 		if body.has_method("take_damage"):
-			body.take_damage(damage)
+			body.take_damage(damage, global_position)
 		queue_free()

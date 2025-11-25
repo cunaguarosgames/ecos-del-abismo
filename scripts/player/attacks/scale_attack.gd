@@ -24,7 +24,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
-	scale += Vector2(delta * 2, delta * 2)
+	scale += Vector2(delta * 3, delta * 3)
 
 func _set_color(idx: int, new_color: Color) -> void:
 	var mat: ShaderMaterial = animated_sprite_2d.material

@@ -45,9 +45,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8y6v3")
 }],
-"loop": false,
+"loop": true,
 "name": &"default",
-"speed": 4.0
+"speed": 8.0
 }]
 
 [node name="BasicAttack" type="Area2D"]
@@ -61,7 +61,6 @@ shape = SubResource("CircleShape2D_isfcc")
 material = SubResource("ShaderMaterial_vcvut")
 sprite_frames = SubResource("SpriteFrames_0yoq8")
 autoplay = "default"
-frame = 3
-frame_progress = 1.0
+frame_progress = 0.83900636
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

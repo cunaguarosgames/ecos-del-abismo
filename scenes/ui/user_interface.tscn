@@ -12,7 +12,6 @@ shader_parameter/palette_size = 8
 shader_parameter/tolerance = 0.01
 
 [node name="UserInterface" type="CanvasLayer"]
-process_mode = 3
 script = ExtResource("1_hj6hg")
 metadata/_edit_use_anchors_ = true
 

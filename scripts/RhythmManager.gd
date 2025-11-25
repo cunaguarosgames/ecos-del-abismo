@@ -17,9 +17,6 @@ var time_since_last_eighth = 0.0
 var beat_count = 0
 var eighth_count = 0
 
-func _ready():
-	process_mode = Node.PROCESS_MODE_ALWAYS
-
 func _process(delta):
 	time_since_last_beat += delta
 	if time_since_last_beat >= BEAT_INTERVAL:
