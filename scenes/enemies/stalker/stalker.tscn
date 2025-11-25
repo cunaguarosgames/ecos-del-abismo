@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b8dq7fkgqf8ih"]
+[gd_scene load_steps=33 format=3 uid="uid://b8dq7fkgqf8ih"]
 
 [ext_resource type="Script" uid="uid://cob1f524e7ucl" path="res://scenes/enemies/stalker/stalker.gd" id="1_x83tr"]
 [ext_resource type="Texture2D" uid="uid://c22vre0pecn55" path="res://assets/attacks/enemies/Stalker/attack_stalker-Sheet.png" id="2_ot7wr"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cser3csf4pyte" path="res://scenes/enemies/stalker/idle.gd" id="6_1c5ko"]
 [ext_resource type="Script" uid="uid://ccufnvrthbkab" path="res://scenes/enemies/stalker/attack.gd" id="7_ot7wr"]
 [ext_resource type="Script" uid="uid://cd4crdkux48i2" path="res://scenes/enemies/stalker/chasing.gd" id="8_ot7wr"]
+[ext_resource type="Script" uid="uid://s07s0wlbsowj" path="res://scenes/enemies/stalker/hit.gd" id="9_uudvc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uudvc"]
 atlas = ExtResource("2_ot7wr")
@@ -217,6 +218,9 @@ script = ExtResource("5_0pdh7")
 
 [node name="Chasing" type="Node" parent="StateMachine"]
 script = ExtResource("8_ot7wr")
+
+[node name="Hit" type="Node" parent="StateMachine"]
+script = ExtResource("9_uudvc")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 

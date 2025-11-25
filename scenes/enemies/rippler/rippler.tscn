@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://7gldo6tb3f7i"]
+[gd_scene load_steps=47 format=3 uid="uid://7gldo6tb3f7i"]
 
 [ext_resource type="Texture2D" uid="uid://bjawcgfc2a4xs" path="res://assets/enemies/rippler/Rippler_(Deslizador)_fase1-Sheet.png" id="1_6ss21"]
 [ext_resource type="Script" uid="uid://d16oo5gaxlng6" path="res://scripts/enemies/rippler/rippler.gd" id="1_ejfr3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://chqpp4ngj8gdm" path="res://scenes/enemies/rippler/idle.gd" id="5_6g0m6"]
 [ext_resource type="Script" uid="uid://27fvenbrrgst" path="res://scenes/enemies/rippler/death.gd" id="8_0ujwi"]
 [ext_resource type="Script" uid="uid://bog6tqa5fvjud" path="res://scenes/enemies/rippler/chasing.gd" id="8_6g0m6"]
+[ext_resource type="Script" uid="uid://c5quvu0mijetp" path="res://scenes/enemies/rippler/hit.gd" id="9_6u5c8"]
 [ext_resource type="Script" uid="uid://60u3c37ra6wk" path="res://scenes/enemies/rippler/attack.gd" id="10_uqmq2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1iqm"]
@@ -349,6 +350,9 @@ script = ExtResource("10_uqmq2")
 
 [node name="Chasing" type="Node" parent="StateMachine"]
 script = ExtResource("8_6g0m6")
+
+[node name="Hit" type="Node" parent="StateMachine"]
+script = ExtResource("9_6u5c8")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 

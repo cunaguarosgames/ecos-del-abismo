@@ -1,8 +1,7 @@
-class_name Stalker extends CharacterBody2D
+class_name Stalker extends EnemyBase
 
 var speed: float = 75.0
-var current_health: float = 30.0
-var max_health: float = 30.0
+
 
 @export var damage_melee: float = 5.0
 var can_attack: bool = true 
@@ -10,8 +9,7 @@ var player: Node2D = null
 var attack_range = 100
 
 
-@onready var state_machine: StateMachine = $StateMachine
-@onready var progress_bar: ProgressBar = $ProgressBar
+
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 @onready var attack_area: Area2D = $AttackArea
 @onready var detection_area: Area2D = $DetectionArea
@@ -20,6 +18,11 @@ var attack_range = 100
 
 
 func _ready() -> void:
+	state_machine  = $StateMachine
+	progress_bar = $ProgressBar
+	current_health = 30.0
+	max_health = 30.0
+	
 	progress_bar.max_value = max_health
 	progress_bar.value = max_health
 	progress_bar.hide()
@@ -34,10 +37,6 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	pass
-
-func take_damage(amount: float) -> void:
-	current_health -= amount
-	update_health()
 
 func update_health() -> void:
 	if progress_bar:

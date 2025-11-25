@@ -1,9 +1,7 @@
-class_name Rippler extends CharacterBody2D
-
+class_name Rippler extends EnemyBase
 
 var speed: float = 75.0
-var max_health: float = 60.0
-var current_health: float = max_health
+
 
 @export var damage_melee: float = 5.0
 var can_attack: bool = true 
@@ -15,8 +13,6 @@ var can_attack_player: Node2D = null
 @export var afraid_health_threshold: float = 0.25
 
 
-@onready var state_machine: StateMachine = $StateMachine 
-@onready var progress_bar: ProgressBar = $ProgressBar
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 @onready var attack_area: Area2D = $AttackArea
 @onready var detection_area: Area2D = $DetectionArea
@@ -25,7 +21,10 @@ var can_attack_player: Node2D = null
 
 
 func _ready() -> void:
-
+	max_health = 60.0
+	current_health = max_health
+	state_machine = $StateMachine 
+	progress_bar = $ProgressBar
 	progress_bar.max_value = max_health
 	progress_bar.value = max_health
 	progress_bar.hide()
@@ -38,10 +37,6 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	pass
-
-func take_damage(amount: float) -> void:
-	current_health -= amount
-	update_health()
 
 func update_health() -> void:
 	if progress_bar:
