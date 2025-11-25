@@ -27,11 +27,9 @@ tile_map_data = PackedByteArray("AAASAAsAAQAAAAAAAAASAAwAAQAAAAEAAAATAAsAAQABAAA
 tile_set = ExtResource("4_iurs1")
 
 [node name="Player" parent="." instance=ExtResource("3_rtml3")]
-visible = false
 position = Vector2(61, 215)
 
 [node name="Stalker" parent="." instance=ExtResource("6_ie674")]
-visible = false
 position = Vector2(297, 206)
 
 [node name="SpawnPoints" type="Node2D" parent="."]

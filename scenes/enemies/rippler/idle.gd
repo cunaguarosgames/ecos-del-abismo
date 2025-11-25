@@ -1,14 +1,21 @@
-extends PlayerStateBase
+extends RipplerStateBase
 
-func on_physics_process(delta: float) -> void:
-	if player.direction != Vector2.ZERO:
-		player.last_direction = player.direction.normalized()
-	
-	player.play_directional_animation("idle")
+func start() -> void:
+	rippler.velocity = Vector2.ZERO
 
-func on_input(event: InputEvent) -> void:
-	if Input.is_action_pressed("up") or Input.is_action_pressed("down") or Input.is_action_pressed("left") or Input.is_action_pressed("right"):
-		state_machine.change_to(player.states.Walk)
+func on_physics_process(_delta: float) -> void:
+	if rippler.current_health <= 0: 
+		state_machine.change_to("Death")
+		return
 	
-	if Input.is_action_just_pressed("attack") and player.can_attack:
-		state_machine.change_to(player.states.Attack)
+	if rippler.current_health > rippler.max_health / 2:
+		rippler.play_main_animation("walk") 
+	if rippler.current_health <= rippler.max_health / 2 and rippler.current_health > rippler.max_health / 4 : 
+		rippler.play_main_animation("furious") 
+	if rippler.current_health <= rippler.max_health / 4: 
+		rippler.play_main_animation("afraid") 
+	
+	if rippler.player:
+		state_machine.change_to("Chasing")
+	
+	pass

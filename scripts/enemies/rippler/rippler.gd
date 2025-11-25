@@ -2,8 +2,8 @@ class_name Rippler extends CharacterBody2D
 
 
 var speed: float = 75.0
-var current_health: float = 30.0
-var max_health: float = 30.0
+var max_health: float = 60.0
+var current_health: float = max_health
 
 @export var damage_melee: float = 5.0
 var can_attack: bool = true 

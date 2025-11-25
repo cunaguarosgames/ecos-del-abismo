@@ -37,16 +37,9 @@ func on_physics_process(_delta: float) -> void:
 
 func _on_attack_cooldown_timer_timeout() -> void:
 	if rippler.player:
-		if rippler.current_health > rippler.max_health / 2:
-			state_machine.change_to("Run")
-
-		elif rippler.current_health <= rippler.max_health / 2 and rippler.current_health > rippler.max_health / 4 : 
-			state_machine.change_to("Furious")
-
-		elif rippler.current_health <= rippler.max_health / 4: 
-			state_machine.change_to("Afraid")
+		state_machine.change_to("Chasing")
 	else:
-		state_machine.change_to("Walk")
+		state_machine.change_to("Idle")
 
 func end():
 	rippler.can_attack = true
