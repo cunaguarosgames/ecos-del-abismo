@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds2kwm5frl8ov"]
+
+[ext_resource type="Script" uid="uid://cnawcdrxtar13" path="res://scripts/menus/pause_menu.gd" id="1_7unhi"]
+[ext_resource type="Theme" uid="uid://dqxp5peqg07kf" path="res://utils/themes/dark_theme.tres" id="2_gsnt3"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_7unhi")
+
+[node name="PanelMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_gsnt3")
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelMenu/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="PanelMenu/CenterContainer/PanelContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Continue"
+
+[node name="Options" type="Button" parent="PanelMenu/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Exit" type="Button" parent="PanelMenu/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="PanelMenu/CenterContainer/PanelContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="PanelMenu/CenterContainer/PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

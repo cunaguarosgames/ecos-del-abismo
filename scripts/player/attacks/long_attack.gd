@@ -20,10 +20,10 @@ func _ready() -> void:
 	if animated_sprite_2d.material:
 		animated_sprite_2d.material = animated_sprite_2d.material.duplicate()
 		
-	var new_color = Color.from_hsv(randf(), randf_range(0.5, 1.0), randf_range(0.7, 1.0))
+	var new_color = Color.from_hsv(randf(), randf_range(0.5, 1.0), randf_range(0.9, 1.0))
 	_set_color(0, new_color)
 	
-	new_color = Color.from_hsv(randf(), randf_range(0.5, 1.0), randf_range(0.7, 1.0))
+	new_color.v = 0.5
 	_set_color(1, new_color)
 
 func _physics_process(delta: float) -> void:
@@ -44,8 +44,6 @@ func _physics_process(delta: float) -> void:
 			explode()
 
 	animated_sprite_2d.position.y = -vertical_offset
-	
-	
 
 func _set_color(idx: int, new_color: Color) -> void:
 	var mat: ShaderMaterial = animated_sprite_2d.material

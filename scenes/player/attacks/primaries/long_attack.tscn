@@ -11,25 +11,25 @@ radius = 27.018513
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wthep"]
 shader = ExtResource("2_tma7n")
 shader_parameter/from_palette = PackedColorArray(0.95686275, 0.96862745, 0.98039216, 1, 0.6509804, 0.68235296, 0.7294118, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-shader_parameter/to_palette = PackedColorArray(0.5176471, 0, 0.63529414, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/to_palette = PackedColorArray(0.5176471, 0, 0.63529414, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/palette_size = 8
 shader_parameter/tolerance = 0.01
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ocp2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_20rar"]
 atlas = ExtResource("3_0ifjj")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8auay"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tma7n"]
 atlas = ExtResource("3_0ifjj")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_27feu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ifjj"]
 atlas = ExtResource("3_0ifjj")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wthep"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5c6r"]
 atlas = ExtResource("3_0ifjj")
-region = Rect2(48, 0, 16, 16)
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ah34e"]
 atlas = ExtResource("4_g5c6r")
@@ -51,16 +51,16 @@ region = Rect2(96, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6ocp2")
+"texture": SubResource("AtlasTexture_20rar")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8auay")
+"texture": SubResource("AtlasTexture_tma7n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_27feu")
+"texture": SubResource("AtlasTexture_0ifjj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wthep")
+"texture": SubResource("AtlasTexture_g5c6r")
 }],
 "loop": false,
 "name": &"default",
@@ -81,7 +81,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"explode",
-"speed": 12.0
+"speed": 8.0
 }]
 
 [node name="LongAttack" type="Area2D"]
@@ -94,5 +94,4 @@ shape = SubResource("CircleShape2D_27feu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_wthep")
 sprite_frames = SubResource("SpriteFrames_ah34e")
-animation = &"explode"
 autoplay = "default"

@@ -1,10 +1,11 @@
-[gd_scene load_steps=47 format=3 uid="uid://dexk5be64pk3w"]
+[gd_scene load_steps=52 format=3 uid="uid://dexk5be64pk3w"]
 
 [ext_resource type="Script" uid="uid://ofjw13r3fnd3" path="res://scripts/player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://2588j0h1n22g" path="res://assets/player/player_bat-Sheet.png" id="2_g2els"]
 [ext_resource type="Theme" uid="uid://dqxp5peqg07kf" path="res://utils/themes/dark_theme.tres" id="2_qek5x"]
 [ext_resource type="PackedScene" uid="uid://but8oan0ix5fx" path="res://scenes/ui/user_interface.tscn" id="2_ugbui"]
 [ext_resource type="PackedScene" uid="uid://bby62dq4wl7n7" path="res://utils/state_machine/state_machine.tscn" id="3_gmlin"]
+[ext_resource type="PackedScene" uid="uid://ds2kwm5frl8ov" path="res://scenes/menus/pause_menu.tscn" id="3_myrg7"]
 [ext_resource type="Shader" uid="uid://vm8nqmx1mwj3" path="res://shaders/outline_glow.gdshader" id="4_gx1jg"]
 [ext_resource type="Script" uid="uid://carspt3pnnexi" path="res://scripts/player/states/idle.gd" id="4_p47bc"]
 [ext_resource type="Theme" uid="uid://nunfxbogs06o" path="res://utils/themes/player_theme.tres" id="4_ugbui"]
@@ -53,6 +54,22 @@ atlas = ExtResource("2_g2els")
 region = Rect2(68, 200, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgqa7"]
+atlas = ExtResource("2_g2els")
+region = Rect2(102, 200, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qxvo"]
+atlas = ExtResource("2_g2els")
+region = Rect2(0, 200, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q8fn"]
+atlas = ExtResource("2_g2els")
+region = Rect2(34, 200, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wva7c"]
+atlas = ExtResource("2_g2els")
+region = Rect2(68, 200, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7obkq"]
 atlas = ExtResource("2_g2els")
 region = Rect2(102, 200, 32, 48)
 
@@ -148,7 +165,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"dash",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -165,6 +182,23 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qxvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q8fn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wva7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7obkq")
+}],
+"loop": false,
+"name": &"death_back",
 "speed": 4.0
 }, {
 "frames": [{
@@ -258,7 +292,9 @@ script = ExtResource("1_g2els")
 
 [node name="UserInterface" parent="." instance=ExtResource("2_ugbui")]
 
-[node name="SkillsMenu" type="Control" parent="."]
+[node name="PauseMenu" parent="." instance=ExtResource("3_myrg7")]
+
+[node name="SkillsMenu" type="Control" parent="." groups=["hard_pause"]]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -320,7 +356,7 @@ text = "2"
 material = SubResource("ShaderMaterial_ugbui")
 position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_qhqgy")
-animation = &"attack"
+animation = &"dash"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -353,7 +389,7 @@ wait_time = 0.3
 [node name="SecondaryAttackTimer" type="Timer" parent="."]
 wait_time = 0.3
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("3_gmlin")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("default_state") groups=["hard_pause"] instance=ExtResource("3_gmlin")]
 process_mode = 3
 default_state = NodePath("Idle")
 

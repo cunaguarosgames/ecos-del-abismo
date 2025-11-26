@@ -15,8 +15,11 @@ func _ready() -> void:
 	if animated_sprite_2d.material:
 		animated_sprite_2d.material = animated_sprite_2d.material.duplicate()
 		
-	var new_color = Color.from_hsv(randf(), randf_range(0.5, 1.0), randf_range(0.7, 1.0))
+	var new_color = Color.from_hsv(randf(), randf_range(0.5, 1.0), randf_range(0.9, 1.0))
 	_set_color(0, new_color)
+	
+	new_color.v = 0.5
+	_set_color(1, new_color)
 	
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()

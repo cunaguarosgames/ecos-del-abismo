@@ -8,6 +8,7 @@ var dash_timer := 0.0
 
 func start():
 	player.can_attack = false
+	player.invulnerable = true
 	dash_timer = dash_duration
 	dash_speed = 150.0
 	
@@ -20,7 +21,6 @@ func start():
 	player.animated_sprite_2d.play("dash")
 	
 	if RhythmManager.is_on_beat():
-		player.invulnerable = true
 		dash_speed = 300.0
 		if player.animated_sprite_2d.material:
 			var mat = player.animated_sprite_2d.material

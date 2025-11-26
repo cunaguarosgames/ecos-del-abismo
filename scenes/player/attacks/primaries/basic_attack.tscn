@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cf6jjm20i0q8j"]
+[gd_scene load_steps=13 format=3 uid="uid://cf6jjm20i0q8j"]
 
 [ext_resource type="Script" uid="uid://bo1jh466ifqp2" path="res://scripts/player/attacks/basic_attack.gd" id="1_ukoa1"]
 [ext_resource type="Shader" uid="uid://c1gtu2qljlqey" path="res://shaders/color_shaders/color_swap.gdshader" id="2_0hnul"]
@@ -9,26 +9,34 @@ radius = 8.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vcvut"]
 shader = ExtResource("2_0hnul")
-shader_parameter/from_palette = PackedColorArray(0.95686275, 0.96862745, 0.98039216, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-shader_parameter/to_palette = PackedColorArray(0.5176471, 0, 0.63529414, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/from_palette = PackedColorArray(0.95686275, 0.96862745, 0.98039216, 1, 0.654902, 0.68235296, 0.7294118, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/to_palette = PackedColorArray(0.6855074, 0.001239078, 0.8130327, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/palette_size = 8
-shader_parameter/tolerance = 0.01
+shader_parameter/tolerance = 0.11000000196512
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_88g68"]
 atlas = ExtResource("3_88g68")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ffbu"]
 atlas = ExtResource("3_88g68")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7v2dd"]
 atlas = ExtResource("3_88g68")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8y6v3"]
 atlas = ExtResource("3_88g68")
-region = Rect2(48, 0, 16, 16)
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqrpk"]
+atlas = ExtResource("3_88g68")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4k8x"]
+atlas = ExtResource("3_88g68")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0yoq8"]
 animations = [{
@@ -44,10 +52,16 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8y6v3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqrpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4k8x")
 }],
 "loop": true,
 "name": &"default",
-"speed": 8.0
+"speed": 12.0
 }]
 
 [node name="BasicAttack" type="Area2D"]
@@ -59,8 +73,9 @@ shape = SubResource("CircleShape2D_isfcc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_vcvut")
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_0yoq8")
 autoplay = "default"
-frame_progress = 0.83900636
+frame_progress = 0.76105314
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

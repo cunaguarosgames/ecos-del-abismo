@@ -1,38 +1,53 @@
-[gd_scene load_steps=11 format=3 uid="uid://3rhei4xr1r1d"]
+[gd_scene load_steps=14 format=3 uid="uid://3rhei4xr1r1d"]
 
 [ext_resource type="Script" uid="uid://cnfr5tld6pico" path="res://scripts/player/attacks/melee_attack.gd" id="1_berl7"]
 [ext_resource type="Shader" uid="uid://c1gtu2qljlqey" path="res://shaders/color_shaders/color_swap.gdshader" id="2_i5lqe"]
 [ext_resource type="Texture2D" uid="uid://4w11wynx1h6y" path="res://assets/attacks/player/melee_attack-Sheet.png" id="3_berl7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_berl7"]
-size = Vector2(60, 10)
+size = Vector2(64, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qa1yd"]
 shader = ExtResource("2_i5lqe")
-shader_parameter/from_palette = PackedColorArray(0.95686275, 0.96862745, 0.98039216, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-shader_parameter/to_palette = PackedColorArray(0.5176471, 0, 0.63529414, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/from_palette = PackedColorArray(0.95686275, 0.96862745, 0.98039216, 1, 0.6509804, 0.68235296, 0.7294118, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/to_palette = PackedColorArray(0.5176471, 0, 0.63529414, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/palette_size = 8
 shader_parameter/tolerance = 0.01
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_berl7"]
+atlas = ExtResource("3_berl7")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5lqe"]
 atlas = ExtResource("3_berl7")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cy6bx"]
 atlas = ExtResource("3_berl7")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bllst"]
 atlas = ExtResource("3_berl7")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qa1yd"]
 atlas = ExtResource("3_berl7")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl7d5"]
+atlas = ExtResource("3_berl7")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10fvs"]
+atlas = ExtResource("3_berl7")
+region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rl7d5"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_berl7")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i5lqe")
 }, {
@@ -44,8 +59,14 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qa1yd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl7d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10fvs")
 }],
-"loop": false,
+"loop": true,
 "name": &"default",
 "speed": 8.0
 }]
@@ -61,5 +82,7 @@ shape = SubResource("RectangleShape2D_berl7")
 material = SubResource("ShaderMaterial_qa1yd")
 sprite_frames = SubResource("SpriteFrames_rl7d5")
 autoplay = "default"
+frame = 6
+frame_progress = 0.33425486
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

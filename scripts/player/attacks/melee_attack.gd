@@ -8,23 +8,23 @@ extends Area2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var direction: Vector2 = Vector2.RIGHT
-var offset_distance: float= 20
+var offset_distance: float= 32
 var position_from_center: Vector2
 var elapsed: float= 0.0
 
 func _ready() -> void:
-	# Punto base desde donde girará el arco
 	position_from_center = global_position
 
-	# Offset al frente del jugador
 	position += direction.normalized() * offset_distance
 
-	# Duplicar material
 	if animated_sprite_2d.material:
 		animated_sprite_2d.material = animated_sprite_2d.material.duplicate()
 
-	var new_color = Color.from_hsv(randf(), randf_range(0.5, 1.0), randf_range(0.7, 1.0))
+	var new_color = Color.from_hsv(randf(), randf_range(0.5, 1.0), randf_range(0.9, 1.0))
 	_set_color(0, new_color)
+	
+	new_color.v = 0.5
+	_set_color(1, new_color)
 
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
@@ -58,4 +58,4 @@ func _set_color(idx: int, new_color: Color) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("map") or body.is_in_group(target):
 		if body.has_method("take_damage"):
-			body.take_damage(damage, global_position, 400)
+			body.take_damage(damage, global_position, 300)

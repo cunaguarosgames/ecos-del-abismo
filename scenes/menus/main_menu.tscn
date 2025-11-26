@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://pvhwmt0i4aoc"]
+[gd_scene load_steps=3 format=3 uid="uid://pvhwmt0i4aoc"]
 
+[ext_resource type="Theme" uid="uid://dqxp5peqg07kf" path="res://utils/themes/dark_theme.tres" id="1_ovrgc"]
 [ext_resource type="Script" uid="uid://w7jwuuiy64h4" path="res://scripts/menus/main_menu.gd" id="1_xqga4"]
 
 [node name="MainMenu" type="Control"]
@@ -9,20 +10,31 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ovrgc")
 script = ExtResource("1_xqga4")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="CenterContainer"]
+[node name="Panel" type="PanelContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="Play" type="Button" parent="CenterContainer/Panel"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
 text = "Play"
 
-[connection signal="pressed" from="CenterContainer/Panel/Play" to="." method="_on_play_pressed"]
+[node name="Exit" type="Button" parent="CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
