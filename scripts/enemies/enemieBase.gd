@@ -8,7 +8,6 @@ class_name enemyBase extends CharacterBody2D
 @export var max_health := 10
 @export var speed := 40
 @export var attack := 5
-@export var knockback_force := 150
 
 var can_attack := false
 var target = null
@@ -19,18 +18,20 @@ func _ready():
 	health_bar.hide()
 	health_bar.max_value = max_health
 	health_bar.value = max_health
+	
+	RhythmManager.connect("beat_signal", Callable(self, "_on_beat"))
 
 	on_ready_extra()
 
 func on_ready_extra(): pass
 
 
-func take_damage(amount):
+func take_damage(amount,position_player ,knockback_force):
 	print("current health: ", current_health)
 	current_health -= amount
 
 	if target and target.is_in_group("player"):
-		var dir = (global_position - target.global_position).normalized()
+		var dir = (global_position - position_player).normalized()
 		velocity = dir * knockback_force
 
 	on_take_damage()

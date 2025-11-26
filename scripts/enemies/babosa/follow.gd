@@ -21,11 +21,6 @@ func on_process(delta: float) -> void:
 
 	if direction.x != 0:
 		babosa.animSprite.flip_h = direction.x < 0
-
-	if babosa.target != null \
-	   and babosa.target.is_in_group("player") \
-	   and babosa.can_attack and babosa.attack_area:
-		state_machine.change_to("attack")
 	
 	if babosa.current_health <= babosa.max_health/2:
 		babosa.animSprite.play("run W_S")

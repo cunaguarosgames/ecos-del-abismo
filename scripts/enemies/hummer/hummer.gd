@@ -27,6 +27,8 @@ func on_ready_extra() -> void:
 	attackTimer.timeout.connect(_on_attack_cooldown_timeout)
 
 	attackTimer.one_shot = true
+	
+	
 
 	if waypoints.size() > 0:
 		current_index = 0
@@ -37,12 +39,19 @@ func _on_detection_area_body_entered(body: Node2D):
 		recalculateTarget.start()
 		target = body
 		print("body detect:", body)
-
+		
+		if state_machine.current_state.name == "patrol" or state_machine.current_state.name == "idle":
+			state_machine.change_to("follow")
 
 func _on_detection_area_body_exited(body: Node2D):
 	if body == target:
 		recalculateTarget.stop()
 		target = null
+
+func _on_beat(beat_count):
+	if state_machine.current_state.name == "follow":
+		if target != null and attack_area and can_attack:
+			state_machine.change_to("attack")
 
 
 func _on_detection_area_attack_entered(body: Node2D):
@@ -50,19 +59,16 @@ func _on_detection_area_attack_entered(body: Node2D):
 		attack_area = true
 		target = body
 
-		if can_attack:
-			state_machine.change_to("attack")
-
 
 func _on_detection_area_attack_exited(body: Node2D):
 	if body.is_in_group("player"):
 		attack_area = false 
-		if body == target:
-			target = null
-		state_machine.change_to("follow")
+		if state_machine.current_state.name == "attack":
+			state_machine.change_to("follow")
 
 
 func _on_attack_cooldown_timeout():
+	print('ataca')
 	can_attack = true
 
 func update_health() -> void:

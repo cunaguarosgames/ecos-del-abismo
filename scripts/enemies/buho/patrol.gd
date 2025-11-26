@@ -6,6 +6,7 @@ func start():
 		return
 
 func on_physics_process(delta: float) -> void:
+	
 	if buho.target != null:
 		state_machine.change_to("follow")
 		return

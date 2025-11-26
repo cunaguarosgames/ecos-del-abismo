@@ -286,7 +286,7 @@ tile_map_data = PackedByteArray("AAALAP//AAAEAAkAAAAEAAwAAAABAAkAAAAYAAcAAAADAAg
 tile_set = SubResource("TileSet_hc7kf")
 
 [node name="Player" parent="." instance=ExtResource("2_kwx0b")]
-position = Vector2(283, 22)
+position = Vector2(705, 204)
 
 [node name="weaponits" type="Node2D" parent="."]
 
@@ -330,6 +330,9 @@ position = Vector2(139, 55)
 position = Vector2(248, 257)
 longAttack = 2
 waypoints = [NodePath("../weaponits/Marker2D5"), NodePath("../weaponits/Marker2D6"), NodePath("../weaponits/Marker2D7")]
+max_health = null
+speed = null
+attack = null
 
 [node name="Stalker" parent="." instance=ExtResource("7_h2i4j")]
 position = Vector2(1178, 172)

@@ -21,8 +21,11 @@ func on_ready_extra() -> void:
 	
 	attackArea.body_entered.connect(_on_area_attack_entered)
 	attackArea.body_exited.connect(_on_area_attack_exited)
-
 	
+	RhythmManager.connect("beat_signal", Callable(self, "_on_beat"))
+
+
+
 func _on_detection_area_body_entered(body: Node2D):
 	if body.is_in_group("player"):
 		recalculateTarget.start()
@@ -33,14 +36,14 @@ func _on_detection_area_body_exited(body: Node2D):
 		recalculateTarget.stop()
 		target = null
 
-func try_attack():
-	if attack_area and can_attack:
-		state_machine.change_to("attack")
+func _on_beat(beat_count):
+	if state_machine.current_state.name == "follow":
+		if target != null and target.is_in_group("player") and attack_area and can_attack:
+			state_machine.change_to("attack")
 
 func _on_area_attack_entered(body: Node2D):
 	if body.is_in_group("player"):
 		attack_area = true
-		try_attack()
 
 func _on_area_attack_exited(body: Node2D):
 	if body.is_in_group("player"):
@@ -50,9 +53,7 @@ func _on_area_attack_exited(body: Node2D):
 
 func _on_cooldown_attack_timeout() -> void:
 	can_attack = true
-	if attack_area:
-		try_attack()
-	else:
+	if !attack_area:
 		state_machine.change_to("follow")
 
 func _on_recalculateTarget_timeout() -> void:

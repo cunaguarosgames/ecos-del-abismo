@@ -6,6 +6,7 @@ func start():
 		return
 
 func on_process(delta: float) -> void:
+	
 	if buho.target == null:
 		state_machine.change_to("idle")
 		buho.velocity = Vector2.ZERO
@@ -26,9 +27,6 @@ func on_process(delta: float) -> void:
 
 	if direction.x != 0:
 		buho.animSprite.flip_h = direction.x < 0
-
-	if buho.target and buho.target.is_in_group("player") and buho.can_attack:
-		state_machine.change_to("attack")
 
 	if buho.secondFase:
 		buho.animSprite.play("run_SF")

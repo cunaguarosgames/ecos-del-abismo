@@ -62,7 +62,7 @@ func _enter_second_phase():
 	update_health()
 
 # bubo.gd
-func take_damage(amount: float) -> void:
+func take_damage(amount: float, knockback_force, position_player) -> void:
 	var damage_to_pass = amount
 
 	# 1. Lógica del Escudo
@@ -75,7 +75,7 @@ func take_damage(amount: float) -> void:
 			shield = 0
 	
 	if damage_to_pass > 0:
-		super.take_damage(damage_to_pass)
+		super.take_damage(damage_to_pass, knockback_force, position_player)
 	
 	if not secondFase and current_health <= max_health * 0.5:
 		secondFase = true
@@ -85,22 +85,22 @@ func take_damage(amount: float) -> void:
 		update_health() 
 	velocity = Vector2.ZERO
 
-func try_attack():
-	if can_attack:
-		if bassic_attack or long_attack or attack_area:
-			state_machine.change_to("attack")
+# CORREGIDO
+func _on_beat(beat_count):
+	if state_machine.current_state.name == "follow" and target != null:
+		if target.is_in_group("player") and can_attack:
+			if bassic_attack or long_attack or attack_area:
+				state_machine.change_to("attack")
 
 func _on_mele_atack_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		target = body
 		can_attack = true
 		set_melee_mode()
-		try_attack()
 
 func _on_mele_atack_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		can_attack = false
-		set_area_mode()
 		if state_machine.is_current("attack"):
 			state_machine.change_to("follow")
 
@@ -110,8 +110,7 @@ func _on_long_attack_body_entered(body: Node2D) -> void:
 		target = body
 		can_attack = true
 		set_long_mode()
-		try_attack()
-
+		
 func _on_long_attack_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		can_attack = false
@@ -127,8 +126,6 @@ func _on_area_attack_body_entered(body: Node2D) -> void:
 		set_area_mode()
 		if !secondFase:
 			set_long_mode() 
-			
-		try_attack()
 
 func _on_area_attack_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -155,23 +152,17 @@ func _on_reacalculate_postion_timeout() -> void:
 
 func _on_coldown_bassic_timeout() -> void:
 	can_attack = true
-	if bassic_attack:
-		try_attack()
-	else:
+	if !bassic_attack:
 		state_machine.change_to("follow")
 
 func _on_coldown_area_timeout() -> void:
 	can_attack = true
-	if attack_area:
-		try_attack()
-	else:
+	if !attack_area:
 		state_machine.change_to("follow")
 
 func _on_coldown_long_timeout() -> void:
 	can_attack = true
-	if long_attack:
-		try_attack()
-	else:
+	if !long_attack:
 		state_machine.change_to("follow")
 
 func _on_timer_patrol_timeout() -> void:

@@ -286,7 +286,7 @@ tile_map_data = PackedByteArray("AAALAP//AAAEAAkAAAAEAAwAAAABAAkAAAAYAAcAAAADAAg
 tile_set = SubResource("TileSet_hc7kf")
 
 [node name="Player" parent="." instance=ExtResource("2_kwx0b")]
-position = Vector2(283, 22)
+position = Vector2(705, 204)
 
 [node name="weaponits" type="Node2D" parent="."]
 

@@ -18,7 +18,6 @@ func _do_attack() -> void:
 	projectile.global_position = hummer.global_position
 	projectile.target = hummer.target
 	projectile.damage = hummer.attack
-	projectile.knockback_force = hummer.knockback_force
 
 	hummer.get_tree().current_scene.add_child(projectile)
 
