@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhekcwy7lbaqi"
-path="res://.godot/imported/green_cave_decorations-Sheet.png-05ad934ca1f5762cdc5d95120a30c997.ctex"
+uid="uid://dpdanigrb6tjs"
+path="res://.godot/imported/chipi_bolt-Sheet.png-b44c7025059e53eb4a87723f6963ad26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/green_cave_decorations-Sheet.png"
-dest_files=["res://.godot/imported/green_cave_decorations-Sheet.png-05ad934ca1f5762cdc5d95120a30c997.ctex"]
+source_file="res://assets/enemies/chipi/chipi_bolt-Sheet.png"
+dest_files=["res://.godot/imported/chipi_bolt-Sheet.png-b44c7025059e53eb4a87723f6963ad26.ctex"]
 
 [params]
 

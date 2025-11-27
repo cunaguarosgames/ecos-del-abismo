@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6sximy5pa287"
-path="res://.godot/imported/green_cave_decorations.png-d6d024ce1f25081268860b9ea894d8bb.ctex"
+uid="uid://dmurf5aj7sjx2"
+path="res://.godot/imported/brutalon_rock-Sheet.png-1d20b8861022c7c65521ac417da2f053.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/green_cave_decorations.png"
-dest_files=["res://.godot/imported/green_cave_decorations.png-d6d024ce1f25081268860b9ea894d8bb.ctex"]
+source_file="res://assets/enemies/brutalon/brutalon_rock-Sheet.png"
+dest_files=["res://.godot/imported/brutalon_rock-Sheet.png-1d20b8861022c7c65521ac417da2f053.ctex"]
 
 [params]
 

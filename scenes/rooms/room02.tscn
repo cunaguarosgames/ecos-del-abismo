@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://c372fhqtpfave"]
 
 [ext_resource type="Script" uid="uid://baixfa7hv3u7w" path="res://scripts/room.gd" id="1_3ixtf"]
-[ext_resource type="TileSet" uid="uid://bs0kfd54mp5gc" path="res://assets/tilesets/green_cave.tres" id="2_g34pv"]
+[ext_resource type="TileSet" uid="uid://bs0kfd54mp5gc" path="res://assets/tilesets/violet_cave.tres" id="2_g34pv"]
 [ext_resource type="PackedScene" uid="uid://b13m41wgajs2q" path="res://scenes/scene_changer.tscn" id="3_g77wn"]
 [ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player/player.tscn" id="4_g34pv"]
 [ext_resource type="PackedScene" uid="uid://b8dq7fkgqf8ih" path="res://scenes/enemies/stalker/stalker.tscn" id="5_g77wn"]

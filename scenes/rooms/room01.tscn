@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://rp5d3d4beoqu"]
 
-[ext_resource type="TileSet" uid="uid://bs0kfd54mp5gc" path="res://assets/tilesets/green_cave.tres" id="1_p0kjd"]
+[ext_resource type="TileSet" uid="uid://bs0kfd54mp5gc" path="res://assets/tilesets/violet_cave.tres" id="1_p0kjd"]
 [ext_resource type="Script" uid="uid://baixfa7hv3u7w" path="res://scripts/room.gd" id="1_v6huw"]
 [ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player/player.tscn" id="3_c3gwq"]
 [ext_resource type="PackedScene" uid="uid://b13m41wgajs2q" path="res://scenes/scene_changer.tscn" id="4_37akc"]

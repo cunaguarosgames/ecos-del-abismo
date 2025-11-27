@@ -112,7 +112,6 @@ func add_primary_skill(skill_name: String) -> void:
 	GameState.game_data.primary_skills_list = primary_skills_list
 	GameState.save_game()
 
-
 func add_secondary_skill(skill_name: String) -> void:
 	if skill_name in secondary_skills_list:
 		return
