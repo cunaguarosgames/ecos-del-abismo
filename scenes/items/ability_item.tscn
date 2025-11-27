@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://c1gtu2qljlqey" path="res://shaders/color_shaders/color_swap.gdshader" id="2_p7lhc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7lhc"]
+radius = 8.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0j4jv"]
 shader = ExtResource("2_p7lhc")

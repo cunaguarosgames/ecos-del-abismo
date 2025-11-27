@@ -15,4 +15,9 @@ func on_physics_process(_delta: float) -> void:
 		tween.tween_property(chipi, "modulate:a", 0.0, 0.3)
 
 		await tween.finished
+		
+		var health = preload("res://scenes/items/health_item.tscn").instantiate()
+		health.global_position = chipi.global_position
+		get_parent().get_parent().get_parent().add_child(health)
+		
 		chipi.queue_free()

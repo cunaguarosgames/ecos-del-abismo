@@ -120,3 +120,10 @@ func add_secondary_skill(skill_name: String) -> void:
 	
 	GameState.game_data.secondary_skills_list = secondary_skills_list
 	GameState.save_game()
+
+func health_player(amount: float):
+	if dead == false:
+		current_health += amount
+		if current_health >= max_health:
+			current_health = max_health
+		update_health()

@@ -49,6 +49,7 @@ func _do_damage() -> void:
 			return
 		if body.is_in_group(target) and body.has_method("take_damage"):
 			body.take_damage(damage, global_position, 200)
+			queue_free()
 
 func _set_color(idx: int, new_color: Color) -> void:
 	var mat: ShaderMaterial = animated_sprite_2d.material
