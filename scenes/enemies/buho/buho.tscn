@@ -677,10 +677,11 @@ navigation = NodePath("NavigationAgent2D")
 state_machine = NodePath("StateMachine")
 
 [node name="Area_attack" type="AnimatedSprite2D" parent="."]
-position = Vector2(4, -4.2500043)
-scale = Vector2(2.53125, 2.5703125)
+position = Vector2(5.7499976, -8.124998)
+scale = Vector2(2.8828125, 2.9648438)
 sprite_frames = SubResource("SpriteFrames_bjbhs")
-frame_progress = 0.74654526
+frame = 6
+frame_progress = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3r3b0")
