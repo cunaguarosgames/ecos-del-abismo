@@ -1,10 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctgum4n55lqap"]
+[gd_scene load_steps=15 format=3 uid="uid://ctgum4n55lqap"]
 
 [ext_resource type="Script" uid="uid://bgrofqcnw2luk" path="res://scripts/enemies/brutalon/attacks/brutalon_rock.gd" id="1_wroes"]
+[ext_resource type="Shader" uid="uid://c1gtu2qljlqey" path="res://shaders/color_shaders/color_swap.gdshader" id="2_6wgm4"]
 [ext_resource type="Texture2D" uid="uid://dmurf5aj7sjx2" path="res://assets/enemies/brutalon/brutalon_rock-Sheet.png" id="2_wroes"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wroes"]
 radius = 11.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8kbyd"]
+shader = ExtResource("2_6wgm4")
+shader_parameter/from_palette = PackedColorArray(0.9607843, 0.96862745, 0.98039216, 1, 0.6509804, 0.68235296, 0.7294118, 1, 0.3828, 0.40568, 0.44, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/to_palette = PackedColorArray(0.7416668, 0, 0.89, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/palette_size = 8
+shader_parameter/tolerance = 0.01
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6wgm4"]
 atlas = ExtResource("2_wroes")
@@ -84,6 +92,7 @@ script = ExtResource("1_wroes")
 shape = SubResource("CircleShape2D_wroes")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_8kbyd")
 sprite_frames = SubResource("SpriteFrames_qycii")
 animation = &"explode"
 autoplay = "default"

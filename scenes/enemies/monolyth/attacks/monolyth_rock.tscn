@@ -1,57 +1,65 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctgum4n55lqap"]
+[gd_scene load_steps=15 format=3 uid="uid://chtd572hjpi8e"]
 
-[ext_resource type="Script" uid="uid://bgrofqcnw2luk" path="res://scripts/enemies/brutalon/attacks/brutalon_rock.gd" id="1_wroes"]
-[ext_resource type="Texture2D" uid="uid://dmurf5aj7sjx2" path="res://assets/enemies/brutalon/brutalon_rock-Sheet.png" id="2_wroes"]
+[ext_resource type="Script" uid="uid://dkd0gtggq3suc" path="res://scripts/enemies/monolyth/attacks/monolyth_rock.gd" id="1_liywg"]
+[ext_resource type="Shader" uid="uid://c1gtu2qljlqey" path="res://shaders/color_shaders/color_swap.gdshader" id="2_ubao8"]
+[ext_resource type="Texture2D" uid="uid://jhk1w0mrpme4" path="res://assets/enemies/monolyth/monolyth_rock-Sheet.png" id="3_ubao8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wroes"]
 radius = 11.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6wgm4"]
-atlas = ExtResource("2_wroes")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkmk5"]
+shader = ExtResource("2_ubao8")
+shader_parameter/from_palette = PackedColorArray(0.9607843, 0.96862745, 0.98039216, 1, 0.6509804, 0.68235296, 0.7294118, 1, 0.38431373, 0.40784314, 0.44313726, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/to_palette = PackedColorArray(0.76, 0, 0.67133325, 1, 0, 0, 0, 1, 0, 0.57491416, 0.24195617, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/palette_size = 8
+shader_parameter/tolerance = 0.01
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkmk5"]
+atlas = ExtResource("3_ubao8")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8kbyd"]
-atlas = ExtResource("2_wroes")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8i6h4"]
+atlas = ExtResource("3_ubao8")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q6coq"]
-atlas = ExtResource("2_wroes")
+[sub_resource type="AtlasTexture" id="AtlasTexture_x281b"]
+atlas = ExtResource("3_ubao8")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7iie2"]
-atlas = ExtResource("2_wroes")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrtvr"]
+atlas = ExtResource("3_ubao8")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8te6h"]
-atlas = ExtResource("2_wroes")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tejeg"]
+atlas = ExtResource("3_ubao8")
 region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d830l"]
-atlas = ExtResource("2_wroes")
+[sub_resource type="AtlasTexture" id="AtlasTexture_84k48"]
+atlas = ExtResource("3_ubao8")
 region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_laehk"]
-atlas = ExtResource("2_wroes")
+[sub_resource type="AtlasTexture" id="AtlasTexture_thf1b"]
+atlas = ExtResource("3_ubao8")
 region = Rect2(64, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qew53"]
-atlas = ExtResource("2_wroes")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tn6o"]
+atlas = ExtResource("3_ubao8")
 region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qycii"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6wgm4")
+"texture": SubResource("AtlasTexture_fkmk5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8kbyd")
+"texture": SubResource("AtlasTexture_8i6h4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q6coq")
+"texture": SubResource("AtlasTexture_x281b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7iie2")
+"texture": SubResource("AtlasTexture_xrtvr")
 }],
 "loop": true,
 "name": &"default",
@@ -59,31 +67,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8te6h")
+"texture": SubResource("AtlasTexture_tejeg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d830l")
+"texture": SubResource("AtlasTexture_84k48")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_laehk")
+"texture": SubResource("AtlasTexture_thf1b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qew53")
+"texture": SubResource("AtlasTexture_5tn6o")
 }],
 "loop": false,
 "name": &"explode",
 "speed": 8.0
 }]
 
-[node name="BrutalionRock" type="Area2D"]
+[node name="MonolythRock" type="Area2D"]
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_wroes")
+script = ExtResource("1_liywg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wroes")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_fkmk5")
 sprite_frames = SubResource("SpriteFrames_qycii")
 animation = &"explode"
 autoplay = "default"

@@ -2,13 +2,12 @@ extends Area2D
 
 @export var damage: int = 20
 @export var target: String = "player"
-@export var new_gravity: float = 1000.0
-@export var apex_height: float = 80.0
+@export var fall_height: float = 180.0
+@export var fall_speed: float = 450.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var target_position: Vector2
-var velocity: Vector2
 var has_exploded := false
 
 func _ready() -> void:
@@ -17,10 +16,12 @@ func _ready() -> void:
 
 	var new_color = Color.from_hsv(randf(), randf_range(0.5, 1.0), randf_range(0.9, 1.0))
 	_set_color(0, new_color)
-	new_color.v = 0.5
+	new_color.v = 0.8
 	_set_color(1, new_color)
+	new_color.v = 0.5
+	_set_color(2, new_color)
 
-	_calculate_arc()
+	global_position = target_position + Vector2(0, -fall_height)
 
 func _physics_process(delta: float) -> void:
 	if has_exploded:
@@ -33,13 +34,14 @@ func _physics_process(delta: float) -> void:
 	if has_exploded:
 		return
 
-	velocity.y += new_gravity * delta
-	position += velocity * delta
+	global_position.y += fall_speed * delta
 
-	if global_position.y >= target_position.y and velocity.y > 0 and not has_exploded:
+	if global_position.y >= target_position.y:
 		explode()
 
 func explode() -> void:
+	if has_exploded:
+		return
 	has_exploded = true
 	animated_sprite_2d.play("explode")
 
@@ -58,11 +60,3 @@ func _set_color(idx: int, new_color: Color) -> void:
 		if idx >= 0 and idx < colors.size():
 			colors[idx] = new_color
 			mat.set_shader_parameter("to_palette", colors)
-
-func _calculate_arc() -> void:
-	var displacement := target_position - global_position
-	var height : float = apex_height + abs(displacement.x) * 0.3
-	var vy := -sqrt(2 * new_gravity * height)
-	var t := (vy * -1 + sqrt(vy * vy + 2 * new_gravity * (height + displacement.y))) / new_gravity
-	var vx := displacement.x / t
-	velocity = Vector2(vx, vy)

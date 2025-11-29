@@ -1,10 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctgum4n55lqap"]
+[gd_scene load_steps=15 format=3 uid="uid://ctgum4n55lqap"]
 
 [ext_resource type="Script" uid="uid://dba3jd4hw2ipn" path="res://scripts/enemies/chipi/attacks/chipi_bolt.gd" id="1_d55ou"]
 [ext_resource type="Texture2D" uid="uid://dpdanigrb6tjs" path="res://assets/enemies/chipi/chipi_bolt-Sheet.png" id="2_4hrel"]
+[ext_resource type="Shader" uid="uid://c1gtu2qljlqey" path="res://shaders/color_shaders/color_swap.gdshader" id="2_vvhat"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4hrel"]
 size = Vector2(16, 4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bwtco"]
+shader = ExtResource("2_vvhat")
+shader_parameter/from_palette = PackedColorArray(0.9607843, 0.96862745, 0.98039216, 1, 0.6509804, 0.68235296, 0.7294118, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/to_palette = PackedColorArray(0.84, 0, 0.7559997, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/palette_size = 8
+shader_parameter/tolerance = 0.01
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vvhat"]
 atlas = ExtResource("2_4hrel")
@@ -79,9 +87,10 @@ script = ExtResource("1_d55ou")
 shape = SubResource("RectangleShape2D_4hrel")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_bwtco")
 sprite_frames = SubResource("SpriteFrames_qycii")
 autoplay = "default"
-frame = 7
-frame_progress = 0.108160384
+frame = 3
+frame_progress = 0.9935804
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

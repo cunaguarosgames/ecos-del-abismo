@@ -14,7 +14,7 @@
 radius = 300.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xcxjf"]
-radius = 24.186773
+radius = 20.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_74u3y"]
 shader = ExtResource("2_871p7")

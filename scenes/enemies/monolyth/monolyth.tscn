@@ -1,6 +1,7 @@
-[gd_scene load_steps=44 format=3 uid="uid://b6dp20mhrg7o4"]
+[gd_scene load_steps=46 format=3 uid="uid://b6dp20mhrg7o4"]
 
 [ext_resource type="Script" uid="uid://du8lmsac55bu7" path="res://scripts/enemies/monolyth/monolyth.gd" id="1_bt33s"]
+[ext_resource type="Shader" uid="uid://vm8nqmx1mwj3" path="res://shaders/outline_glow.gdshader" id="2_5kjc3"]
 [ext_resource type="Texture2D" uid="uid://d1t7kk6n812q4" path="res://assets/enemies/monolyth/monolyth-Sheet.png" id="2_wmysg"]
 [ext_resource type="PackedScene" uid="uid://bby62dq4wl7n7" path="res://utils/state_machine/state_machine.tscn" id="3_tj7aa"]
 [ext_resource type="Script" uid="uid://bwt58n7d6jqch" path="res://scripts/enemies/monolyth/states/idle.gd" id="4_tk8v1"]
@@ -14,11 +15,17 @@
 [ext_resource type="Script" uid="uid://exqr84e3gxt7" path="res://scripts/enemies/monolyth/chasing_2.gd" id="12_ivqwv"]
 [ext_resource type="Script" uid="uid://djlclq8pbg6ow" path="res://scripts/enemies/monolyth/attack_2.gd" id="13_sfggo"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4rfyx"]
-radius = 300.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5kjc3"]
+size = Vector2(1000, 1000)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xcxjf"]
 radius = 24.186773
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdjlb"]
+shader = ExtResource("2_5kjc3")
+shader_parameter/outline_size = 0.0
+shader_parameter/outline_color = Color(1, 1, 0.4, 1)
+shader_parameter/glow_strength = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bt33s"]
 atlas = ExtResource("2_wmysg")
@@ -262,12 +269,13 @@ script = ExtResource("1_bt33s")
 [node name="DetectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_4rfyx")
+shape = SubResource("RectangleShape2D_5kjc3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xcxjf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_kdjlb")
 sprite_frames = SubResource("SpriteFrames_aaqrg")
 animation = &"attack2"
 autoplay = "idle"

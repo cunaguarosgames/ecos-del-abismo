@@ -29,7 +29,7 @@ func on_physics_process(delta: float) -> void:
 	player.direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	player.direction = player.direction.normalized()
 
-	player.velocity = player.direction * (player.speed / 1.25)
+	player.velocity = player.direction * (player.speed)
 	player.move_and_slide()
 
 func end():

@@ -9,8 +9,8 @@ class_name Monolyth extends CharacterBody2D
 @onready var progress_bar: ProgressBar = $HealthBar
 @onready var state_machine: StateMachine = $StateMachine
 
-var current_health: float = 30.0
-var max_health: float = 30.0
+var max_health: float = 100.0
+var current_health: float = max_health
 var dead: bool = false
 var invulnerable: bool = false
 
@@ -45,7 +45,7 @@ func take_damage(amount: float, hit_from: Vector2 = global_position, force: floa
 	if invulnerable: return
 	current_health -= amount
 	update_health()
-	
+	force = 0
 	if not hit_from == global_position:
 		var dir := (global_position - hit_from).normalized()
 		velocity = dir * force
