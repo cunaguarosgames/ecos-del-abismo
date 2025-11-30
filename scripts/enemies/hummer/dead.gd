@@ -2,6 +2,7 @@ extends hummerStateBase
 
 func _on_death(): 
 	var random_chance = randi_range(1, 100)
+	print(random_chance)
 	if random_chance <= 20:
 		var health = preload("res://scenes/items/health_item.tscn").instantiate()
 		health.global_position = hummer.global_position

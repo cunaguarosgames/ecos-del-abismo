@@ -30,15 +30,18 @@ tile_set = ExtResource("1_6x3t6")
 navigation_polygon = SubResource("NavigationPolygon_7dhm0")
 
 [node name="Player" parent="." instance=ExtResource("2_topig")]
+visible = false
 position = Vector2(56, 50)
 
 [node name="Chipi" parent="." instance=ExtResource("3_e6iyv")]
+visible = false
 position = Vector2(1104, 56)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_7dhm0")
 
 [node name="SpawnPoints" type="Node2D" parent="."]
+visible = false
 
 [node name="Door202" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(401, 595)
@@ -55,4 +58,5 @@ position = Vector2(1620, 48)
 scene = "uid://bf5vlnwqfsm11"
 
 [node name="Brutalon" parent="." instance=ExtResource("7_mxtna")]
+visible = false
 position = Vector2(584, 152)
