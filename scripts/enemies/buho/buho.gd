@@ -1,6 +1,8 @@
 class_name buho
 extends enemyBase
 
+signal enemigo_derrotado
+
 @onready var coldown_basic = $timers/coldown_bassic
 @onready var coldown_area = $timers/coldown_area
 @onready var coldown_long = $timers/coldown_long

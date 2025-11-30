@@ -365,10 +365,18 @@ position = Vector2(782, -199)
 tile_map_data = PackedByteArray("AAAkAPX/AAAGAAYAAAAkAPb/AAAGAAcAAAAiAOf/AAAGAAYAAAAiAOj/AAAGAAcAAAAjAOf/AAAFAAcAAGAjAOj/AAAFAAcAAFAkAOf/AAAFAAcAAGAkAOj/AAAFAAcAAFAlAOf/AAAFAAcAAGAlAOj/AAAFAAcAAFAmAOf/AAAHAAYAAAAmAOj/AAAHAAcAAAAQAP7/AAAEAAcAAFAQAAEAAAAHAAsAAAA9AOj/AAAHAAsAAAAXAPn/AAAHAAsAAAABAAcAAAAHAAsAAAAPAAcAAAADAAgAAAAPAAgAAAADAAkAAAAhAPj/AAABAAkAAAAiAOr/AAAEAAkAAAA8AO3/AAADAAoAAAAkAPf/AAAAAAoAAAAaAAEAAAACAAoAAAAAAAgAAAACAAoAAAAAAAEAAAAGAAsAAAAWAPX/AAAGAAsAAAAbAOz/AAAGAAsAAAAnAOf/AAAFAAsAADAGAP7/AAACAAsAAAA8AOb/AAABAAsAAAAHAAAAAAAHAAsAAAA=")
 tile_set = SubResource("TileSet_g5ssp")
 
-[node name="SceneChanger" parent="." instance=ExtResource("5_4ssin")]
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="SceneChanger" parent="SpawnPoints" instance=ExtResource("5_4ssin")]
 position = Vector2(1986, -652)
 scene = "uid://doki3gyt1yyf1"
 
-[node name="SceneChanger2" parent="." instance=ExtResource("5_4ssin")]
+[node name="SceneChanger2" parent="SpawnPoints" instance=ExtResource("5_4ssin")]
 position = Vector2(-2, 181)
 scene = "uid://cqmc1cf8i4xuk"
+
+[node name="Door1" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1971, -664)
+
+[node name="Door2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(18, 175)

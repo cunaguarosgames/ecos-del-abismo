@@ -355,7 +355,7 @@ position = Vector2(-1822, 58)
 position = Vector2(-1240, 121)
 
 [node name="babosa" parent="waypoints" instance=ExtResource("2_km8ef")]
-position = Vector2(-1062, 753)
+position = Vector2(-1162, 908)
 
 [node name="hummer" parent="waypoints" node_paths=PackedStringArray("waypoints") instance=ExtResource("2_0g03g")]
 position = Vector2(-1527, 457)
@@ -386,15 +386,23 @@ position = Vector2(-302, -863)
 tile_map_data = PackedByteArray("AAACAAcAAAAHAAsAAAD2/+3/AAADAAoAAAAEAOb/AAAHAAsAAADa//j/AAAGAAsAAADb//z/AAABAAoAAADz/wEAAAAFAAsAAAD5////AAAAAAoAAADD/wQAAAAGAAsAAADD/xYAAAADAAgAAADD/xcAAAADAAkAAADE//3/AAADAAoAAADE/xYAAAAMAAMAAGDF/xYAAAAMAAQAAGDS/xEAAAAHAAsAAADe/xUAAAACAAkAAADQ/ysAAAABAAkAAADX/yYAAAAHAAsAAADV/y0AAAAGAAYAAADV/y4AAAAGAAcAAADW/y0AAAAHAAYAAADW/y4AAAAHAAcAAADh/y4AAAAEAAcAAGAAAAAAAAAAAAsAAADD/ysAAAACAAsAAADZ//H/AAADAAsAAGDf/xUAAAAAAAsAAADi/y4AAAAFAAcAAGANAAoAAAAFAAsAAAAfAPb/AAAFAAcAAGAeAPb/AAAFAAcAAGAdAPb/AAAFAAcAAGAgAPb/AAADAAcAAFAcAPb/AAAEAAcAAGATAPz/AAAHAAsAAADH/ycAAAAHAAsAAADi/ysAAAADAAoAAADh//D/AAAEAAkAAAAQAOj/AAAEAAkAAADj/y4AAAAFAAcAAFA=")
 tile_set = SubResource("TileSet_ar6ir")
 
-[node name="SceneChanger" parent="." instance=ExtResource("6_0hwry")]
-position = Vector2(-3, 212)
-scene = "uid://bxy8is1bcaacj"
+[node name="Player" parent="." instance=ExtResource("7_nu3hr")]
+position = Vector2(67, 193)
+speed = null
+attack_cooldown = null
 
-[node name="SceneChanger2" parent="." instance=ExtResource("6_0hwry")]
+[node name="SpawPoint" type="Node2D" parent="."]
+
+[node name="door1" type="Marker2D" parent="SpawPoint"]
+position = Vector2(40, 193)
+
+[node name="door2" type="Marker2D" parent="SpawPoint"]
+position = Vector2(-1910, 1350)
+
+[node name="SceneChanger2" parent="SpawPoint" instance=ExtResource("6_0hwry")]
 position = Vector2(-1924, 1364)
 scene = "uid://doki3gyt1yyf1"
 
-[node name="Player" parent="." instance=ExtResource("7_nu3hr")]
-position = Vector2(21, 198)
-speed = null
-attack_cooldown = null
+[node name="SceneChanger" parent="SpawPoint" instance=ExtResource("6_0hwry")]
+position = Vector2(-3, 212)
+scene = "uid://bxy8is1bcaacj"
