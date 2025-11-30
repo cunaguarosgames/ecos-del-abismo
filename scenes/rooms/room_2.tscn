@@ -599,3 +599,5 @@ scene = "uid://doki3gyt1yyf1"
 
 [node name="Player" parent="." instance=ExtResource("7_nu3hr")]
 position = Vector2(21, 198)
+speed = null
+attack_cooldown = null

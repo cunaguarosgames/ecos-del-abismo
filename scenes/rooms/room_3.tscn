@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://doki3gyt1yyf1"]
+[gd_scene load_steps=14 format=4 uid="uid://doki3gyt1yyf1"]
 
 [ext_resource type="Texture2D" uid="uid://cjy64q5162xhx" path="res://assets/tilesets/tilesets-1.png" id="1_etvqs"]
 [ext_resource type="PackedScene" uid="uid://c4oj0jvyi3q2e" path="res://scenes/enemies/hummer/hummer.tscn" id="2_hfp1j"]
 [ext_resource type="PackedScene" uid="uid://do5l4v7cc41sj" path="res://scenes/enemies/babosa/babosa.tscn" id="3_d8ufh"]
 [ext_resource type="PackedScene" uid="uid://b8dq7fkgqf8ih" path="res://scenes/enemies/stalker/stalker.tscn" id="4_5bkl7"]
 [ext_resource type="PackedScene" uid="uid://dda2t67u583yv" path="res://scenes/items/babosa_item.tscn" id="5_wynrr"]
-[ext_resource type="PackedScene" uid="uid://c12w6cxfg5aym" path="res://scenes/items/ability_item.tscn" id="6_d8ufh"]
 [ext_resource type="PackedScene" uid="uid://b13m41wgajs2q" path="res://scenes/scene_changer.tscn" id="7_5bkl7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_scgta"]
@@ -570,10 +569,6 @@ position = Vector2(-1229, 3521)
 
 [node name="babosa_item2" parent="items" instance=ExtResource("5_wynrr")]
 position = Vector2(377, 2930)
-
-[node name="AbilityItem" parent="items" instance=ExtResource("6_d8ufh")]
-position = Vector2(417, 3501)
-first_color = Color(0.90683234, 0.36556464, 0.18631536, 1)
 
 [node name="SceneChanger" parent="." instance=ExtResource("7_5bkl7")]
 position = Vector2(-1315, 3381)
