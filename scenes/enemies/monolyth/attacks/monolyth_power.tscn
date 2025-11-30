@@ -1,0 +1,96 @@
+[gd_scene load_steps=15 format=3 uid="uid://dimhalmb0ua14"]
+
+[ext_resource type="Script" uid="uid://cw0ifdthi56gd" path="res://scripts/enemies/monolyth/attacks/monolyth_power.gd" id="1_axekm"]
+[ext_resource type="Shader" uid="uid://c1gtu2qljlqey" path="res://shaders/color_shaders/color_swap.gdshader" id="2_ckvx7"]
+[ext_resource type="Texture2D" uid="uid://86ejdmmop7jt" path="res://assets/enemies/monolyth/monolyth_power-Sheet.png" id="3_7a1kt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epoe1"]
+radius = 11.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_557c5"]
+shader = ExtResource("2_ckvx7")
+shader_parameter/from_palette = PackedColorArray(0.9607843, 0.96862745, 0.98039216, 1, 0.6509804, 0.68235296, 0.7294118, 1, 0.38431373, 0.40784314, 0.44313726, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/to_palette = PackedColorArray(0.76, 0, 0.67133325, 1, 0, 0, 0, 1, 0, 0.57491416, 0.24195617, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/palette_size = 8
+shader_parameter/tolerance = 0.01
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lah4"]
+atlas = ExtResource("3_7a1kt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehp86"]
+atlas = ExtResource("3_7a1kt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv25b"]
+atlas = ExtResource("3_7a1kt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfg86"]
+atlas = ExtResource("3_7a1kt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc146"]
+atlas = ExtResource("3_7a1kt")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5qdh"]
+atlas = ExtResource("3_7a1kt")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lg4m8"]
+atlas = ExtResource("3_7a1kt")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku25y"]
+atlas = ExtResource("3_7a1kt")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jykp4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lah4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehp86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv25b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfg86")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc146")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5qdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lg4m8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ku25y")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 8.0
+}]
+
+[node name="MonolythPower" type="Area2D"]
+script = ExtResource("1_axekm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_epoe1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_557c5")
+sprite_frames = SubResource("SpriteFrames_jykp4")
+animation = &"explode"
+autoplay = "default"
