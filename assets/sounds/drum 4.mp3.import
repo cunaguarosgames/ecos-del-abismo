@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ba4qutc5w6v81"
+path="res://.godot/imported/drum 4.mp3-b564c9fa522ac111acc1e5c2fb683d06.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/drum 4.mp3"
+dest_files=["res://.godot/imported/drum 4.mp3-b564c9fa522ac111acc1e5c2fb683d06.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

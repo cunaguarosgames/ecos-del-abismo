@@ -2,7 +2,8 @@ extends StalkerStateBase
 
 func start() -> void:
 	stalker.can_attack = false
-
+	if is_instance_valid(stalker.attack_sfx):
+			stalker.attack_sfx.play()
 
 	var attack = preload("res://scenes/enemies/stalker/attack_stalker.tscn").instantiate()
 	attack.global_position = stalker.global_position
