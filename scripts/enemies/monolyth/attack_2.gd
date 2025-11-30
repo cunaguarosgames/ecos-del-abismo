@@ -3,7 +3,7 @@ extends MonolythStateBase
 func start() -> void:
 	brutalon.can_attack = false
 
-	var attack = preload("res://scenes/enemies/monolyth/attacks/monolyth_rock.tscn").instantiate()
+	var attack = preload("res://scenes/enemies/monolyth/attacks/monolyth_power.tscn").instantiate()
 	attack.target_position = brutalon.player.global_position
 	attack.global_position = brutalon.global_position
 	attack.target = "player"
