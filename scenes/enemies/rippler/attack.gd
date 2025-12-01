@@ -6,7 +6,9 @@ func start() -> void:
 	if rippler.current_health <= rippler.max_health / 2 and rippler.current_health > rippler.max_health / 4 : 
 		rippler.play_main_animation("furious") 
 	if rippler.current_health <= rippler.max_health / 4: 
-		rippler.play_main_animation("afraid") 
+		rippler.play_main_animation("afraid")
+	if is_instance_valid(rippler.attack_sfx):
+		rippler.attack_sfx.play()
 	
 	var overlapping_bodies = rippler.attack_area.get_overlapping_bodies()
 	

@@ -46,5 +46,3 @@ func on_physics_process(_delta: float) -> void:
 	
 	rippler.move_and_slide()
 	
-	if rippler.can_attack_player:
-		state_machine.change_to("Attack")

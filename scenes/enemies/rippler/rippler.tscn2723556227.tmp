@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://7gldo6tb3f7i"]
+[gd_scene load_steps=47 format=3 uid="uid://7gldo6tb3f7i"]
 
 [ext_resource type="Texture2D" uid="uid://bjawcgfc2a4xs" path="res://assets/enemies/rippler/Rippler_(Deslizador)_fase1-Sheet.png" id="1_6ss21"]
 [ext_resource type="Script" uid="uid://d16oo5gaxlng6" path="res://scripts/enemies/rippler/rippler.gd" id="1_ejfr3"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://27fvenbrrgst" path="res://scenes/enemies/rippler/death.gd" id="8_0ujwi"]
 [ext_resource type="Script" uid="uid://bog6tqa5fvjud" path="res://scenes/enemies/rippler/chasing.gd" id="8_6g0m6"]
 [ext_resource type="Script" uid="uid://c5quvu0mijetp" path="res://scenes/enemies/rippler/hit.gd" id="9_6u5c8"]
-[ext_resource type="AudioStream" uid="uid://6vnu3liq51qq" path="res://assets/sounds/drum 2.mp3" id="10_rg24u"]
 [ext_resource type="Script" uid="uid://60u3c37ra6wk" path="res://scenes/enemies/rippler/attack.gd" id="10_uqmq2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1iqm"]
@@ -357,9 +356,6 @@ script = ExtResource("8_6g0m6")
 script = ExtResource("9_6u5c8")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
-[node name="AttackSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_rg24u")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
