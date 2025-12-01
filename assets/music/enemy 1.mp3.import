@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d3kf0lvkveuf3"
+path="res://.godot/imported/enemy 1.mp3-0a82ad82f8cef2546bb61426a8c82f66.mp3str"
+
+[deps]
+
+source_file="res://assets/music/enemy 1.mp3"
+dest_files=["res://.godot/imported/enemy 1.mp3-0a82ad82f8cef2546bb61426a8c82f66.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

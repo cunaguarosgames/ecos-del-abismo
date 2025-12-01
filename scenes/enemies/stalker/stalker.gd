@@ -15,7 +15,7 @@ var attack_range = 100
 @onready var detection_area: Area2D = $DetectionArea
 @onready var main_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_animation_sprite: AnimatedSprite2D = $AttackAnimationSprite
-
+@onready var attack_sfx: AudioStreamPlayer = $AttackSFX
 
 func _ready() -> void:
 	state_machine  = $StateMachine

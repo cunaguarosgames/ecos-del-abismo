@@ -21,6 +21,7 @@ func start():
 	player.animated_sprite_2d.play("dash")
 	
 	if RhythmManager.is_on_beat():
+		ComboManager.add_hit()
 		dash_speed = 300.0
 		if player.animated_sprite_2d.material:
 			var mat = player.animated_sprite_2d.material
@@ -28,6 +29,8 @@ func start():
 			var new_color = Color.from_hsv(randf(), randf_range(0.5, 1.0), randf_range(0.9, 1.0))
 			mat.set_shader_parameter("outline_color", new_color)
 			mat.set_shader_parameter("outline_size", 1.0)
+	else:
+		ComboManager.reset_combo()
 
 func on_physics_process(delta: float) -> void:
 	dash_timer -= delta

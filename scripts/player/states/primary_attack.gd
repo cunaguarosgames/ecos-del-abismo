@@ -9,7 +9,8 @@ func start():
 	attack.direction = player.last_direction
 	
 	if RhythmManager.is_on_beat():
-		attack.damage *= 2
+		ComboManager.add_hit()
+		attack.damage *= ComboManager.get_damage_multiplier()
 		if player.animated_sprite_2d.material:
 			var mat = player.animated_sprite_2d.material
 			mat.set_shader_parameter("glow_strength", 2.5)
@@ -17,7 +18,7 @@ func start():
 			mat.set_shader_parameter("outline_color", new_color)
 			mat.set_shader_parameter("outline_size", 1.0)
 	else:
-		pass
+		ComboManager.reset_combo()
 		
 	get_parent().add_child(attack)
 
