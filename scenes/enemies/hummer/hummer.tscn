@@ -304,7 +304,6 @@ wait_time = 0.5
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 40.0
-debug_enabled = true
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("default_state") instance=ExtResource("3_qpy5f")]
 default_state = NodePath("idle")
