@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dakhglygnom2k" path="res://scripts/enemies/babosa/follow.gd" id="6_4xmre"]
 [ext_resource type="Script" uid="uid://dpv2ncskfn2wr" path="res://scripts/enemies/babosa/idle.gd" id="7_23qx1"]
 [ext_resource type="Script" uid="uid://cre7ok4jrpsou" path="res://scripts/enemies/babosa/die.gd" id="8_23qx1"]
-[ext_resource type="AudioStream" uid="uid://dh8houpcahhhi" path="res://assets/sounds/drum 1.mp3" id="9_4x71a"]
+[ext_resource type="AudioStream" uid="uid://6vnu3liq51qq" path="res://assets/sounds/drum 2.mp3" id="9_4x71a"]
 [ext_resource type="Script" uid="uid://j8sjtacbtksf" path="res://scripts/enemies/babosa/attack.gd" id="9_8w6ue"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5yg1y"]
