@@ -36,6 +36,9 @@ func start_music(audio_player_node: AudioStreamPlayer):
 	beat_count = 0
 	eighth_count = 0
 
+func end_music(audio_player_node: AudioStreamPlayer):
+	audio_player_node.stop()
+
 func is_on_beat() -> bool:
 	var time_to_next = BEAT_INTERVAL - time_since_last_beat
 	return time_since_last_beat <= BEAT_WINDOW or time_to_next <= BEAT_PRE_WINDOW
