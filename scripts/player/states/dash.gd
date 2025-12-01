@@ -10,7 +10,7 @@ func start():
 	player.can_attack = false
 	player.invulnerable = true
 	dash_timer = dash_duration
-	dash_speed = 150.0
+	dash_speed = 1500.0
 	
 	dash_direction = player.direction
 	if dash_direction == Vector2.ZERO:

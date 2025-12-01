@@ -27,7 +27,7 @@ var deadzone = 0.2
 var last_direction := Vector2.RIGHT
 var can_attack: bool = true
 var max_health: float = 100
-var current_health: float = max_health
+var current_health: float = GameState.game_data.current_health
 var dead = false
 var invulnerable: bool = false
 
@@ -40,6 +40,9 @@ var secondary_skills_list: Array = GameState.game_data.secondary_skills_list
 func _ready() -> void:
 	progress_bar.max_value = max_health
 	progress_bar.value = current_health
+	
+	if animated_sprite_2d.material:
+		animated_sprite_2d.material.set_shader_parameter("glow_strength", 0.0)
 
 func update_skill_labels():
 	var index = primary_skills_list.find(current_primary_skill)

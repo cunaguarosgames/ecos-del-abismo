@@ -3,7 +3,7 @@ extends Area2D
 @export var speed: float = 200.0
 @export var arc_height: float = 200.0
 @export var fall_gravity: float = 600.0
-@export var damage: int = 20
+@export var damage: int = 8
 @export var target: String = "enemies"
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
