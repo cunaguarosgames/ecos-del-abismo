@@ -26,4 +26,7 @@ func reset_combo():
 		emit_signal("combo_reset")
 
 func get_damage_multiplier() -> float:
-	return 1.0 + (combo * 0.1)
+	var multiplier = 1.0 + (combo * 0.1)
+	if multiplier > 3.0:
+		multiplier = 3.0
+	return multiplier
