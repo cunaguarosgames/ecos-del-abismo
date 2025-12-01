@@ -8,6 +8,7 @@ extends Node2D
 @onready var audio_stream_player_boss: AudioStreamPlayer = $AudioStreamPlayer2
 @onready var doorNextLevel = $DoorToNextLevel
 @onready var Boss = $entities/buho 
+@onready var nextLevel = $SpawnPoints/Door200
 
 var bossFight = false 
 
@@ -24,6 +25,8 @@ func _ready() -> void:
 		RhythmManager.set_bpm(bpm)
 	
 	doorNextLevel.hide()
+	nextLevel.get_node("CollisionShape2D").disabled = true
+	
 	_conectar_senales()
 	
 
@@ -33,6 +36,7 @@ func _conectar_senales():
 
 func _abrir_puerta():
 	doorNextLevel.show()
+	nextLevel.get_node("CollisionShape2D").disabled = false
 
 
 func _on_detect_boss_fight_body_entered(body: Node2D) -> void:

@@ -87,11 +87,8 @@ texture_region_size = Vector2i(32, 32)
 7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 10:4/0 = 0
 11:4/0 = 0
-11:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 12:4/0 = 0
-12:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 13:4/0 = 0
-13:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 14:4/0 = 0
 15:4/0 = 0
 2:5/0 = 0
@@ -252,13 +249,10 @@ texture_region_size = Vector2i(32, 32)
 9:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 11:2/0 = 0
 11:3/0 = 0
-11:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.659384, -12.464603, -3.151968, -16, 4.8712254, -16, 12.206717, -11.146507, 16, -5.1291122, 16, 16, -16, 16, -16, -5.415655)
 12:3/0 = 0
-12:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.659384, -12.464603, -3.151968, -16, 4.8712254, -16, 12.206717, -11.146507, 16, -5.1291122, 16, 16, -16, 16, -16, -5.415655)
 13:2/0 = 0
 12:2/0 = 0
 13:3/0 = 0
-13:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 4:7/0 = 0
 4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.8596287, -16, 15.014833, -16, 14.785599, 16, -0.91693497, 16)
 4:6/0 = 0
@@ -371,6 +365,7 @@ position = Vector2(384, 268)
 [node name="buho" parent="entities" node_paths=PackedStringArray("waypoints") instance=ExtResource("5_p774s")]
 position = Vector2(2294, -249)
 waypoints = [NodePath("../../waypoints/Marker2D5"), NodePath("../../waypoints/Marker2D6"), NodePath("../../waypoints/Marker2D7"), NodePath("../../waypoints/Marker2D8"), NodePath("../../waypoints/Marker2D9"), NodePath("../../waypoints/Marker2D10")]
+max_health = 120
 
 [node name="DoorToNextLevel" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AABWAP//AAAMAAIAAABWAAAAAAAMAAMAAABXAP//AAANAAIAAABXAAAAAAANAAMAAAA=")
@@ -411,7 +406,7 @@ position = Vector2(392, 133)
 position = Vector2(2721, 0)
 
 [node name="Door200" parent="SpawnPoints" instance=ExtResource("6_c3xlp")]
-position = Vector2(2778, 18)
+position = Vector2(2781, 19)
 scene = "uid://dmyt25gmi1aki"
 
 [node name="Door7" parent="SpawnPoints" instance=ExtResource("6_c3xlp")]

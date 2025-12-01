@@ -731,25 +731,6 @@ position = Vector2(1326, 186)
 [node name="babosa_item" parent="items" instance=ExtResource("2_p8nu4")]
 position = Vector2(1219, 287)
 
-[node name="entities" type="Node2D" parent="."]
-
-[node name="hummer2" parent="entities" node_paths=PackedStringArray("waypoints") instance=ExtResource("4_aq8op")]
-position = Vector2(1110, 891)
-waypoints = [NodePath("../../waypoints/Marker2D"), NodePath("../../waypoints/Marker2D2"), NodePath("../../waypoints/Marker2D3"), NodePath("../../waypoints/Marker2D4")]
-
-[node name="babosa2" parent="entities" instance=ExtResource("3_v1x83")]
-position = Vector2(1745, 956)
-
-[node name="babosa3" parent="entities" instance=ExtResource("3_v1x83")]
-position = Vector2(538, 399)
-
-[node name="hummer" parent="entities" node_paths=PackedStringArray("waypoints") instance=ExtResource("4_aq8op")]
-position = Vector2(1271, 275)
-waypoints = [NodePath("../../waypoints/Marker2D10"), NodePath("../../waypoints/Marker2D11"), NodePath("../../waypoints/Marker2D13"), NodePath("../../waypoints/Marker2D14")]
-
-[node name="Rippler" parent="entities" instance=ExtResource("5_y5lrh")]
-position = Vector2(953, 446)
-
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="Door2" type="Marker2D" parent="SpawnPoints"]
@@ -769,8 +750,27 @@ tile_set = ExtResource("14_65yxn")
 
 [node name="decorations" type="TileMapLayer" parent="."]
 position = Vector2(0, -1)
-tile_map_data = PackedByteArray("AAAQABAAAAAGAAsAAAAUAA8AAAABAAkAAAAWAA4AAAALAAIAAAAWAA8AAAALAAMAAAAWABAAAAALAAQAAAAgAAUAAAAGAAsAAAAlAAQAAAAEAAkAAAAHAAsAAAADAAoAAAANAAsAAAAFAAsAAAAPAAgAAAADAAgAAAAPAAkAAAADAAkAAAAmACUAAAAGAAEAAAAnACUAAAAGAAEAAAAqACUAAAAGAAEAAAArACUAAAAGAAEAAAAsACUAAAAGAAEAAAAtACUAAAAGAAEAAAAuACUAAAAGAAEAAAAvACUAAAADAAoAAAAwACUAAAAGAAEAAAAxACUAAAAGAAEAAAAyACUAAAAGAAEAAAAzACUAAAAGAAEAAAA0ACUAAAAGAAEAAAA1ACUAAAAGAAEAAAA2ACUAAAAGAAEAAAAVABEAAAAFAAsAAAAYABQAAAAGAAsAAAAjABkAAAABAAkAAAAlACUAAAAGAAEAAAAoACUAAAAGAAEAAAApACUAAAAGAAEAAAAsABoAAAACAAsAAAA1ACIAAAALAAIAAAA1ACMAAAALAAMAAAA1ACQAAAALAAQAAAA4ABsAAAACAAoAAAAmACMAAAAGAAsAAAAnACMAAAABAAoAAAAeACAAAAAAAAoAAAAhAAYAAAADAAoAAAAiAAUAAAAAAAsAAAArAAUAAAAFAAsAAAAVAAsAAAABAAsAAAAGAA0AAAAGAAsAAAAJAAcAAAAAAAsAAAAOAAcAAAACAAsAAAA=")
+tile_map_data = PackedByteArray("AAAQABAAAAAGAAsAAAAUAA8AAAABAAkAAAAgAAUAAAAGAAsAAAAHAAsAAAADAAoAAAANAAsAAAAFAAsAAAAPAAgAAAADAAgAAAAPAAkAAAADAAkAAAAmACUAAAAGAAEAAAAnACUAAAAGAAEAAAAqACUAAAAGAAEAAAArACUAAAAGAAEAAAAsACUAAAAGAAEAAAAtACUAAAAGAAEAAAAuACUAAAAGAAEAAAAvACUAAAADAAoAAAAwACUAAAAGAAEAAAAxACUAAAAGAAEAAAAyACUAAAAGAAEAAAAzACUAAAAGAAEAAAA0ACUAAAAGAAEAAAA1ACUAAAAGAAEAAAA2ACUAAAAGAAEAAAAVABEAAAAFAAsAAAAYABQAAAAGAAsAAAAjABkAAAABAAkAAAAlACUAAAAGAAEAAAAoACUAAAAGAAEAAAApACUAAAAGAAEAAAAsABoAAAACAAsAAAA4ABsAAAACAAoAAAAmACMAAAAGAAsAAAAnACMAAAABAAoAAAAeACAAAAAAAAoAAAAhAAYAAAADAAoAAAAVAAsAAAABAAsAAAAGAA0AAAAGAAsAAAAJAAcAAAAAAAsAAAAOAAcAAAACAAsAAAAlAAUAAAAEAAkAAAAjAAQAAAAAAAsAAAArAAUAAAAFAAsAAAA=")
 tile_set = SubResource("TileSet_hnbyo")
+
+[node name="entities" type="Node2D" parent="."]
+
+[node name="hummer2" parent="entities" node_paths=PackedStringArray("waypoints") instance=ExtResource("4_aq8op")]
+position = Vector2(1110, 891)
+waypoints = [NodePath("../../waypoints/Marker2D"), NodePath("../../waypoints/Marker2D2"), NodePath("../../waypoints/Marker2D3"), NodePath("../../waypoints/Marker2D4")]
+
+[node name="babosa2" parent="entities" instance=ExtResource("3_v1x83")]
+position = Vector2(1745, 956)
+
+[node name="babosa3" parent="entities" instance=ExtResource("3_v1x83")]
+position = Vector2(538, 399)
+
+[node name="hummer" parent="entities" node_paths=PackedStringArray("waypoints") instance=ExtResource("4_aq8op")]
+position = Vector2(1271, 275)
+waypoints = [NodePath("../../waypoints/Marker2D10"), NodePath("../../waypoints/Marker2D11"), NodePath("../../waypoints/Marker2D13"), NodePath("../../waypoints/Marker2D14")]
+
+[node name="Rippler" parent="entities" instance=ExtResource("5_y5lrh")]
+position = Vector2(953, 446)
 
 [node name="Player" parent="." instance=ExtResource("6_v1x83")]
 position = Vector2(240, 411)
