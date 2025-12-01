@@ -12,11 +12,11 @@ func start() -> void:
 
 func on_physics_process(_delta: float) -> void:
 	if monolyth.current_health <= 0:
-		state_machine.change_to("Death")
+		state_machine.change_to("Death2")
 		return
 		
 	if not monolyth.player:
-		state_machine.change_to("Idle")
+		state_machine.change_to("Idle2")
 		return
 		
 	nav_agent.target_position = monolyth.player.global_position
@@ -26,16 +26,16 @@ func on_physics_process(_delta: float) -> void:
 	
 	if distance_to_player > stop_range:
 		if not nav_agent.is_target_reached():
-			monolyth.play_main_animation("walk")
+			monolyth.play_main_animation("walk2")
 			var next_path_position = nav_agent.get_next_path_position()
 			var direction_vector = (next_path_position - monolyth.global_position).normalized()
 			monolyth.velocity = direction_vector * (monolyth.speed * 1.25)
 			monolyth.direction = direction_vector
 		else:
-			monolyth.play_main_animation("idle")
+			monolyth.play_main_animation("idle2")
 			monolyth.velocity = Vector2.ZERO
 	else:
-		monolyth.play_main_animation("idle")
+		monolyth.play_main_animation("idle2")
 		monolyth.velocity = Vector2.ZERO
 
 	monolyth.move_and_slide()

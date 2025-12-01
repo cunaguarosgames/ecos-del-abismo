@@ -1,6 +1,6 @@
 class_name MonolythStateBase extends StateBase
 
-var brutalon:Brutalon:
+var monolyth:Monolyth:
 	set (value):
 		controlled_node = value
 	get:

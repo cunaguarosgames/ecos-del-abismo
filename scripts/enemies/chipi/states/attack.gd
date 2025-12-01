@@ -1,8 +1,11 @@
 extends ChipiStateBase
 
+@onready var attack_1: AudioStreamPlayer = $"../../Attack1"
+
 func start() -> void:
 	chipi.can_attack = false
-
+	
+	attack_1.play()
 	var base_dir := (chipi.player.global_position - chipi.global_position).normalized()
 
 	var angles = [-30, 0, 30]

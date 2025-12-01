@@ -4,6 +4,9 @@ class_name Monolyth extends CharacterBody2D
 
 @onready var attack_cooldown_timer: Timer = $AttackCooldownTimer
 @onready var attack_cooldown_timer2: Timer = $AttackCooldownTimer2
+@onready var especial_attack_cooldown_timer: Timer = $EspecialAttackCooldownTimer
+@onready var especial_attack_timer: Timer = $EspecialAttackTimer
+
 @onready var detection_area: Area2D = $DetectionArea
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var progress_bar: ProgressBar = $HealthBar
@@ -13,6 +16,7 @@ var max_health: float = 100.0
 var current_health: float = max_health
 var dead: bool = false
 var invulnerable: bool = false
+var outline_variant: String = "Light"
 
 var speed: float = 75.0
 var direction := Vector2.ZERO
@@ -111,3 +115,11 @@ func _on_beat(beat_count):
 					state_machine.change_to("Attack2")
 					return
 				state_machine.change_to("Attack")
+
+func _on_especial_attack_timeout() -> void:
+	if current_health <= 0:
+		return
+	if phase2:
+		state_machine.change_to("SpecialAttack")
+	else:
+		print("PERRO")

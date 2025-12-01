@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://b6dp20mhrg7o4"]
+[gd_scene load_steps=47 format=3 uid="uid://b6dp20mhrg7o4"]
 
 [ext_resource type="Script" uid="uid://du8lmsac55bu7" path="res://scripts/enemies/monolyth/monolyth.gd" id="1_bt33s"]
 [ext_resource type="Shader" uid="uid://vm8nqmx1mwj3" path="res://shaders/outline_glow.gdshader" id="2_5kjc3"]
@@ -9,11 +9,12 @@
 [ext_resource type="Script" uid="uid://dyruhv648oa6w" path="res://scripts/enemies/monolyth/states/hit.gd" id="6_tvui3"]
 [ext_resource type="Script" uid="uid://dgiuy8f4qo7k8" path="res://scripts/enemies/monolyth/states/chasing.gd" id="7_5kjc3"]
 [ext_resource type="Script" uid="uid://cnl1avlcoyf34" path="res://scripts/enemies/monolyth/states/attack.gd" id="8_kdjlb"]
-[ext_resource type="Script" uid="uid://cb4o6ntuteo1p" path="res://scripts/enemies/monolyth/idle_2.gd" id="9_tvui3"]
-[ext_resource type="Script" uid="uid://0w2ycsnppv16" path="res://scripts/enemies/monolyth/death_2.gd" id="10_5kjc3"]
-[ext_resource type="Script" uid="uid://5bwcxxitd7ss" path="res://scripts/enemies/monolyth/hit_2.gd" id="11_kdjlb"]
-[ext_resource type="Script" uid="uid://exqr84e3gxt7" path="res://scripts/enemies/monolyth/chasing_2.gd" id="12_ivqwv"]
-[ext_resource type="Script" uid="uid://djlclq8pbg6ow" path="res://scripts/enemies/monolyth/attack_2.gd" id="13_sfggo"]
+[ext_resource type="Script" uid="uid://cb4o6ntuteo1p" path="res://scripts/enemies/monolyth/states/idle_2.gd" id="9_tvui3"]
+[ext_resource type="Script" uid="uid://0w2ycsnppv16" path="res://scripts/enemies/monolyth/states/death_2.gd" id="10_5kjc3"]
+[ext_resource type="Script" uid="uid://5bwcxxitd7ss" path="res://scripts/enemies/monolyth/states/hit_2.gd" id="11_kdjlb"]
+[ext_resource type="Script" uid="uid://exqr84e3gxt7" path="res://scripts/enemies/monolyth/states/chasing_2.gd" id="12_ivqwv"]
+[ext_resource type="Script" uid="uid://djlclq8pbg6ow" path="res://scripts/enemies/monolyth/states/attack_2.gd" id="13_sfggo"]
+[ext_resource type="Script" uid="uid://b3nhxspydl3qh" path="res://scripts/enemies/monolyth/states/special_attack.gd" id="15_kdjlb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kjc3"]
 size = Vector2(1000, 1000)
@@ -324,11 +325,20 @@ script = ExtResource("12_ivqwv")
 [node name="Attack2" type="Node" parent="StateMachine"]
 script = ExtResource("13_sfggo")
 
+[node name="SpecialAttack" type="Node" parent="StateMachine"]
+script = ExtResource("15_kdjlb")
+
 [node name="AttackCooldownTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 
 [node name="AttackCooldownTimer2" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
+
+[node name="EspecialAttackCooldownTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="EspecialAttackTimer" type="Timer" parent="."]
+wait_time = 10.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
@@ -336,3 +346,5 @@ wait_time = 0.5
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="timeout" from="AttackCooldownTimer" to="StateMachine/Attack" method="_on_attack_cooldown_timer_timeout"]
 [connection signal="timeout" from="AttackCooldownTimer2" to="StateMachine/Attack2" method="_on_attack_cooldown_timer_2_timeout"]
+[connection signal="timeout" from="EspecialAttackCooldownTimer" to="StateMachine/SpecialAttack" method="_on_especial_attack_cooldown_timer_timeout"]
+[connection signal="timeout" from="EspecialAttackTimer" to="." method="_on_especial_attack_timeout"]
