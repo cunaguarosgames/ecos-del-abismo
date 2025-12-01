@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://pvhwmt0i4aoc"]
+[gd_scene load_steps=12 format=3 uid="uid://pvhwmt0i4aoc"]
 
 [ext_resource type="Theme" uid="uid://dqxp5peqg07kf" path="res://utils/themes/dark_theme.tres" id="1_ovrgc"]
 [ext_resource type="Script" uid="uid://w7jwuuiy64h4" path="res://scripts/menus/main_menu.gd" id="1_xqga4"]
 [ext_resource type="Texture2D" uid="uid://cqij5yjsk0b3k" path="res://assets/menu/Portada menu-Sheet.png" id="3_2o76q"]
+[ext_resource type="AudioStream" uid="uid://dbyasi1mt1luc" path="res://assets/sounds/intro.mp3" id="4_6bivr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6bivr"]
 atlas = ExtResource("3_2o76q")
@@ -115,6 +116,10 @@ text = "Reset Progress"
 [node name="Back" type="Button" parent="PanelOptions"]
 layout_mode = 2
 text = "Back"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6bivr")
+autoplay = true
 
 [connection signal="pressed" from="Panel/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Panel/Options" to="." method="_on_options_pressed"]

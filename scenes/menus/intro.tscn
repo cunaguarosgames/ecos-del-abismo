@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkl4f8ygh72c7"]
+
+[ext_resource type="Script" uid="uid://qfboydwhgs4l" path="res://scripts/intro.gd" id="1_1a7bk"]
+[ext_resource type="Texture2D" uid="uid://dc80x4tws087b" path="res://assets/cunaguaros_games.png" id="1_wvanu"]
+
+[node name="Intro" type="CanvasLayer"]
+script = ExtResource("1_1a7bk")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CunaguarosGames" type="Sprite2D" parent="."]
+position = Vector2(322.00003, 174.00002)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_wvanu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
