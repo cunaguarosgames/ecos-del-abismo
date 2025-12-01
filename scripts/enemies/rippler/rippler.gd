@@ -18,6 +18,7 @@ var can_attack_player: Node2D = null
 @onready var detection_area: Area2D = $DetectionArea
 @onready var main_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_animation_sprite: AnimatedSprite2D = $AttackAnimationSprite
+@onready var attack_sfx: AudioStreamPlayer = $AttackSFX
 
 
 func _ready() -> void:
@@ -32,7 +33,7 @@ func _ready() -> void:
 	main_sprite.animation_finished.connect(_on_main_sprite_animation_finished)
 
 	attack_animation_sprite.hide()
-
+	RhythmManager.connect("beat_signal", Callable(self, "_on_beat"))
 
 
 func _physics_process(_delta: float) -> void:
@@ -93,3 +94,13 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 func _on_attack_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		can_attack_player = null
+
+func _on_beat(beat_count):
+	if current_health <= 0:
+		return
+	
+	if state_machine.current_state.name == "Chasing":
+		if player and can_attack:
+			var distance_to_player = global_position.distance_to(player.global_position)
+			if can_attack_player:
+				state_machine.change_to("Attack")
