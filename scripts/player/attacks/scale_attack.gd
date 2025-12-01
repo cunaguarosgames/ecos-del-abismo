@@ -2,7 +2,7 @@ extends Area2D
 
 @export var speed: float = 120.0
 @export var lifetime: float = 1.0
-@export var damage: int = 5000
+@export var damage: int = 5
 @export var target: String = "enemies"
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D

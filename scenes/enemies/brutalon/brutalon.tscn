@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://f5554vbyk0bi"]
+[gd_scene load_steps=36 format=3 uid="uid://f5554vbyk0bi"]
 
 [ext_resource type="Script" uid="uid://bqthhc4jpiijy" path="res://scripts/enemies/brutalon/brutalon.gd" id="1_7xda2"]
 [ext_resource type="Texture2D" uid="uid://b6rpbopskqonb" path="res://assets/enemies/brutalon/Brutalon-Sheet.png" id="2_7xda2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://kkq853qkp6eg" path="res://scripts/enemies/brutalon/states/hit.gd" id="6_74u3y"]
 [ext_resource type="Script" uid="uid://dge4wb0nau8jw" path="res://scripts/enemies/brutalon/states/chasing.gd" id="7_dcv05"]
 [ext_resource type="Script" uid="uid://d2nmm2esa3xow" path="res://scripts/enemies/brutalon/states/attack.gd" id="8_i7drp"]
+[ext_resource type="AudioStream" uid="uid://dh8houpcahhhi" path="res://assets/sounds/drum 1.mp3" id="10_74u3y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4rfyx"]
 radius = 300.0
@@ -240,6 +241,9 @@ script = ExtResource("8_i7drp")
 wait_time = 0.5
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Attack1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_74u3y")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

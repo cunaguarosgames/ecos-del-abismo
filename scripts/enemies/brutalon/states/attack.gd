@@ -1,8 +1,11 @@
 extends BrutalonStateBase
 
+@onready var attack_1: AudioStreamPlayer = $"../../Attack1"
+
 func start() -> void:
 	brutalon.can_attack = false
-
+	
+	attack_1.play()
 	var attack = preload("res://scenes/enemies/brutalon/attacks/brutalon_rock.tscn").instantiate()
 	attack.target_position = brutalon.player.global_position
 	attack.global_position = brutalon.global_position

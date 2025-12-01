@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cdftfwvuivjk8"]
+[gd_scene load_steps=33 format=3 uid="uid://cdftfwvuivjk8"]
 
 [ext_resource type="Script" uid="uid://cb0a14d14ouv4" path="res://scripts/enemies/chipi/chipi.gd" id="1_483to"]
 [ext_resource type="Texture2D" uid="uid://du0lk66o2csw5" path="res://assets/enemies/chipi/Chipi-Sheet.png" id="2_l8h2q"]
@@ -9,9 +9,7 @@
 [ext_resource type="Script" uid="uid://8pt3eg0gwd0d" path="res://scripts/enemies/chipi/states/hit.gd" id="6_xcxjf"]
 [ext_resource type="Script" uid="uid://c22cdfcallwik" path="res://scripts/enemies/chipi/states/chasing.gd" id="7_gm72t"]
 [ext_resource type="Script" uid="uid://brbqoj14prd3t" path="res://scripts/enemies/chipi/states/attack.gd" id="8_0k331"]
-[ext_resource type="AudioStream" uid="uid://ba4qutc5w6v81" path="res://assets/sounds/drum 4.mp3" id="10_aaqrg"]
 [ext_resource type="AudioStream" uid="uid://6vnu3liq51qq" path="res://assets/sounds/drum 2.mp3" id="11_15uea"]
-[ext_resource type="AudioStream" uid="uid://ep3h3woecrjx" path="res://assets/sounds/drum 3.mp3" id="12_adyja"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4rfyx"]
 radius = 300.0
@@ -223,13 +221,7 @@ wait_time = 0.3
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="Attack1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_aaqrg")
-
-[node name="Attack2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_15uea")
-
-[node name="Attack3" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_adyja")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
