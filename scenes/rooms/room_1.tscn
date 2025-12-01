@@ -140,6 +140,7 @@ texture_region_size = Vector2i(32, 32)
 15:7/0 = 0
 2:8/0 = 0
 3:8/0 = 0
+3:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.6372528, -13.382491, 4.4608307, -16, 7.3285065, -5.4167223, 7.3285065, 16, -2.230423, 16)
 4:8/0 = 0
 5:8/0 = 0
 6:8/0 = 0
@@ -757,10 +758,6 @@ waypoints = [NodePath("../../waypoints/Marker2D10"), NodePath("../../waypoints/M
 [node name="Rippler" parent="entities" instance=ExtResource("5_y5lrh")]
 position = Vector2(953, 446)
 
-[node name="Player" parent="entities" instance=ExtResource("6_v1x83")]
-visible = false
-position = Vector2(327, 452)
-
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="door1" type="Marker2D" parent="SpawnPoints"]
@@ -782,6 +779,9 @@ tile_set = ExtResource("14_65yxn")
 position = Vector2(0, -1)
 tile_map_data = PackedByteArray("AAAQABAAAAAGAAsAAAAUAA8AAAABAAkAAAAWAA4AAAALAAIAAAAWAA8AAAALAAMAAAAWABAAAAALAAQAAAAgAAUAAAAGAAsAAAAlAAQAAAAEAAkAAAAHAAsAAAADAAoAAAANAAsAAAAFAAsAAAAPAAgAAAADAAgAAAAPAAkAAAADAAkAAAAmACUAAAAGAAEAAAAnACUAAAAGAAEAAAAqACUAAAAGAAEAAAArACUAAAAGAAEAAAAsACUAAAAGAAEAAAAtACUAAAAGAAEAAAAuACUAAAAGAAEAAAAvACUAAAADAAoAAAAwACUAAAAGAAEAAAAxACUAAAAGAAEAAAAyACUAAAAGAAEAAAAzACUAAAAGAAEAAAA0ACUAAAAGAAEAAAA1ACUAAAAGAAEAAAA2ACUAAAAGAAEAAAAVABEAAAAFAAsAAAAYABQAAAAGAAsAAAAjABkAAAABAAkAAAAlACUAAAAGAAEAAAAoACUAAAAGAAEAAAApACUAAAAGAAEAAAAsABoAAAACAAsAAAA1ACIAAAALAAIAAAA1ACMAAAALAAMAAAA1ACQAAAALAAQAAAA4ABsAAAACAAoAAAAmACMAAAAGAAsAAAAnACMAAAABAAoAAAAeACAAAAAAAAoAAAAhAAYAAAADAAoAAAAiAAUAAAAAAAsAAAArAAUAAAAFAAsAAAAVAAsAAAABAAsAAAAGAA0AAAAGAAsAAAAJAAcAAAAAAAsAAAAOAAcAAAACAAsAAAA=")
 tile_set = SubResource("TileSet_hnbyo")
+
+[node name="Player" parent="." instance=ExtResource("6_v1x83")]
+position = Vector2(240, 411)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_wtcj1")

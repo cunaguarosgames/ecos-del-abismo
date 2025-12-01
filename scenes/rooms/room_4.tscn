@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://in0web2htd1o"]
+[gd_scene load_steps=17 format=4 uid="uid://in0web2htd1o"]
 
 [ext_resource type="Texture2D" uid="uid://cjy64q5162xhx" path="res://assets/tilesets/tilesets-1.png" id="1_2f6pe"]
 [ext_resource type="Script" uid="uid://baixfa7hv3u7w" path="res://scripts/room.gd" id="1_tfhis"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://do5l4v7cc41sj" path="res://scenes/enemies/babosa/babosa.tscn" id="3_4ssin"]
 [ext_resource type="PackedScene" uid="uid://c4oj0jvyi3q2e" path="res://scenes/enemies/hummer/hummer.tscn" id="4_nvm38"]
 [ext_resource type="PackedScene" uid="uid://b13m41wgajs2q" path="res://scenes/scene_changer.tscn" id="5_4ssin"]
+[ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player/player.tscn" id="6_u3c8f"]
 [ext_resource type="AudioStream" uid="uid://bcav124cblpot" path="res://assets/music/dark-electro-pop-music-no-copyright-426158.mp3" id="7_53ou7"]
 [ext_resource type="TileSet" uid="uid://b56nqxyxljih5" path="res://assets/tilesets/water.tres" id="7_u3c8f"]
 
@@ -133,6 +134,7 @@ texture_region_size = Vector2i(32, 32)
 15:7/0 = 0
 2:8/0 = 0
 3:8/0 = 0
+3:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.63726807, -13.382492, 4.1625443, -14.416628, 7.918995, -7.0052624, 7.8174667, 16, -2.2304077, 16)
 4:8/0 = 0
 5:8/0 = 0
 6:8/0 = 0
@@ -375,6 +377,9 @@ tile_set = ExtResource("7_u3c8f")
 tile_map_data = PackedByteArray("AAAQAAEAAAAHAAsAAAAXAPn/AAAHAAsAAAAhAPj/AAABAAkAAAAkAPf/AAAAAAoAAAAWAPX/AAAGAAsAAAAHAAAAAAAHAAsAAAAiAO3/AAAEAAkAAAAtAOv/AAAFAAsAADA1AO3/AAADAAoAAAAzAOr/AAABAAsAAAA0AOz/AAAHAAsAAAAbAO//AAAGAAsAAAAGAAQAAAAHAAsAAAAHAAUAAAACAAoAAAARAAQAAAADAAgAAAARAAUAAAADAAkAAAAGAPz/AAAGAAsAAAALAPv/AAACAAsAAAAWAP7/AAACAAoAAAA=")
 tile_set = SubResource("TileSet_g5ssp")
 
+[node name="Player" parent="." instance=ExtResource("6_u3c8f")]
+position = Vector2(1698, -533)
+
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="SceneChanger" parent="SpawnPoints" instance=ExtResource("5_4ssin")]
@@ -386,7 +391,7 @@ position = Vector2(192, 84)
 scene = "uid://cqmc1cf8i4xuk"
 
 [node name="Door1" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(1705, -540)
+position = Vector2(1703, -533)
 
 [node name="Door2" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(240, 53)

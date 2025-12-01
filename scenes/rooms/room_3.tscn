@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://doki3gyt1yyf1"]
+[gd_scene load_steps=20 format=4 uid="uid://doki3gyt1yyf1"]
 
 [ext_resource type="Script" uid="uid://baixfa7hv3u7w" path="res://scripts/room.gd" id="1_8h8r0"]
 [ext_resource type="Texture2D" uid="uid://cjy64q5162xhx" path="res://assets/tilesets/tilesets-1.png" id="1_etvqs"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dda2t67u583yv" path="res://scenes/items/babosa_item.tscn" id="5_wynrr"]
 [ext_resource type="PackedScene" uid="uid://b13m41wgajs2q" path="res://scenes/scene_changer.tscn" id="7_5bkl7"]
 [ext_resource type="PackedScene" uid="uid://c12w6cxfg5aym" path="res://scenes/items/ability_item.tscn" id="7_wynrr"]
+[ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player/player.tscn" id="9_6oseh"]
 [ext_resource type="AudioStream" uid="uid://bcav124cblpot" path="res://assets/music/dark-electro-pop-music-no-copyright-426158.mp3" id="10_6lc7h"]
 [ext_resource type="TileSet" uid="uid://b56nqxyxljih5" path="res://assets/tilesets/water.tres" id="10_6oseh"]
 
@@ -397,15 +398,6 @@ waypoints = [NodePath("../../waypontis/Marker2D9"), NodePath("../../waypontis/Ma
 [node name="Rippler" parent="entities" instance=ExtResource("5_8h8r0")]
 position = Vector2(-866, 1433)
 
-[node name="Water" type="TileMapLayer" parent="."]
-position = Vector2(1, 0)
-tile_map_data = PackedByteArray("AADw/z4AAQABAAEAAADx/z4AAQABAAEAAADw/z0AAQABAAAAAADx/z0AAQABAAAAAADy/z4AAQACAAEAAADv/z4AAQAAAAEAAADe/1IAAQAEAAAAAADe/1MAAQAEAAEAAADZ/zsAAQABAAEAAADZ/zwAAQABAAEAAADZ/z0AAQABAAIAAADa/zsAAQABAAEAAADa/zwAAQABAAEAAADa/z0AAQABAAIAAADb/zsAAQACAAEAAADb/zwAAQACAAEAAAA=")
-tile_set = ExtResource("10_6oseh")
-
-[node name="Decorations" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD8/z4AAAAFAAsAAADt/y8AAAAHAAsAAADa/z4AAAABAAkAAADp/04AAAACAAsAAADu/08AAAAAAAoAAADu/1MAAAAHAAsAAADk/1MAAAABAAoAAADn/1QAAAACAAoAAADZ/0sAAAADAAgAAADZ/0wAAAADAAkAAADW/0IAAAAHAAsAAADe/ysAAAAGAAsAAADj/ywAAAAEAAkAAAD2/xoAAAAGAAsAAAD7/xkAAAADAAsAAADV/0kAAAAHAAsAAAA=")
-tile_set = SubResource("TileSet_g5ssp")
-
 [node name="SpawnPoints" type="Node2D" parent="."]
 position = Vector2(-1, 415)
 
@@ -422,6 +414,18 @@ scene = "uid://cf0rrkwv27lqc"
 [node name="SceneChanger" parent="SpawnPoints" instance=ExtResource("7_5bkl7")]
 position = Vector2(-1089, 2200)
 scene = "uid://in0web2htd1o"
+
+[node name="Water" type="TileMapLayer" parent="."]
+position = Vector2(1, 0)
+tile_map_data = PackedByteArray("AADw/z4AAQABAAEAAADx/z4AAQABAAEAAADw/z0AAQABAAAAAADx/z0AAQABAAAAAADy/z4AAQACAAEAAADv/z4AAQAAAAEAAADe/1IAAQAEAAAAAADe/1MAAQAEAAEAAADZ/zsAAQABAAEAAADZ/zwAAQABAAEAAADZ/z0AAQABAAIAAADa/zsAAQABAAEAAADa/zwAAQABAAEAAADa/z0AAQABAAIAAADb/zsAAQACAAEAAADb/zwAAQACAAEAAAA=")
+tile_set = ExtResource("10_6oseh")
+
+[node name="Decorations" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD8/z4AAAAFAAsAAADt/y8AAAAHAAsAAADa/z4AAAABAAkAAADp/04AAAACAAsAAADu/08AAAAAAAoAAADu/1MAAAAHAAsAAADk/1MAAAABAAoAAADn/1QAAAACAAoAAADZ/0sAAAADAAgAAADZ/0wAAAADAAkAAADW/0IAAAAHAAsAAADe/ysAAAAGAAsAAADj/ywAAAAEAAkAAAD2/xoAAAAGAAsAAAD7/xkAAAADAAsAAADV/0kAAAAHAAsAAAA=")
+tile_set = SubResource("TileSet_g5ssp")
+
+[node name="Player" parent="." instance=ExtResource("9_6oseh")]
+position = Vector2(488, 959)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_6lc7h")

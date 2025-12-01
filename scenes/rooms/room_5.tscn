@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cqmc1cf8i4xuk"]
+[gd_scene load_steps=20 format=4 uid="uid://cqmc1cf8i4xuk"]
 
 [ext_resource type="Script" uid="uid://bm7tlgrm01mdd" path="res://scripts/enemies/room_5.gd" id="1_lesdd"]
 [ext_resource type="Texture2D" uid="uid://cjy64q5162xhx" path="res://assets/tilesets/tilesets-1.png" id="1_wq1n7"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dda2t67u583yv" path="res://scenes/items/babosa_item.tscn" id="4_c3xlp"]
 [ext_resource type="PackedScene" uid="uid://cajvb2w2s5e2e" path="res://scenes/enemies/buho/buho.tscn" id="5_p774s"]
 [ext_resource type="PackedScene" uid="uid://b13m41wgajs2q" path="res://scenes/scene_changer.tscn" id="6_c3xlp"]
+[ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player/player.tscn" id="7_2ytdn"]
 [ext_resource type="TileSet" uid="uid://b56nqxyxljih5" path="res://assets/tilesets/water.tres" id="9_2ytdn"]
 [ext_resource type="AudioStream" uid="uid://bcav124cblpot" path="res://assets/music/dark-electro-pop-music-no-copyright-426158.mp3" id="9_ue28d"]
 [ext_resource type="AudioStream" uid="uid://pyj3i8cfpdee" path="res://assets/music/enemy 2.mp3" id="10_t6a0t"]
@@ -408,6 +409,9 @@ position = Vector2(1, 0)
 tile_map_data = PackedByteArray("AAATAAQAAQABAAEAAAASAAMAAQABAAEAAAATAAMAAQABAAEAAAASAAQAAQABAAEAAAATAAIAAQABAAAAAAASAAIAAQABAAAAAAARAAMAAQAAAAEAAAARAAQAAQAAAAEAAAAkAPz/AQAAAAEAAAAmAPv/AQABAAAAAAAlAPv/AQABAAAAAAAlAPz/AQABAAEAAAAmAPz/AQABAAEAAAAKAP7/AQAAAAEAAAALAP7/AQABAAEAAAALAP//AQABAAIAAAAMAP7/AQACAAEAAAA=")
 tile_set = ExtResource("9_2ytdn")
 
+[node name="Player" parent="." instance=ExtResource("7_2ytdn")]
+position = Vector2(409, 135)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_ue28d")
 
@@ -415,9 +419,10 @@ stream = ExtResource("9_ue28d")
 stream = ExtResource("10_t6a0t")
 
 [node name="detectBossFight" type="Area2D" parent="."]
+position = Vector2(42, 26)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectBossFight"]
-position = Vector2(1821, -384)
+position = Vector2(1778, -417)
 shape = SubResource("SegmentShape2D_ue28d")
 
 [connection signal="body_entered" from="detectBossFight" to="." method="_on_detect_boss_fight_body_entered"]
