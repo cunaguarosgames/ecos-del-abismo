@@ -40,3 +40,4 @@ func _on_detect_boss_fight_body_entered(body: Node2D) -> void:
 		bossFight = true
 		RhythmManager.end_music(audio_stream_player)
 		RhythmManager.start_music(audio_stream_player_boss)
+		RhythmManager.set_bpm(125.0)
