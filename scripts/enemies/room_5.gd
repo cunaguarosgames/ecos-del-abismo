@@ -8,7 +8,7 @@ extends Node2D
 @onready var audio_stream_player_boss: AudioStreamPlayer = $AudioStreamPlayer2
 @onready var doorNextLevel = $DoorToNextLevel
 @onready var Boss = $entities/buho 
-@onready var nextLevel = $SpawnPoints/Door200
+@onready var nextLevel = $SpawnPoints/Door100
 
 var bossFight = false 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://ckmyj03c6h7om"]
+[gd_scene load_steps=9 format=4 uid="uid://ckmyj03c6h7om"]
 
 [ext_resource type="TileSet" uid="uid://wthcfedkg5bh" path="res://assets/tilesets/gray_cave.tres" id="1_m1e0a"]
 [ext_resource type="Script" uid="uid://baixfa7hv3u7w" path="res://scripts/room.gd" id="1_s45o2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b8dq7fkgqf8ih" path="res://scenes/enemies/stalker/stalker.tscn" id="3_tqk6v"]
 [ext_resource type="AudioStream" uid="uid://pyj3i8cfpdee" path="res://assets/music/enemy 2.mp3" id="4_fyxi0"]
 [ext_resource type="PackedScene" uid="uid://b13m41wgajs2q" path="res://scenes/scene_changer.tscn" id="5_nwivn"]
+[ext_resource type="PackedScene" uid="uid://c12w6cxfg5aym" path="res://scenes/items/ability_item.tscn" id="7_tqk6v"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ijgog"]
 vertices = PackedVector2Array(904.3281, 191, 893.3281, 20, 1675.9531, 20, 1675.0391, 391.2422, 1351, 395.25, 1351, 503.1172, 1300, 500, 1300, 396, 884, 396, 884, 236, 809, 191, 812, 236, 1018.28906, 1020.9375, 1027.2734, 1277.75, 894, 1276.2188, 894, 803.6406, 1739, 468.03906, 2077.6563, 469.89063, 2082.2969, 605.09375, 1663, 607.10156, 1710.1016, 500.95313, -8.8203125, 702.09375, -232.42969, 701.09375, -229.54688, 598.09375, -14.1796875, 599.09375, 797.90625, 805.3594, 798.90625, 1032.9219, -11.8125, 1030.0703, 1663, 1022.9297, 884, 500, 884, 724, 812.7031, 724, 812, 396, 300, 396, 659.4531, 19.773438, 667.4375, -266.10938, 795.40625, -266.8828, 801.0078, -3.2890625, 809, 157.57813, -9.171875, 27.757813, 300, 500, 804.7031, 500)
@@ -66,3 +67,9 @@ position = Vector2(1079, 603)
 
 [node name="Stalker4" parent="." instance=ExtResource("3_tqk6v")]
 position = Vector2(1650, 336)
+
+[node name="AbilityItem" parent="." instance=ExtResource("7_tqk6v")]
+position = Vector2(1659, 163)
+ability_name = "Melee"
+first_color = Color(7.70092e-07, 0.6246821, 0.8965007, 1)
+second_color = Color(7.70092e-07, 0.44480062, 0.5497444, 1)
