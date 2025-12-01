@@ -778,12 +778,15 @@ position = Vector2(22, -18)
 
 [node name="AttackSFX_m" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_tq4jt")
+volume_db = 10.0
 
 [node name="AttackSFX_a" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_2j2fg")
+volume_db = 10.0
 
 [node name="AttackSFX_l" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_j62ja")
+volume_db = 10.0
 
 [connection signal="area_entered" from="areas/meleAtack" to="." method="_on_mele_atack_area_entered"]
 [connection signal="area_exited" from="areas/meleAtack" to="." method="_on_mele_atack_area_exited"]

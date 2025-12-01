@@ -328,3 +328,4 @@ script = ExtResource("9_bxf3j")
 
 [node name="AttackSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_4wgo2")
+volume_db = 10.0
