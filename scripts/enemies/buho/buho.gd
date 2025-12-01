@@ -9,6 +9,9 @@ signal enemigo_derrotado
 @onready var recalculateTarget = $timers/reacalculate_postion
 @onready var TimerFollow = $timers/TimerPatrol
 @onready var animArea = $Area_attack
+@onready var attack_sfx_m: AudioStreamPlayer = $AttackSFX_m
+@onready var attack_sfx_a: AudioStreamPlayer = $AttackSFX_a
+@onready var attack_sfx_l: AudioStreamPlayer = $AttackSFX_l
 
 @export var attack_scene: PackedScene
 @export var areaAttack = 20

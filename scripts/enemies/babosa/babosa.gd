@@ -7,6 +7,7 @@ class_name babosa extends enemyBase
 @onready var attackArea = $attack_area
 @export var followSpeed = 65
 @export var explotionDamage = 30
+@onready var attack_sfx: AudioStreamPlayer = $AttackSFX
 
 var sleep = true 
 var attack_area = false  

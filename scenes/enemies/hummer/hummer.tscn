@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c4oj0jvyi3q2e"]
+[gd_scene load_steps=43 format=3 uid="uid://c4oj0jvyi3q2e"]
 
 [ext_resource type="Script" uid="uid://b2ll0oqjbhvj4" path="res://scripts/enemies/hummer/hummer.gd" id="1_e0emr"]
 [ext_resource type="Texture2D" uid="uid://d3ld1uc2p7s2t" path="res://assets/enemies/hummer/hummer.png" id="1_qny5p"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bihnmnuf8mbys" path="res://scripts/enemies/hummer/take_damage.gd" id="8_eblet"]
 [ext_resource type="Script" uid="uid://b2o88ndl8ljij" path="res://scripts/enemies/hummer/attack.gd" id="9_bxf3j"]
 [ext_resource type="PackedScene" uid="uid://gfef6tpbxmsv" path="res://scenes/enemies/hummer/attack_hummer.tscn" id="10_tohwt"]
+[ext_resource type="AudioStream" uid="uid://ep3h3woecrjx" path="res://assets/sounds/drum 3.mp3" id="11_4wgo2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e0emr"]
 atlas = ExtResource("1_qny5p")
@@ -325,3 +326,6 @@ script = ExtResource("8_eblet")
 
 [node name="attack" type="Node" parent="StateMachine"]
 script = ExtResource("9_bxf3j")
+
+[node name="AttackSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_4wgo2")

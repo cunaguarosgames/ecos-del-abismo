@@ -37,6 +37,9 @@ func _do_attack_long() -> void:
 	projectile.target = buho.target
 	projectile.damage = buho.longAttack
 	buho.get_tree().current_scene.add_child(projectile)
+	
+	if is_instance_valid(buho.attack_sfx_l):
+			buho.attack_sfx_l.play()
 
 	buho.coldown_long.start()
 	buho.animSprite.animation_finished.connect(change)
@@ -55,6 +58,9 @@ func _do_attack_basic() -> void:
 			buho.animSprite.play("melle_r_SF")
 		else: 
 			buho.animSprite.play("melle_attack_R")
+	
+	if is_instance_valid(buho.attack_sfx_m):
+			buho.attack_sfx_m.play()
 			
 	buho.velocity = Vector2.ZERO
 	buho.can_attack = false
@@ -77,7 +83,10 @@ func _do_attack_area() -> void:
 			buho.target.take_damage(buho.areaAttack)
 		else:
 			state_machine.change_to("follow")
-
+		
+		if is_instance_valid(buho.attack_sfx_a):
+			buho.attack_sfx_a.play()
+			
 		buho.coldown_area.start()
 		buho.animSprite.animation_finished.connect(change)
 		buho.animArea.animation_finished.connect(change)

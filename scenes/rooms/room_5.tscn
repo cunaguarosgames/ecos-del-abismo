@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cqmc1cf8i4xuk"]
+[gd_scene load_steps=17 format=4 uid="uid://cqmc1cf8i4xuk"]
 
 [ext_resource type="Script" uid="uid://bm7tlgrm01mdd" path="res://scripts/enemies/room_5.gd" id="1_lesdd"]
 [ext_resource type="Texture2D" uid="uid://cjy64q5162xhx" path="res://assets/tilesets/tilesets-1.png" id="1_wq1n7"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dda2t67u583yv" path="res://scenes/items/babosa_item.tscn" id="4_c3xlp"]
 [ext_resource type="PackedScene" uid="uid://cajvb2w2s5e2e" path="res://scenes/enemies/buho/buho.tscn" id="5_p774s"]
 [ext_resource type="PackedScene" uid="uid://b13m41wgajs2q" path="res://scenes/scene_changer.tscn" id="6_c3xlp"]
+[ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player/player.tscn" id="8_2h3v0"]
 [ext_resource type="AudioStream" uid="uid://bcav124cblpot" path="res://assets/music/dark-electro-pop-music-no-copyright-426158.mp3" id="9_ue28d"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_scgta"]
@@ -391,6 +392,8 @@ scene = "uid://dmyt25gmi1aki"
 [node name="SceneChanger" parent="SpawnPoints" instance=ExtResource("6_c3xlp")]
 position = Vector2(-100, 212)
 scene = "uid://in0web2htd1o"
+
+[node name="Player" parent="." instance=ExtResource("8_2h3v0")]
 
 [node name="Decorations" type="TileMapLayer" parent="."]
 position = Vector2(1, 0)

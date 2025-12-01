@@ -6,6 +6,7 @@ extends enemyBase
 @onready var attackTimer = $attackColdown
 @onready var TimerFollow = $timerFollow
 @onready var recalculateTarget = $recalculateTarget
+@onready var attack_sfx: AudioStreamPlayer = $AttackSFX
 
 @export var attack_scene: PackedScene
 @export var waypoints: Array[Marker2D]

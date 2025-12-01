@@ -20,6 +20,9 @@ func _do_attack() -> void:
 	projectile.damage = hummer.attack
 
 	hummer.get_tree().current_scene.add_child(projectile)
+	
+	if is_instance_valid(hummer.attack_sfx):
+			hummer.attack_sfx.play()
 
 	hummer.attackTimer.start()
 
