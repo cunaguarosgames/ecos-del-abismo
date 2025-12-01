@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://b6dp20mhrg7o4"]
+[gd_scene load_steps=49 format=3 uid="uid://b6dp20mhrg7o4"]
 
 [ext_resource type="Script" uid="uid://du8lmsac55bu7" path="res://scripts/enemies/monolyth/monolyth.gd" id="1_bt33s"]
 [ext_resource type="Shader" uid="uid://vm8nqmx1mwj3" path="res://shaders/outline_glow.gdshader" id="2_5kjc3"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://exqr84e3gxt7" path="res://scripts/enemies/monolyth/states/chasing_2.gd" id="12_ivqwv"]
 [ext_resource type="Script" uid="uid://djlclq8pbg6ow" path="res://scripts/enemies/monolyth/states/attack_2.gd" id="13_sfggo"]
 [ext_resource type="Script" uid="uid://b3nhxspydl3qh" path="res://scripts/enemies/monolyth/states/special_attack.gd" id="15_kdjlb"]
+[ext_resource type="AudioStream" uid="uid://b76tvlrdtd4ey" path="res://assets/sounds/drop impact.mp3" id="16_ivqwv"]
+[ext_resource type="AudioStream" uid="uid://d3y1kvknupp01" path="res://assets/sounds/bassindi-heavy.mp3" id="17_sfggo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kjc3"]
 size = Vector2(1000, 1000)
@@ -335,12 +337,18 @@ wait_time = 0.3
 wait_time = 0.3
 
 [node name="EspecialAttackCooldownTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.5
 
 [node name="EspecialAttackTimer" type="Timer" parent="."]
 wait_time = 10.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Attack1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_ivqwv")
+
+[node name="SpecialAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_sfggo")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

@@ -9,6 +9,7 @@ var game_data: Dictionary = {
 	primary_skills_list = ["Normal"],
 	secondary_skill = "Normal",
 	secondary_skills_list = ["Normal"],
+	current_health = 100,
 	collectibles ={}
 }
 
@@ -31,3 +32,19 @@ func load_game():
 		save_file.close()
 		if game_data.has("collectibles"): 
 			Collectibles.collectibles = game_data.collectibles
+
+func reset():
+	
+	Collectibles.collectibles = {}
+	
+	game_data = {
+		last_room = "",
+		last_entry = "",
+		primary_skill = "Normal",
+		primary_skills_list = ["Normal"],
+		secondary_skill = "Normal",
+		secondary_skills_list = ["Normal"],
+		current_health = 100,
+		collectibles ={}
+	}
+	save_game()

@@ -376,22 +376,6 @@ waypoints = [NodePath("../../waypoints/Marker2D5"), NodePath("../../waypoints/Ma
 tile_map_data = PackedByteArray("AABWAP//AAAMAAIAAABWAAAAAAAMAAMAAABXAP//AAANAAIAAABXAAAAAAANAAMAAAA=")
 tile_set = SubResource("TileSet_g5ssp")
 
-[node name="SpawnPoints" type="Node2D" parent="."]
-
-[node name="Door1" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(392, 133)
-
-[node name="Door2" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(2721, 0)
-
-[node name="SceneChanger2" parent="SpawnPoints" instance=ExtResource("6_c3xlp")]
-position = Vector2(2778, 18)
-scene = "uid://dmyt25gmi1aki"
-
-[node name="SceneChanger" parent="SpawnPoints" instance=ExtResource("6_c3xlp")]
-position = Vector2(351, 148)
-scene = "uid://in0web2htd1o"
-
 [node name="Decorations" type="TileMapLayer" parent="."]
 position = Vector2(1, 0)
 tile_map_data = PackedByteArray("AAASAAQAAAABAAcAAAATAAQAAAACAAcAAAASAAMAAAABAAYAAAATAAMAAAACAAYAAAAIAAAAAAADAAcAAGAPAAMAAAAHAAsAAABPAPL/AAAHAAsAAAATAAEAAAADAAoAAAAlAPL/AAACAAoAAAAmAPH/AAADAAcAADA5APD/AAAGAAsAAAAcAPz/AAACAAkAAAAlAPv/AAAGAAUAAAAlAPz/AAAGAAYAAAAmAPv/AAAHAAUAAAAmAPz/AAAHAAYAAAAdAPj/AAAHAAsAAAAYAPv/AAAGAAsAAAALAAAAAAAGAAsAAAANAAgAAAABAAkAAAAYAAcAAAAHAAsAAABNAO7/AAAAAAsAAABRAO//AAAFAAsAAAA=")
@@ -417,5 +401,21 @@ position = Vector2(42, 26)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectBossFight"]
 position = Vector2(1778, -417)
 shape = SubResource("SegmentShape2D_ue28d")
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Door8" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(392, 133)
+
+[node name="Door9" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(2721, 0)
+
+[node name="Door200" parent="SpawnPoints" instance=ExtResource("6_c3xlp")]
+position = Vector2(2778, 18)
+scene = "uid://dmyt25gmi1aki"
+
+[node name="Door7" parent="SpawnPoints" instance=ExtResource("6_c3xlp")]
+position = Vector2(351, 148)
+scene = "uid://in0web2htd1o"
 
 [connection signal="body_entered" from="detectBossFight" to="." method="_on_detect_boss_fight_body_entered"]

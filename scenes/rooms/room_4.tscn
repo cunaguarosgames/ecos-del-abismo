@@ -374,19 +374,19 @@ position = Vector2(1698, -533)
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 
-[node name="SceneChanger" parent="SpawnPoints" instance=ExtResource("5_4ssin")]
+[node name="Door5" parent="SpawnPoints" instance=ExtResource("5_4ssin")]
 position = Vector2(1728, -522)
 scene = "uid://doki3gyt1yyf1"
 
-[node name="SceneChanger2" parent="SpawnPoints" instance=ExtResource("5_4ssin")]
+[node name="Door8" parent="SpawnPoints" instance=ExtResource("5_4ssin")]
 position = Vector2(192, 84)
 scene = "uid://cqmc1cf8i4xuk"
 
-[node name="Door1" type="Marker2D" parent="SpawnPoints"]
+[node name="Door6" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(1703, -533)
 
-[node name="Door2" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(240, 53)
+[node name="Door7" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(241, 63)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_53ou7")

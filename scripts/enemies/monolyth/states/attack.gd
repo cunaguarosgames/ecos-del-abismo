@@ -1,5 +1,7 @@
 extends MonolythStateBase
 
+@onready var attack_1: AudioStreamPlayer = $"../../Attack1"
+
 func start() -> void:
 	monolyth.can_attack = false
 
@@ -18,6 +20,7 @@ func start() -> void:
 	
 	monolyth.attack_cooldown_timer.start()
 	monolyth.play_main_animation("attack")
+	attack_1.play()
 
 func _on_attack_cooldown_timer_timeout() -> void:
 	if monolyth.current_health <= 0:

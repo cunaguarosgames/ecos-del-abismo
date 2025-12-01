@@ -378,17 +378,17 @@ waypoints = [NodePath("../../waypoints/Marker2D5"), NodePath("../../waypoints/Ma
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 
-[node name="door1" type="Marker2D" parent="SpawnPoints"]
+[node name="Door1" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(-339, 326)
 
-[node name="door2" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-1607, 547)
+[node name="Door3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-1600, 547)
 
-[node name="SceneChanger2" parent="SpawnPoints" instance=ExtResource("6_0hwry")]
+[node name="Door4" parent="SpawnPoints" instance=ExtResource("6_0hwry")]
 position = Vector2(-1634, 566)
 scene = "uid://doki3gyt1yyf1"
 
-[node name="SceneChanger3" parent="SpawnPoints" instance=ExtResource("6_0hwry")]
+[node name="Door2" parent="SpawnPoints" instance=ExtResource("6_0hwry")]
 position = Vector2(-385, 340)
 scene = "uid://bxy8is1bcaacj"
 

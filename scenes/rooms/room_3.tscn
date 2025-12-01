@@ -394,17 +394,17 @@ position = Vector2(-866, 1433)
 [node name="SpawnPoints" type="Node2D" parent="."]
 position = Vector2(-1, 415)
 
-[node name="Door1" type="Marker2D" parent="SpawnPoints"]
+[node name="Door4" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(505, 545)
 
-[node name="Door2" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-1066, 2173)
+[node name="Door5" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-1056, 2181)
 
-[node name="SceneChanger2" parent="SpawnPoints" instance=ExtResource("7_5bkl7")]
+[node name="Door3" parent="SpawnPoints" instance=ExtResource("7_5bkl7")]
 position = Vector2(545, 566)
 scene = "uid://cf0rrkwv27lqc"
 
-[node name="SceneChanger" parent="SpawnPoints" instance=ExtResource("7_5bkl7")]
+[node name="Door6" parent="SpawnPoints" instance=ExtResource("7_5bkl7")]
 position = Vector2(-1089, 2200)
 scene = "uid://in0web2htd1o"
 
