@@ -285,7 +285,7 @@ bg_color = Color(0.7019608, 0.05490196, 0.1882353, 0.44705883)
 bg_color = Color(0.7668713, 0, 0.14998737, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0frua"]
-radius = 18.110771
+radius = 38.052597
 
 [node name="Rippler" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
@@ -309,16 +309,19 @@ frame_progress = 1.0
 offset = Vector2(0, -6)
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_fuovj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_6ss21")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -18.0
 offset_top = -25.0
 offset_right = 14.0

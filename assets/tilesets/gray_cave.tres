@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://wthcfedkg5bh"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://wthcfedkg5bh"]
 
 [ext_resource type="Texture2D" uid="uid://cyvfvdgaj7sik" path="res://assets/tilesets/gray_cave-Sheet.png" id="1_6r8ef"]
 [ext_resource type="Texture2D" uid="uid://c6wq2ew4h6mce" path="res://assets/objects_cave/Crystal_shadow1_1-Sheet-export.png" id="2_txlhr"]
@@ -6,12 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://ddbrq7nx6uwpo" path="res://assets/objects_cave/Broken1-Sheet-export.png" id="4_1m0x1"]
 [ext_resource type="Texture2D" uid="uid://dr0o7a4wyok0v" path="res://assets/objects_cave/Tree_shadow2_1-Sheet-export.png" id="5_ackpw"]
 [ext_resource type="Texture2D" uid="uid://cqy2frcqflghe" path="res://assets/objects_cave/details-Sheet-export.png" id="6_1m0x1"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_4f7it"]
-vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
-agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_txlhr"]
 texture = ExtResource("1_6r8ef")
@@ -27,7 +21,6 @@ texture_region_size = Vector2i(32, 32)
 1:1/0/terrains_peering_bit/top_left_corner = 0
 1:1/0/terrains_peering_bit/top_side = 0
 1:1/0/terrains_peering_bit/top_right_corner = 0
-1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4f7it")
 1:0/0 = 0
 1:0/0/terrain_set = 0
 1:0/0/terrains_peering_bit/bottom_right_corner = 0
@@ -181,8 +174,10 @@ texture_region_size = Vector2i(32, 32)
 texture = ExtResource("2_txlhr")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+0:0/0/terrain_set = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:0/0 = 0
+1:0/0/terrain_set = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -196,8 +191,12 @@ texture_region_size = Vector2i(32, 32)
 2:1/0 = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:1/0 = 0
+1:1/0/terrain_set = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/left_side = 0
 0:1/0 = 0
+0:1/0/terrain_set = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_27ala"]
@@ -320,6 +319,32 @@ texture_region_size = Vector2i(32, 32)
 17:4/0 = 0
 16:5/0 = 0
 17:5/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+5:13/0 = 0
+4:13/0 = 0
+16:12/0 = 0
+17:13/0 = 0
+17:12/0 = 0
+16:13/0 = 0
+7:6/0 = 0
+6:6/0 = 0
+5:6/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+4:6/0 = 0
+8:4/0 = 0
+6:2/0 = 0
+5:2/0 = 0
+5:1/0 = 0
+4:1/0 = 0
+4:2/0 = 0
+7:2/0 = 0
+13:1/0 = 0
+12:1/0 = 0
+12:0/0 = 0
+13:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ackpw"]
 texture = ExtResource("6_1m0x1")
@@ -459,7 +484,6 @@ terrain_set_0/terrain_0/name = "Cave 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 terrain_set_0/terrain_1/name = "wall 1"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
-navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_txlhr")
 sources/1 = SubResource("TileSetAtlasSource_8rce1")
 sources/2 = SubResource("TileSetAtlasSource_27ala")
