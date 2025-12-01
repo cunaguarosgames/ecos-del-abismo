@@ -232,6 +232,7 @@ ignore_time_scale = true
 
 [node name="AttackSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_uurlr")
+volume_db = 10.0
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
