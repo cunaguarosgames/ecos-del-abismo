@@ -72,6 +72,12 @@ autoplay = "default"
 frame = 3
 frame_progress = 0.62324953
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
 [node name="Panel" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1

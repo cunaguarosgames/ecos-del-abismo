@@ -2,9 +2,10 @@ extends Control
 
 @onready var panel: VBoxContainer = $Panel
 @onready var panel_options: VBoxContainer = $PanelOptions
+@onready var color_rect: ColorRect = $ColorRect
 
 func _ready() -> void:
-	pass
+	fade_in_logo()
 
 func _on_play_pressed():
 	if GameState.game_data.last_room != "":
@@ -25,3 +26,8 @@ func _on_reset_progress_pressed() -> void:
 func _on_back_pressed() -> void:
 	panel.show()
 	panel_options.hide()
+
+func fade_in_logo() -> void:
+	var t := create_tween()
+	
+	t.tween_property(color_rect, "modulate:a", 0.0, 1.5)
