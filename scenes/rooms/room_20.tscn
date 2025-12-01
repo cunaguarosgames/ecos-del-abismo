@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://dmyt25gmi1aki"]
+[gd_scene load_steps=11 format=4 uid="uid://dmyt25gmi1aki"]
 
 [ext_resource type="TileSet" uid="uid://bs0kfd54mp5gc" path="res://assets/tilesets/violet_cave.tres" id="1_6x3t6"]
 [ext_resource type="Script" uid="uid://baixfa7hv3u7w" path="res://scripts/room.gd" id="1_sff3r"]
 [ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player/player.tscn" id="2_topig"]
 [ext_resource type="TileSet" uid="uid://b56nqxyxljih5" path="res://assets/tilesets/water.tres" id="3_dooy7"]
 [ext_resource type="PackedScene" uid="uid://cdftfwvuivjk8" path="res://scenes/enemies/chipi/chipi.tscn" id="3_e6iyv"]
+[ext_resource type="TileSet" uid="uid://wthcfedkg5bh" path="res://assets/tilesets/gray_cave.tres" id="4_rjhni"]
 [ext_resource type="AudioStream" uid="uid://bcav124cblpot" path="res://assets/music/dark-electro-pop-music-no-copyright-426158.mp3" id="5_7dhm0"]
 [ext_resource type="PackedScene" uid="uid://b13m41wgajs2q" path="res://scenes/scene_changer.tscn" id="6_mxtna"]
 [ext_resource type="PackedScene" uid="uid://f5554vbyk0bi" path="res://scenes/enemies/brutalon/brutalon.tscn" id="7_mxtna"]
@@ -31,12 +32,25 @@ tile_set = ExtResource("1_6x3t6")
 tile_map_data = PackedByteArray("AAAPAAIAAQABAAEAAAAQAAIAAQABAAEAAAAQAAMAAQABAAEAAAAPAAMAAQABAAEAAAAOAAMAAQAAAAEAAAAOAAIAAQAAAAEAAAAOAAEAAQAAAAAAAAAPAAEAAQABAAAAAAAQAAEAAQABAAAAAAAQAAQAAQABAAEAAAAPAAQAAQABAAEAAAAOAAQAAQAAAAEAAAARAAMAAQABAAEAAAARAAQAAQABAAEAAAARAAIAAQABAAEAAAASAAMAAQABAAEAAAASAAQAAQABAAEAAAASAAIAAQABAAEAAAASAAUAAQABAAEAAAARAAUAAQABAAEAAAAQAAUAAQABAAEAAAATAAQAAQABAAEAAAATAAUAAQABAAEAAAATAAMAAQABAAEAAAAUAAQAAQABAAEAAAAUAAUAAQABAAEAAAAUAAMAAQADAAEAAAAVAAQAAQADAAEAAAAVAAUAAQABAAEAAAAVAAMAAQACAAAAAAAVAAYAAQABAAEAAAAUAAYAAQABAAEAAAATAAYAAQABAAEAAAAWAAUAAQACAAEAAAAWAAYAAQACAAEAAAAWAAQAAQACAAAAAAASAAYAAQABAAEAAAARAAYAAQAEAAAAAAAQAAYAAQABAAIAAAAPAAUAAQAEAAAAAAAOAAUAAQAAAAIAAAAPAAYAAQAAAAIAAAATAAcAAQABAAIAAAASAAcAAQABAAIAAAARAAcAAQAAAAIAAAAUAAcAAQABAAIAAAAVAAcAAQABAAIAAAAWAAcAAQACAAIAAAATAAIAAQADAAEAAAAUAAIAAQACAAAAAAARAAEAAQABAAAAAAASAAEAAQABAAAAAAATAAEAAQACAAAAAAA=")
 tile_set = ExtResource("3_dooy7")
 
+[node name="Decorations" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAMAAIAAgAAAAAAAAAXAAAAAgAAAAAAAAAjAAkAAgAAAAAAAAANABIAAgACAAAAAAA=")
+tile_set = ExtResource("4_rjhni")
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_7dhm0")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_7dhm0")
+
+[node name="Player" parent="." instance=ExtResource("2_topig")]
+position = Vector2(56, 50)
+
+[node name="Brutalon" parent="." instance=ExtResource("7_mxtna")]
+position = Vector2(451, 257)
+
+[node name="Chipi" parent="." instance=ExtResource("3_e6iyv")]
+position = Vector2(1104, 56)
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 
@@ -57,15 +71,6 @@ scene = "uid://bf5vlnwqfsm11"
 [node name="Door200" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(24, 48)
 
-[node name="Door9" parent="SpawnPoints" instance=ExtResource("6_mxtna")]
+[node name="Door103" parent="SpawnPoints" instance=ExtResource("6_mxtna")]
 position = Vector2(-16, 48)
-scene = "uid://cqmc1cf8i4xuk"
-
-[node name="Player" parent="." instance=ExtResource("2_topig")]
-position = Vector2(56, 50)
-
-[node name="Brutalon" parent="." instance=ExtResource("7_mxtna")]
-position = Vector2(451, 257)
-
-[node name="Chipi" parent="." instance=ExtResource("3_e6iyv")]
-position = Vector2(1104, 56)
+scene = "uid://ckmyj03c6h7om"
