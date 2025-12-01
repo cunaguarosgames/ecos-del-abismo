@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://dn1hrjxktvoft"]
+[gd_scene load_steps=14 format=4 uid="uid://dn1hrjxktvoft"]
 
 [ext_resource type="Script" uid="uid://baixfa7hv3u7w" path="res://scripts/room.gd" id="1_g4lrm"]
 [ext_resource type="TileSet" uid="uid://bs0kfd54mp5gc" path="res://assets/tilesets/violet_cave.tres" id="2_xhw4y"]
 [ext_resource type="PackedScene" uid="uid://dexk5be64pk3w" path="res://scenes/player/player.tscn" id="3_homgr"]
 [ext_resource type="PackedScene" uid="uid://j7o7bdwn7k35" path="res://scenes/items/health_item.tscn" id="4_owf3s"]
+[ext_resource type="AudioStream" uid="uid://4veth1tctohn" path="res://assets/music/enemy 4.mp3" id="5_dh5d8"]
 [ext_resource type="AudioStream" uid="uid://ufpxfl22m8u2" path="res://assets/music/boss dracula.mp3" id="5_pbmpf"]
 [ext_resource type="PackedScene" uid="uid://b6dp20mhrg7o4" path="res://scenes/enemies/monolyth/monolyth.tscn" id="6_jl6u5"]
 [ext_resource type="Script" uid="uid://urcm54jc0lnf" path="res://scenes/rooms/rocks.gd" id="7_37d1u"]
@@ -53,6 +54,9 @@ position = Vector2(-471, 207)
 position = Vector2(-652, 390)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dh5d8")
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_pbmpf")
 
 [node name="Monolyth" parent="." instance=ExtResource("6_jl6u5")]
@@ -70,6 +74,7 @@ shape = SubResource("RectangleShape2D_dh5d8")
 position = Vector2(-16, 304)
 collision_layer = 4
 script = ExtResource("7_37d1u")
+bpm = 120.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rocks"]
 position = Vector2(2, 0)
