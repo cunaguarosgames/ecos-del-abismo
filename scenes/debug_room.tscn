@@ -62,7 +62,7 @@ mesh = SubResource("QuadMesh_aifrh")
 position = Vector2(-250, -6)
 
 [node name="Stalker" parent="." instance=ExtResource("4_2v0q5")]
-position = Vector2(-81, 172)
+position = Vector2(288, 224)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
