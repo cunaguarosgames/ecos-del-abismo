@@ -245,7 +245,7 @@ health_bar = NodePath("ProgressBar")
 animSprite = NodePath("AnimatedSprite2D")
 navigation = NodePath("NavigationAgent2D")
 state_machine = NodePath("StateMachine")
-max_health = 20
+max_health = 30
 speed = 60
 attack = 10
 

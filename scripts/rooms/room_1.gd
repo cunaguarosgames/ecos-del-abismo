@@ -1,14 +1,11 @@
 extends Node2D
 
-
 @export var bpm: float
 @onready var player = $Player
 @onready var spawn_points = $SpawnPoints.get_children()
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var doorNextLevel = $DoorToNextLevel
-@onready var Boss = $entities/buho 
 
-func _ready() -> void:
+func _ready():
 	for sp in $SpawnPoints.get_children():
 		if sp.name == GameState.game_data.last_entry:
 			player.global_position = sp.global_position
@@ -18,14 +15,3 @@ func _ready() -> void:
 	RhythmManager.start_music(audio_stream_player)
 	if not bpm == 0.0:
 		RhythmManager.set_bpm(bpm)
-	
-	doorNextLevel.hide()
-	_conectar_senales()
-	
-
-func _conectar_senales():
-	if is_instance_valid(Boss):
-		Boss.enemigo_derrotado.connect(_abrir_puerta)
-
-func _abrir_puerta():
-	doorNextLevel.show()

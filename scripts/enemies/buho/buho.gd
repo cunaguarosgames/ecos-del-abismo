@@ -60,7 +60,7 @@ func on_update_health() -> void:
 
 func _enter_second_phase():
 	speed = 80
-	shield = 1 
+	shield = 10
 	update_health()
 
 # bubo.gd

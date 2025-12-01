@@ -669,12 +669,14 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_qdy1l")
 attack_scene = ExtResource("9_y7seg")
-areaAttack = 5
-longAttack = 10
+areaAttack = 10
+longAttack = 15
 health_bar = NodePath("ProgressBar")
 animSprite = NodePath("AnimatedSprite2D")
 navigation = NodePath("NavigationAgent2D")
 state_machine = NodePath("StateMachine")
+max_health = 120
+attack = 20
 
 [node name="Area_attack" type="AnimatedSprite2D" parent="."]
 position = Vector2(5.7499976, -8.124998)
