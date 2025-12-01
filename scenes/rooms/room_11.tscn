@@ -58,11 +58,11 @@ scene = "uid://c8t05awav7fn6"
 [node name="Door102" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(-203, 623)
 
-[node name="Stalker" parent="SpawnPoints" instance=ExtResource("3_tqk6v")]
-position = Vector2(259, 306)
+[node name="Stalker2" parent="." instance=ExtResource("3_tqk6v")]
+position = Vector2(259, 290)
 
-[node name="Stalker2" parent="SpawnPoints" instance=ExtResource("3_tqk6v")]
-position = Vector2(1079, 619)
+[node name="Stalker3" parent="." instance=ExtResource("3_tqk6v")]
+position = Vector2(1079, 603)
 
-[node name="Stalker3" parent="SpawnPoints" instance=ExtResource("3_tqk6v")]
-position = Vector2(1650, 352)
+[node name="Stalker4" parent="." instance=ExtResource("3_tqk6v")]
+position = Vector2(1650, 336)

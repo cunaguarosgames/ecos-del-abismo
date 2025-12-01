@@ -58,8 +58,8 @@ position = Vector2(-872, 32)
 position = Vector2(-917, 50)
 scene = "uid://cqmc1cf8i4xuk"
 
-[node name="Rippler" parent="SpawnPoints" instance=ExtResource("3_htbis")]
+[node name="Rippler2" parent="." instance=ExtResource("3_htbis")]
 position = Vector2(272, 128)
 
-[node name="Rippler2" parent="SpawnPoints" instance=ExtResource("3_htbis")]
+[node name="Rippler3" parent="." instance=ExtResource("3_htbis")]
 position = Vector2(0, 560)
